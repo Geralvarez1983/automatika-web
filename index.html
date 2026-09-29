@@ -50,14 +50,29 @@
             background: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(10, 15, 26, 0.95) 100%);
             backdrop-filter: blur(12px);
         }
+        .bg-grid-tech {
+            background-image: 
+                radial-gradient(circle at 50% 15%, rgba(37, 99, 235, 0.15) 0%, transparent 65%),
+                linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+            background-size: 100% 100%, 40px 40px, 40px 40px;
+        }
+        .card-interactive {
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .card-interactive:hover {
+            transform: translateY(-4px);
+            border-color: rgba(34, 211, 238, 0.45);
+            box-shadow: 0 20px 35px -15px rgba(2, 132, 199, 0.2), 0 0 25px -5px rgba(34, 211, 238, 0.12);
+        }
     </style>
 </head>
 <body class="bg-darkbg text-gray-100 antialiased selection:bg-accent selection:text-white overflow-x-hidden">
 
     <!-- Header / Navbar -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-darkbg/85 backdrop-blur-md border-b border-gray-800/60 transition-all">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <div class="flex items-center space-x-3 group cursor-pointer">
+    <header class="fixed top-0 left-0 right-0 z-50 bg-darkbg/90 backdrop-blur-md border-b border-gray-800/60 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center space-x-3 group cursor-pointer">
                 <div class="relative">
                     <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-400 rounded-xl blur opacity-60 group-hover:opacity-100 transition duration-500 animate-glow"></div>
                     <div class="relative w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 via-blue-700 to-slate-900 border border-blue-400/40 flex items-center justify-center text-white shadow-xl">
@@ -71,14 +86,15 @@
                     <span class="text-xl font-extrabold tracking-tight text-white leading-none">Automatika</span>
                     <span class="text-[9px] uppercase tracking-wider text-cyan-400 font-semibold mt-1">Automatización de Procesos</span>
                 </div>
-            </div>
+            </a>
             <nav class="hidden md:flex space-x-8 text-sm font-medium text-gray-300">
                 <a href="#soluciones" class="hover:text-cyan-400 transition-colors">Soluciones</a>
                 <a href="#ejemplos" class="hover:text-cyan-400 transition-colors">Casos de Uso</a>
                 <a href="#beneficios" class="hover:text-cyan-400 transition-colors">Beneficios</a>
                 <a href="#proceso" class="hover:text-cyan-400 transition-colors">Cómo Trabajamos</a>
+                <a href="#faq" class="hover:text-cyan-400 transition-colors">Preguntas Frecuentes</a>
             </nav>
-            <div>
+            <div class="hidden sm:flex items-center space-x-4">
                 <a href="#contacto" class="relative group overflow-hidden rounded-xl p-px inline-block">
                     <span class="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-400 transition-all duration-300 group-hover:scale-105"></span>
                     <span class="relative block px-5 py-2.5 rounded-[11px] bg-darkbg text-white text-sm font-semibold transition-all group-hover:bg-opacity-0">
@@ -86,19 +102,36 @@
                     </span>
                 </a>
             </div>
+            <!-- Botón menú hamburguesa móvil -->
+            <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-white p-2 focus:outline-none" aria-label="Abrir menú">
+                <i id="mobile-menu-icon" class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+        <!-- Menú desplegable móvil -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-950/95 border-b border-gray-800 px-6 py-5 space-y-4 backdrop-blur-xl">
+            <a href="#soluciones" class="mobile-link block text-gray-300 hover:text-cyan-400 text-base font-medium py-1">Soluciones</a>
+            <a href="#ejemplos" class="mobile-link block text-gray-300 hover:text-cyan-400 text-base font-medium py-1">Casos de Uso</a>
+            <a href="#beneficios" class="mobile-link block text-gray-300 hover:text-cyan-400 text-base font-medium py-1">Beneficios</a>
+            <a href="#proceso" class="mobile-link block text-gray-300 hover:text-cyan-400 text-base font-medium py-1">Cómo Trabajamos</a>
+            <a href="#faq" class="mobile-link block text-gray-300 hover:text-cyan-400 text-base font-medium py-1">Preguntas Frecuentes</a>
+            <div class="pt-2">
+                <a href="#contacto" class="mobile-link block w-full text-center bg-accent hover:bg-accenthover text-white font-semibold py-3 rounded-xl shadow-lg shadow-blue-600/30">
+                    Agendar Asesoría
+                </a>
+            </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="pt-38 pb-24 md:pt-48 md:pb-32 relative overflow-hidden">
+    <section class="pt-32 pb-16 sm:pt-40 sm:pb-24 md:pt-48 md:pb-32 relative overflow-hidden bg-grid-tech">
         <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[450px] bg-blue-600/15 blur-[150px] rounded-full pointer-events-none animate-pulse-slow"></div>
         
-        <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
-            <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-blue-950/80 border border-blue-700/40 text-cyan-300 text-xs font-semibold mb-6 shadow-sm animate-float">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center relative z-10">
+            <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-blue-950/80 border border-blue-700/40 text-cyan-300 text-xs font-semibold mb-6 shadow-sm animate-float">
                 <i class="fa-solid fa-bolt text-cyan-400"></i>
                 <span>Automatización Inteligente de Flujos de Trabajo</span>
             </div>
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight max-w-5xl mx-auto leading-[1.18]">
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight max-w-5xl mx-auto leading-[1.18]">
                 <span class="block text-white/95 drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]">
                     Automatizá tus procesos administrativos
                 </span>
@@ -106,7 +139,7 @@
                     y optimizá tiempo y dinero.
                 </span>
             </h1>
-            <p class="mt-6 text-lg md:text-xl text-gray-400 max-w-2xl mx-auto font-normal leading-relaxed">
+            <p class="mt-6 text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto font-normal leading-relaxed">
                 Integramos tus sistemas críticos (ERP, CRM, WhatsApp, Facturación) en flujos autónomos y seguros para escalar tu negocio sin aumentar costos operativos.
             </p>
             <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -121,6 +154,41 @@
         </div>
     </section>
 
+    <!-- Cinta de Integraciones y Ecosistema -->
+    <div class="border-y border-gray-800/80 bg-slate-950/70 backdrop-blur-md py-8 relative z-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <p class="text-center text-[11px] font-bold uppercase tracking-widest text-gray-400 mb-6">
+                Tecnologías y Sistemas que conectamos de forma autónoma
+            </p>
+            <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-6 md:gap-8 text-xs sm:text-sm text-gray-300 font-semibold">
+                <div class="flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-gray-900/70 border border-gray-800/90 hover:border-emerald-500/50 transition-colors shadow-sm">
+                    <i class="fa-brands fa-whatsapp text-emerald-400 text-base sm:text-lg"></i>
+                    <span>WhatsApp Business</span>
+                </div>
+                <div class="flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-gray-900/70 border border-gray-800/90 hover:border-emerald-500/50 transition-colors shadow-sm">
+                    <i class="fa-solid fa-table-cells text-emerald-400 text-base sm:text-lg"></i>
+                    <span>Google Sheets / Excel</span>
+                </div>
+                <div class="flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-gray-900/70 border border-gray-800/90 hover:border-cyan-500/50 transition-colors shadow-sm">
+                    <i class="fa-solid fa-file-invoice-dollar text-cyan-400 text-base sm:text-lg"></i>
+                    <span>Facturación Fiscal / AFIP</span>
+                </div>
+                <div class="flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-gray-900/70 border border-gray-800/90 hover:border-blue-500/50 transition-colors shadow-sm">
+                    <i class="fa-solid fa-brain text-blue-400 text-base sm:text-lg"></i>
+                    <span>OpenAI & Modelos IA</span>
+                </div>
+                <div class="flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-gray-900/70 border border-gray-800/90 hover:border-indigo-500/50 transition-colors shadow-sm">
+                    <i class="fa-solid fa-database text-indigo-400 text-base sm:text-lg"></i>
+                    <span>ERPs & Bases de Datos</span>
+                </div>
+                <div class="flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-gray-900/70 border border-gray-800/90 hover:border-purple-500/50 transition-colors shadow-sm">
+                    <i class="fa-solid fa-users text-purple-400 text-base sm:text-lg"></i>
+                    <span>CRMs & Portales Web</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- 1. BLOQUE GENERAL: QUÉ HACEMOS (ARQUITECTURA DE PROCESOS) -->
     <section id="soluciones" class="py-24 bg-cardbg/20 border-t border-gray-800/60 relative">
         <div class="max-w-7xl mx-auto px-6">
@@ -130,8 +198,8 @@
                 <p class="mt-4 text-gray-400">Diseñamos puentes digitales inteligentes para que tus aplicaciones hablen entre sí sin intervención humana.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="glass-card border border-gray-800/80 p-8 rounded-2xl hover:border-cyan-500/50 transition-all duration-300 group shadow-lg">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+                <div class="glass-card card-interactive border border-gray-800/80 p-6 sm:p-8 rounded-3xl group shadow-lg">
                     <div class="w-12 h-12 bg-blue-600/10 text-cyan-400 rounded-xl flex items-center justify-center text-xl font-bold mb-6 group-hover:bg-accent group-hover:text-white transition-all duration-300 border border-blue-500/20">
                         <i class="fa-solid fa-network-wired"></i>
                     </div>
@@ -141,7 +209,7 @@
                     </p>
                 </div>
 
-                <div class="glass-card border border-gray-800/80 p-8 rounded-2xl hover:border-cyan-500/50 transition-all duration-300 group shadow-lg">
+                <div class="glass-card card-interactive border border-gray-800/80 p-6 sm:p-8 rounded-3xl group shadow-lg">
                     <div class="w-12 h-12 bg-blue-600/10 text-cyan-400 rounded-xl flex items-center justify-center text-xl font-bold mb-6 group-hover:bg-accent group-hover:text-white transition-all duration-300 border border-blue-500/20">
                         <i class="fa-solid fa-brain"></i>
                     </div>
@@ -151,7 +219,7 @@
                     </p>
                 </div>
 
-                <div class="glass-card border border-gray-800/80 p-8 rounded-2xl hover:border-cyan-500/50 transition-all duration-300 group shadow-lg">
+                <div class="glass-card card-interactive border border-gray-800/80 p-6 sm:p-8 rounded-3xl group shadow-lg">
                     <div class="w-12 h-12 bg-blue-600/10 text-cyan-400 rounded-xl flex items-center justify-center text-xl font-bold mb-6 group-hover:bg-accent group-hover:text-white transition-all duration-300 border border-blue-500/20">
                         <i class="fa-solid fa-clock-rotate-left"></i>
                     </div>
@@ -173,10 +241,10 @@
                 <p class="mt-4 text-gray-400">Escenarios administrativos reales y cotidianos que resolvemos mediante flujos automatizados.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
                 
                 <!-- Caso 1 -->
-                <div class="glass-card border border-gray-800 p-8 rounded-3xl hover:border-cyan-500/40 transition-all shadow-xl flex flex-col justify-between">
+                <div class="glass-card card-interactive border border-gray-800/80 p-6 sm:p-8 rounded-3xl shadow-xl flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between mb-6">
                             <div class="w-12 h-12 bg-blue-600/10 text-cyan-400 rounded-xl flex items-center justify-center text-xl font-bold border border-blue-500/20">
@@ -184,7 +252,7 @@
                             </div>
                             <span class="text-xs font-semibold px-3 py-1 rounded-full bg-blue-950 text-blue-400 border border-blue-800/50">Área Comercial</span>
                         </div>
-                        <h3 class="text-2xl font-bold text-white mb-3">Atención y Calificación de Leads Fuera de Horario</h3>
+                        <h3 class="text-xl sm:text-2xl font-bold text-white mb-3">Atención y Calificación de Leads Fuera de Horario</h3>
                         <p class="text-gray-400 text-sm leading-relaxed mb-4">
                             <strong class="text-gray-200">El problema habitual:</strong> Consultas comerciales por WhatsApp a la madrugada o fines de semana, generando demoras y pérdida de oportunidades.
                         </p>
@@ -198,7 +266,7 @@
                 </div>
 
                 <!-- Caso 2 -->
-                <div class="glass-card border border-gray-800 p-8 rounded-3xl hover:border-cyan-500/40 transition-all shadow-xl flex flex-col justify-between">
+                <div class="glass-card card-interactive border border-gray-800/80 p-6 sm:p-8 rounded-3xl shadow-xl flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between mb-6">
                             <div class="w-12 h-12 bg-blue-600/10 text-cyan-400 rounded-xl flex items-center justify-center text-xl font-bold border border-blue-500/20">
@@ -206,7 +274,7 @@
                             </div>
                             <span class="text-xs font-semibold px-3 py-1 rounded-full bg-blue-950 text-blue-400 border border-blue-800/50">Administración y Finanzas</span>
                         </div>
-                        <h3 class="text-2xl font-bold text-white mb-3">Sincronización de Cobranzas y Facturación Fiscal</h3>
+                        <h3 class="text-xl sm:text-2xl font-bold text-white mb-3">Sincronización de Cobranzas y Facturación Fiscal</h3>
                         <p class="text-gray-400 text-sm leading-relaxed mb-4">
                             <strong class="text-gray-200">El problema habitual:</strong> Carga manual y repetitiva de cobros web hacia el sistema de facturación y planillas de control financiero.
                         </p>
@@ -220,7 +288,7 @@
                 </div>
 
                 <!-- Caso 3 -->
-                <div class="glass-card border border-gray-800 p-8 rounded-3xl hover:border-cyan-500/40 transition-all shadow-xl flex flex-col justify-between">
+                <div class="glass-card card-interactive border border-gray-800/80 p-6 sm:p-8 rounded-3xl shadow-xl flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between mb-6">
                             <div class="w-12 h-12 bg-blue-600/10 text-cyan-400 rounded-xl flex items-center justify-center text-xl font-bold border border-blue-500/20">
@@ -228,7 +296,7 @@
                             </div>
                             <span class="text-xs font-semibold px-3 py-1 rounded-full bg-blue-950 text-blue-400 border border-blue-800/50">Recursos Humanos & Operaciones</span>
                         </div>
-                        <h3 class="text-2xl font-bold text-white mb-3">Gestión Automatizada de Licencias y Turnos</h3>
+                        <h3 class="text-xl sm:text-2xl font-bold text-white mb-3">Gestión Automatizada de Licencias y Turnos</h3>
                         <p class="text-gray-400 text-sm leading-relaxed mb-4">
                             <strong class="text-gray-200">El problema habitual:</strong> Planificación de vacaciones y turnos de personal operativo mediante planillas cruzadas propensas a solapamientos.
                         </p>
@@ -242,7 +310,7 @@
                 </div>
 
                 <!-- Caso 4 -->
-                <div class="glass-card border border-gray-800 p-8 rounded-3xl hover:border-cyan-500/40 transition-all shadow-xl flex flex-col justify-between">
+                <div class="glass-card card-interactive border border-gray-800/80 p-6 sm:p-8 rounded-3xl shadow-xl flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between mb-6">
                             <div class="w-12 h-12 bg-blue-600/10 text-cyan-400 rounded-xl flex items-center justify-center text-xl font-bold border border-blue-500/20">
@@ -250,7 +318,7 @@
                             </div>
                             <span class="text-xs font-semibold px-3 py-1 rounded-full bg-blue-950 text-blue-400 border border-blue-800/50">Administración & Contabilidad</span>
                         </div>
-                        <h3 class="text-2xl font-bold text-white mb-3">Procesamiento Inteligente de Facturas de Proveedores</h3>
+                        <h3 class="text-xl sm:text-2xl font-bold text-white mb-3">Procesamiento Inteligente de Facturas de Proveedores</h3>
                         <p class="text-gray-400 text-sm leading-relaxed mb-4">
                             <strong class="text-gray-200">El problema habitual:</strong> Recepción masiva de facturas en PDF por correo que el equipo contable debe cargar manualmente una a una.
                         </p>
@@ -300,17 +368,17 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="glass-card border border-gray-800 p-8 rounded-2xl hover:border-gray-700 transition-all">
+                <div class="glass-card card-interactive border border-gray-800 p-6 sm:p-8 rounded-2xl transition-all">
                     <span class="text-cyan-400 font-extrabold text-4xl block mb-4">01</span>
                     <h3 class="text-lg font-bold text-white mb-2">Auditoría y Mapeo</h3>
                     <p class="text-gray-400 text-sm">Analizamos los circuitos actuales para identificar demoras, redundancias y puntos críticos de mejora.</p>
                 </div>
-                <div class="glass-card border border-gray-800 p-8 rounded-2xl hover:border-gray-700 transition-all">
+                <div class="glass-card card-interactive border border-gray-800 p-6 sm:p-8 rounded-2xl transition-all">
                     <span class="text-cyan-400 font-extrabold text-4xl block mb-4">02</span>
                     <h3 class="text-lg font-bold text-white mb-2">Desarrollo e Integración</h3>
                     <p class="text-gray-400 text-sm">Construimos los puentes lógicos y APIs utilizando herramientas robustas de automatización cloud.</p>
                 </div>
-                <div class="glass-card border border-gray-800 p-8 rounded-2xl hover:border-gray-700 transition-all">
+                <div class="glass-card card-interactive border border-gray-800 p-6 sm:p-8 rounded-2xl transition-all">
                     <span class="text-cyan-400 font-extrabold text-4xl block mb-4">03</span>
                     <h3 class="text-lg font-bold text-white mb-2">Validación y Soporte</h3>
                     <p class="text-gray-400 text-sm">Monitoreamos el comportamiento en entorno real, documentamos los flujos y capacitamos al equipo.</p>
@@ -319,18 +387,75 @@
         </div>
     </section>
 
-    <!-- Sección de Contacto -->
-    <section id="contacto" class="py-24 border-t border-gray-800/60">
-        <div class="max-w-3xl mx-auto px-6">
-            <div class="glass-card border border-gray-800 p-8 md:p-12 rounded-3xl shadow-2xl relative overflow-hidden">
-                <div class="absolute -right-20 -bottom-20 w-60 h-60 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
-                
-                <div class="text-center mb-10 relative z-10">
-                    <h2 class="text-3xl font-bold text-white">Iniciá la transformación digital de tu PyME</h2>
-                    <p class="mt-2 text-gray-400 text-sm">Completá el formulario para coordinar una sesión técnica de diagnóstico sin cargo.</p>
+    <!-- Sección de Preguntas Frecuentes (FAQ) -->
+    <section id="faq" class="py-24 bg-cardbg/20 border-t border-gray-800/60 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-cyan-400 text-xs font-bold uppercase tracking-widest">Preguntas Frecuentes</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight mt-2">Respuestas claras y directas</h2>
+                <p class="mt-4 text-gray-400 text-sm sm:text-base">Todo lo que necesitás saber antes de dar el paso hacia la automatización.</p>
+            </div>
+
+            <div class="space-y-4" id="faq-accordion">
+                <!-- FAQ Item 1 -->
+                <div class="glass-card card-interactive border border-gray-800 rounded-2xl overflow-hidden transition-all">
+                    <button class="faq-toggle w-full px-6 py-5 text-left flex items-center justify-between font-semibold text-white text-base sm:text-lg focus:outline-none">
+                        <span>¿Tenemos que cambiar los sistemas o programas que ya usamos?</span>
+                        <i class="fa-solid fa-chevron-down text-cyan-400 text-sm transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-5 text-sm sm:text-base text-gray-400 leading-relaxed border-t border-gray-800/60 pt-4">
+                        No. Uno de los mayores diferenciales de Automatika es que <strong>trabajamos sobre el software que tu empresa ya tiene incorporado</strong> (ERPs, planillas de Google/Excel, WhatsApp, facturación fiscal, CRMs). Construimos puentes lógicos y APIs para que tus herramientas se comuniquen solas sin interrumpir tu operativa diaria.
+                    </div>
                 </div>
 
-                <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" class="space-y-6 relative z-10">
+                <!-- FAQ Item 2 -->
+                <div class="glass-card card-interactive border border-gray-800 rounded-2xl overflow-hidden transition-all">
+                    <button class="faq-toggle w-full px-6 py-5 text-left flex items-center justify-between font-semibold text-white text-base sm:text-lg focus:outline-none">
+                        <span>¿Cuánto tiempo demora ver el primer flujo funcionando?</span>
+                        <i class="fa-solid fa-chevron-down text-cyan-400 text-sm transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-5 text-sm sm:text-base text-gray-400 leading-relaxed border-t border-gray-800/60 pt-4">
+                        Nuestra metodología de despliegue ágil permite que el primer circuito productivo esté <strong>validado y operando en menos de 15 días</strong>. Enfocamos el desarrollo en iteraciones cortas para que tu equipo perciba el ahorro de horas y el retorno de inversión desde las primeras semanas.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="glass-card card-interactive border border-gray-800 rounded-2xl overflow-hidden transition-all">
+                    <button class="faq-toggle w-full px-6 py-5 text-left flex items-center justify-between font-semibold text-white text-base sm:text-lg focus:outline-none">
+                        <span>¿Cómo garantizan la seguridad y privacidad de nuestros datos?</span>
+                        <i class="fa-solid fa-chevron-down text-cyan-400 text-sm transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-5 text-sm sm:text-base text-gray-400 leading-relaxed border-t border-gray-800/60 pt-4">
+                        La seguridad es prioritaria. Todos los flujos se implementan con <strong>cifrado SSL/TLS de extremo a extremo</strong> y credenciales seguras. Nosotros no almacenamos datos sensibles, comerciales ni bancarios de tu negocio; únicamente programamos el canal seguro por donde viaja la información entre tus sistemas.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="glass-card card-interactive border border-gray-800 rounded-2xl overflow-hidden transition-all">
+                    <button class="faq-toggle w-full px-6 py-5 text-left flex items-center justify-between font-semibold text-white text-base sm:text-lg focus:outline-none">
+                        <span>¿Qué soporte brindan si un sistema externo se actualiza?</span>
+                        <i class="fa-solid fa-chevron-down text-cyan-400 text-sm transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-5 text-sm sm:text-base text-gray-400 leading-relaxed border-t border-gray-800/60 pt-4">
+                        Todos nuestros servicios incluyen monitoreo proactivo y soporte de mantenimiento. Si una plataforma conectada (como WhatsApp, AFIP o tu ERP) realiza cambios o actualizaciones técnicas, nuestro equipo efectúa los ajustes necesarios para garantizar estabilidad y continuidad 24/7.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Contacto -->
+    <section id="contacto" class="py-20 sm:py-24 border-t border-gray-800/60">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6">
+            <div class="glass-card card-interactive border border-gray-800 p-6 sm:p-10 md:p-12 rounded-3xl shadow-2xl relative overflow-hidden">
+                <div class="absolute -right-20 -bottom-20 w-60 h-60 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
+                
+                <div class="text-center mb-8 sm:mb-10 relative z-10">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white">Iniciá la transformación digital de tu PyME</h2>
+                    <p class="mt-2 text-gray-400 text-xs sm:text-sm">Completá el formulario para coordinar una sesión técnica de diagnóstico sin cargo.</p>
+                </div>
+
+                <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" class="space-y-5 sm:space-y-6 relative z-10">
                     <!-- Clave de Web3Forms -->
                     <input type="hidden" name="access_key" value="4b9bc2f9-dd3b-4551-8824-b06f9cdb059b">
                     <input type="hidden" name="subject" value="Nuevo contacto desde Automatika Web">
@@ -338,21 +463,21 @@
                     <!-- Filtro anti-spam honeypot -->
                     <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
                         <div>
                             <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Nombre y Apellido</label>
-                            <input type="text" name="name" required class="w-full bg-darkbg border border-gray-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-400 text-sm transition-colors" placeholder="Tu nombre">
+                            <input type="text" name="name" required class="w-full bg-darkbg border border-gray-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-400 text-base transition-colors" placeholder="Tu nombre">
                         </div>
                         <div>
                             <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Email Corporativo</label>
-                            <input type="email" name="email" required class="w-full bg-darkbg border border-gray-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-400 text-sm transition-colors" placeholder="tu@empresa.com">
+                            <input type="email" name="email" required class="w-full bg-darkbg border border-gray-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-400 text-base transition-colors" placeholder="tu@empresa.com">
                         </div>
                     </div>
                     <div>
                         <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">¿Qué proceso te gustaría automatizar?</label>
-                        <textarea rows="4" name="message" required class="w-full bg-darkbg border border-gray-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-400 text-sm transition-colors" placeholder="Describí brevemente los sistemas que usás y qué tareas manuales consumen más tiempo..."></textarea>
+                        <textarea rows="4" name="message" required class="w-full bg-darkbg border border-gray-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-400 text-base transition-colors" placeholder="Describí brevemente los sistemas que usás y qué tareas manuales consumen más tiempo..."></textarea>
                     </div>
-                    <button id="submit-btn" type="submit" class="w-full bg-accent hover:bg-accenthover text-white font-semibold py-4 rounded-xl transition-all shadow-lg shadow-blue-600/30 border border-blue-400/20 hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center space-x-2">
+                    <button id="submit-btn" type="submit" class="w-full bg-accent hover:bg-accenthover text-white font-semibold py-3.5 sm:py-4 rounded-xl transition-all shadow-lg shadow-blue-600/30 border border-blue-400/20 hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center space-x-2">
                         <span>Solicitar Sesión de Diagnóstico</span>
                     </button>
                     <div id="form-result" class="hidden text-center p-4 rounded-xl text-sm font-medium"></div>
@@ -422,21 +547,63 @@
                 });
             });
         }
+
+        // Menú móvil interactivo
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuIcon = document.getElementById('mobile-menu-icon');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                const isHidden = mobileMenu.classList.toggle('hidden');
+                if (mobileMenuIcon) {
+                    mobileMenuIcon.className = isHidden ? 'fa-solid fa-bars text-xl' : 'fa-solid fa-xmark text-xl';
+                }
+            });
+
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    if (mobileMenuIcon) mobileMenuIcon.className = 'fa-solid fa-bars text-xl';
+                });
+            });
+        }
+
+        // Acordeón interactivo de Preguntas Frecuentes (FAQ)
+        const faqToggles = document.querySelectorAll('.faq-toggle');
+        faqToggles.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const content = toggle.nextElementSibling;
+                const icon = toggle.querySelector('i');
+                const isOpen = !content.classList.contains('hidden');
+
+                // Cerrar todos los demás
+                document.querySelectorAll('.faq-content').forEach(c => c.classList.add('hidden'));
+                document.querySelectorAll('.faq-toggle i').forEach(i => i.classList.remove('rotate-180'));
+
+                // Si no estaba abierto, abrirlo
+                if (!isOpen) {
+                    content.classList.remove('hidden');
+                    if (icon) icon.classList.add('rotate-180');
+                }
+            });
+        });
     </script>
     <!-- Botón Flotante de WhatsApp -->
     <a href="https://wa.me/5491136826065?text=Hola%20Automatika%2C%20quiero%20consultar%20por%20una%20soluci%C3%B3n%20de%20automatizaci%C3%B3n%20para%20mi%20empresa." 
        target="_blank" 
        rel="noopener noreferrer" 
        aria-label="Contactar por WhatsApp"
-       class="fixed bottom-6 right-6 z-50 flex items-center group">
+       class="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-50 flex items-center group">
         <!-- Tooltip flotante -->
         <span class="mr-3 px-3.5 py-1.5 rounded-full bg-slate-900/95 text-xs font-semibold text-gray-200 shadow-xl border border-gray-700/80 backdrop-blur-md hidden sm:block opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
             ¿Dudas? Chateá con nosotros
         </span>
         <!-- Botón circular WhatsApp -->
-        <div class="relative w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white flex items-center justify-center shadow-xl shadow-emerald-500/25 transition-transform duration-300 group-hover:scale-110 active:scale-95">
-            <span class="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-30"></span>
-            <i class="fa-brands fa-whatsapp text-3xl"></i>
+        <div class="relative w-13 h-13 sm:w-14 sm:h-14 p-3 sm:p-0 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white flex items-center justify-center shadow-xl shadow-emerald-500/30 transition-transform duration-300 group-hover:scale-110 active:scale-95">
+            <span class="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-25"></span>
+            <i class="fa-brands fa-whatsapp text-2xl sm:text-3xl"></i>
         </div>
     </a>
 </body>
