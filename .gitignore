@@ -1,0 +1,5 @@
+# Archivos privados y datos de clientes
+contactos.csv
+*.env
+__pycache__/
+*.log
