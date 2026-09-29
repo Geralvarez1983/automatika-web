@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Automatika | Automatización de Procesos Corporativos</title>
+    <title>Automatika | Automatización de Procesos</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -11,190 +11,330 @@
             theme: {
                 extend: {
                     colors: {
-                        darkbg: '#0a0f1d',
-                        cardbg: '#111827',
-                        accent: '#3b82f6',
-                        accenthover: '#2563eb'
+                        darkbg: '#070b14',
+                        cardbg: '#0f172a',
+                        accent: '#2563eb',
+                        accenthover: '#1d4ed8'
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 3s ease-in-out infinite alternate',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-8px)' },
+                        },
+                        glow: {
+                            '0%': { opacity: '0.4' },
+                            '100%': { opacity: '0.9' },
+                        }
                     }
                 }
             }
         }
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glass-card {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(10, 15, 26, 0.95) 100%);
+            backdrop-filter: blur(12px);
+        }
+    </style>
 </head>
-<body class="bg-darkbg text-gray-100 font-sans antialiased selection:bg-accent selection:text-white">
+<body class="bg-darkbg text-gray-100 antialiased selection:bg-accent selection:text-white overflow-x-hidden">
 
     <!-- Header / Navbar -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-darkbg/80 backdrop-blur-md border-b border-gray-800">
+    <header class="fixed top-0 left-0 right-0 z-50 bg-darkbg/85 backdrop-blur-md border-b border-gray-800/60 transition-all">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <!-- LOGO MEJORADO: Isotipo de nodos/automatización -->
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-cyan-400 flex items-center justify-center text-white shadow-lg shadow-blue-500/20">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                    </svg>
+            <div class="flex items-center space-x-3 group cursor-pointer">
+                <div class="relative">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-400 rounded-xl blur opacity-60 group-hover:opacity-100 transition duration-500 animate-glow"></div>
+                    <div class="relative w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 via-blue-700 to-slate-900 border border-blue-400/40 flex items-center justify-center text-white shadow-xl">
+                        <svg class="w-5 h-5 text-cyan-400 group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3l9 5.25v10.5L12 21l-9-5.25V8.25L12 3z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 12l9-5.25M12 12L3 6.75M12 12v9"></path>
+                        </svg>
+                    </div>
                 </div>
-                <span class="text-xl font-bold tracking-tight text-white">Automatika</span>
+                <div class="flex flex-col">
+                    <span class="text-xl font-extrabold tracking-tight text-white leading-none">Automatika</span>
+                    <span class="text-[9px] uppercase tracking-wider text-cyan-400 font-semibold mt-1">Automatización de Procesos</span>
+                </div>
             </div>
             <nav class="hidden md:flex space-x-8 text-sm font-medium text-gray-300">
-                <a href="#soluciones" class="hover:text-accent transition-colors">Soluciones</a>
-                <a href="#beneficios" class="hover:text-accent transition-colors">Beneficios</a>
-                <a href="#proceso" class="hover:text-accent transition-colors">Cómo Trabajamos</a>
+                <a href="#soluciones" class="hover:text-cyan-400 transition-colors">Soluciones</a>
+                <a href="#ejemplos" class="hover:text-cyan-400 transition-colors">Casos de Uso</a>
+                <a href="#beneficios" class="hover:text-cyan-400 transition-colors">Beneficios</a>
+                <a href="#proceso" class="hover:text-cyan-400 transition-colors">Cómo Trabajamos</a>
             </nav>
             <div>
-                <a href="#contacto" class="bg-accent hover:bg-accenthover text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-all shadow-lg shadow-blue-500/20">
-                    Agendar Asesoría
+                <a href="#contacto" class="relative group overflow-hidden rounded-xl p-px inline-block">
+                    <span class="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-400 transition-all duration-300 group-hover:scale-105"></span>
+                    <span class="relative block px-5 py-2.5 rounded-[11px] bg-darkbg text-white text-sm font-semibold transition-all group-hover:bg-opacity-0">
+                        Agendar Asesoría
+                    </span>
                 </a>
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="pt-32 pb-20 md:pt-44 md:pb-32 relative overflow-hidden">
-        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/10 blur-[120px] rounded-full pointer-events-none"></div>
+    <section class="pt-38 pb-24 md:pt-48 md:pb-32 relative overflow-hidden">
+        <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[450px] bg-blue-600/15 blur-[150px] rounded-full pointer-events-none animate-pulse-slow"></div>
+        
         <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
-            <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-blue-950/60 border border-blue-800/50 text-blue-400 text-xs font-semibold mb-6">
-                <i class="fa-solid fa-bolt"></i>
-                <span>Eficiencia Operativa con Inteligencia Artificial</span>
+            <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-blue-950/80 border border-blue-700/40 text-cyan-300 text-xs font-semibold mb-6 shadow-sm animate-float">
+                <i class="fa-solid fa-bolt text-cyan-400"></i>
+                <span>Automatización Inteligente de Flujos de Trabajo</span>
             </div>
-            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-white max-w-4xl mx-auto leading-tight">
-                Automatizá tus procesos repetitivos y <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">multiplica el tiempo de tu equipo.</span>
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-white max-w-4xl mx-auto leading-[1.15]">
+                Automatizá tus procesos administrativos y <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-teal-300">eliminá los cuellos de botella.</span>
             </h1>
-            <p class="mt-6 text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
-                Integramos tus herramientas actuales (WhatsApp, CRM, Google Sheets, Facturación) en flujos inteligentes para que tu empresa funcione en piloto automático 24/7.
+            <p class="mt-6 text-lg md:text-xl text-gray-400 max-w-2xl mx-auto font-normal leading-relaxed">
+                Integramos tus sistemas críticos (ERP, CRM, WhatsApp, Facturación) en flujos autónomos y seguros para escalar tu negocio sin aumentar costos operativos.
             </p>
             <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#contacto" class="w-full sm:w-auto bg-accent hover:bg-accenthover text-white font-semibold px-8 py-4 rounded-xl transition-all shadow-xl shadow-blue-500/25 flex items-center justify-center space-x-2">
-                    <span>Diseñar mi Automatización</span>
-                    <i class="fa-solid fa-arrow-right text-sm"></i>
+                <a href="#ejemplos" class="w-full sm:w-auto bg-accent hover:bg-accenthover text-white font-semibold px-8 py-4 rounded-xl transition-all shadow-xl shadow-blue-600/30 flex items-center justify-center space-x-2 border border-blue-400/20 hover:scale-[1.02] duration-200">
+                    <span>Ver Casos de Uso Frecuentes</span>
+                    <i class="fa-solid fa-arrow-down text-sm"></i>
                 </a>
-                <a href="#soluciones" class="w-full sm:w-auto bg-gray-900 hover:bg-gray-800 border border-gray-800 text-gray-300 font-semibold px-8 py-4 rounded-xl transition-all flex items-center justify-center">
-                    Ver Ejemplos Reales
+                <a href="#contacto" class="w-full sm:w-auto glass-card hover:bg-gray-800/80 border border-gray-800 text-gray-300 font-semibold px-8 py-4 rounded-xl transition-all flex items-center justify-center hover:border-gray-700">
+                    Consultar mi Caso
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Soluciones / Casos de Uso -->
-    <section id="soluciones" class="py-24 bg-gray-950/50 border-t border-gray-900">
+    <!-- 1. BLOQUE GENERAL: QUÉ HACEMOS (ARQUITECTURA DE PROCESOS) -->
+    <section id="soluciones" class="py-24 bg-cardbg/20 border-t border-gray-800/60 relative">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl font-bold text-white tracking-tight">Soluciones de Automatización a Medida</h2>
-                <p class="mt-4 text-gray-400">Casos de uso reales que implementamos para conectar tus sistemas y eliminar la carga operativa manual.</p>
+                <span class="text-cyan-400 text-xs font-bold uppercase tracking-widest">Capacidades Técnicas</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight mt-2">Conectamos el software que ya usás</h2>
+                <p class="mt-4 text-gray-400">Diseñamos puentes digitales inteligentes para que tus aplicaciones hablen entre sí sin intervención humana.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-cardbg border border-gray-800/80 p-8 rounded-2xl hover:border-blue-500/50 transition-all group">
-                    <div class="w-12 h-12 bg-blue-600/10 text-blue-400 rounded-xl flex items-center justify-center text-xl font-bold mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all">
-                        <i class="fa-brands fa-whatsapp"></i>
+                <div class="glass-card border border-gray-800/80 p-8 rounded-2xl hover:border-cyan-500/50 transition-all duration-300 group shadow-lg">
+                    <div class="w-12 h-12 bg-blue-600/10 text-cyan-400 rounded-xl flex items-center justify-center text-xl font-bold mb-6 group-hover:bg-accent group-hover:text-white transition-all duration-300 border border-blue-500/20">
+                        <i class="fa-solid fa-network-wired"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Atención y Leads por WhatsApp + IA</h3>
+                    <h3 class="text-xl font-bold text-white mb-3">Integración de Sistemas</h3>
                     <p class="text-gray-400 text-sm leading-relaxed">
-                        Un bot inteligente responde consultas frecuentes 24/7, califica prospectos, agenda reuniones automáticamente en tu calendario y carga los datos en tu CRM sin intervención humana.
+                        Unificamos plataformas dispares (CRMs, ERPs, planillas y bases de datos en la nube) para centralizar la información de tu PyME en tiempo real.
                     </p>
                 </div>
 
-                <div class="bg-cardbg border border-gray-800/80 p-8 rounded-2xl hover:border-blue-500/50 transition-all group">
-                    <div class="w-12 h-12 bg-blue-600/10 text-blue-400 rounded-xl flex items-center justify-center text-xl font-bold mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all">
-                        <i class="fa-solid fa-file-invoice-dollar"></i>
+                <div class="glass-card border border-gray-800/80 p-8 rounded-2xl hover:border-cyan-500/50 transition-all duration-300 group shadow-lg">
+                    <div class="w-12 h-12 bg-blue-600/10 text-cyan-400 rounded-xl flex items-center justify-center text-xl font-bold mb-6 group-hover:bg-accent group-hover:text-white transition-all duration-300 border border-blue-500/20">
+                        <i class="fa-solid fa-brain"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Facturación y Cobranzas Automatizadas</h3>
+                    <h3 class="text-xl font-bold text-white mb-3">Inteligencia Artificial Aplicada</h3>
                     <p class="text-gray-400 text-sm leading-relaxed">
-                        Al marcar una venta como ganada, el sistema emite la factura electrónica correspondiente, la envía por correo con link de pago y actualiza el reporte financiero en tiempo real.
+                        Incorporamos modelos de lenguaje y procesamiento inteligente (OCR) para leer documentos, redactar respuestas y tomar decisiones rutinarias.
                     </p>
                 </div>
 
-                <div class="bg-cardbg border border-gray-800/80 p-8 rounded-2xl hover:border-blue-500/50 transition-all group">
-                    <div class="w-12 h-12 bg-blue-600/10 text-blue-400 rounded-xl flex items-center justify-center text-xl font-bold mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all">
-                        <i class="fa-solid fa-users-gear"></i>
+                <div class="glass-card border border-gray-800/80 p-8 rounded-2xl hover:border-cyan-500/50 transition-all duration-300 group shadow-lg">
+                    <div class="w-12 h-12 bg-blue-600/10 text-cyan-400 rounded-xl flex items-center justify-center text-xl font-bold mb-6 group-hover:bg-accent group-hover:text-white transition-all duration-300 border border-blue-500/20">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Onboarding de Clientes o Empleados</h3>
+                    <h3 class="text-xl font-bold text-white mb-3">Ejecución 24/7 Desatendida</h3>
                     <p class="text-gray-400 text-sm leading-relaxed">
-                        Tras completar un formulario de alta, se generan carpetas en Drive, se envían credenciales de acceso por email y se notifica al equipo interno de forma inmediata.
+                        Flujos estables que operan de forma autónoma día y noche, procesando tareas repetitivas mientras tu equipo se enfoca en escalar el negocio.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Beneficios Cuantificables (Robustez) -->
+    <!-- 2. BLOQUE DETALLADO: CASOS DE USO FRECUENTES -->
+    <section id="ejemplos" class="py-24 bg-cardbg/40 border-t border-gray-800/60 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-cyan-400 text-xs font-bold uppercase tracking-widest">Ejemplos Prácticos</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight mt-2">Casos de Uso Frecuentes</h2>
+                <p class="mt-4 text-gray-400">Escenarios administrativos reales y cotidianos que resolvemos mediante flujos automatizados.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- Caso 1 -->
+                <div class="glass-card border border-gray-800 p-8 rounded-3xl hover:border-cyan-500/40 transition-all shadow-xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-12 h-12 bg-blue-600/10 text-cyan-400 rounded-xl flex items-center justify-center text-xl font-bold border border-blue-500/20">
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </div>
+                            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-blue-950 text-blue-400 border border-blue-800/50">Área Comercial</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3">Atención y Calificación de Leads Fuera de Horario</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                            <strong class="text-gray-200">El problema habitual:</strong> Consultas comerciales por WhatsApp a la madrugada o fines de semana, generando demoras y pérdida de oportunidades.
+                        </p>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            <strong class="text-gray-200">La solución de Automatika:</strong> Asistente virtual con IA integrado a WhatsApp que responde al instante, califica al cliente, agenda una reunión y actualiza el CRM automáticamente.
+                        </p>
+                    </div>
+                    <div class="bg-darkbg/80 border border-gray-800/80 p-4 rounded-xl text-xs space-y-1 text-cyan-300 font-medium">
+                        <i class="fa-solid fa-circle-check mr-1"></i> Impacto: Respuestas inmediatas 24/7 y cero leads desatendidos.
+                    </div>
+                </div>
+
+                <!-- Caso 2 -->
+                <div class="glass-card border border-gray-800 p-8 rounded-3xl hover:border-cyan-500/40 transition-all shadow-xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-12 h-12 bg-blue-600/10 text-cyan-400 rounded-xl flex items-center justify-center text-xl font-bold border border-blue-500/20">
+                                <i class="fa-solid fa-file-invoice-dollar"></i>
+                            </div>
+                            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-blue-950 text-blue-400 border border-blue-800/50">Administración y Finanzas</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3">Sincronización de Cobranzas y Facturación Fiscal</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                            <strong class="text-gray-200">El problema habitual:</strong> Carga manual y repetitiva de cobros web hacia el sistema de facturación y planillas de control financiero.
+                        </p>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            <strong class="text-gray-200">La solución de Automatika:</strong> Al registrarse un pago, se emite el comprobante fiscal, se envía por correo y se actualizan los reportes en Google Sheets sin intervención manual.
+                        </p>
+                    </div>
+                    <div class="bg-darkbg/80 border border-gray-800/80 p-4 rounded-xl text-xs space-y-1 text-cyan-300 font-medium">
+                        <i class="fa-solid fa-circle-check mr-1"></i> Impacto: Ahorro de horas administrativas y eliminación de errores de tipeo.
+                    </div>
+                </div>
+
+                <!-- Caso 3 -->
+                <div class="glass-card border border-gray-800 p-8 rounded-3xl hover:border-cyan-500/40 transition-all shadow-xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-12 h-12 bg-blue-600/10 text-cyan-400 rounded-xl flex items-center justify-center text-xl font-bold border border-blue-500/20">
+                                <i class="fa-solid fa-plane-departure"></i>
+                            </div>
+                            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-blue-950 text-blue-400 border border-blue-800/50">Recursos Humanos & Operaciones</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3">Gestión Automatizada de Licencias y Turnos</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                            <strong class="text-gray-200">El problema habitual:</strong> Planificación de vacaciones y turnos de personal operativo mediante planillas cruzadas propensas a solapamientos.
+                        </p>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            <strong class="text-gray-200">La solución de Automatika:</strong> Portal interno que valida solicitudes frente a reglas operativas y calendarios de disponibilidad, aprobando y sincronizando turnos automáticamente.
+                        </p>
+                    </div>
+                    <div class="bg-darkbg/80 border border-gray-800/80 p-4 rounded-xl text-xs space-y-1 text-cyan-300 font-medium">
+                        <i class="fa-solid fa-circle-check mr-1"></i> Impacto: Orden operativo transparente y reducción de carga en RRHH.
+                    </div>
+                </div>
+
+                <!-- Caso 4 -->
+                <div class="glass-card border border-gray-800 p-8 rounded-3xl hover:border-cyan-500/40 transition-all shadow-xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-12 h-12 bg-blue-600/10 text-cyan-400 rounded-xl flex items-center justify-center text-xl font-bold border border-blue-500/20">
+                                <i class="fa-solid fa-receipt"></i>
+                            </div>
+                            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-blue-950 text-blue-400 border border-blue-800/50">Administración & Contabilidad</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3">Procesamiento Inteligente de Facturas de Proveedores</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                            <strong class="text-gray-200">El problema habitual:</strong> Recepción masiva de facturas en PDF por correo que el equipo contable debe cargar manualmente una a una.
+                        </p>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            <strong class="text-gray-200">La solución de Automatika:</strong> Sistema de lectura inteligente (OCR con IA) que extrae los datos fiscales del PDF recibido y los ingresa de forma directa al sistema contable.
+                        </p>
+                    </div>
+                    <div class="bg-darkbg/80 border border-gray-800/80 p-4 rounded-xl text-xs space-y-1 text-cyan-300 font-medium">
+                        <i class="fa-solid fa-circle-check mr-1"></i> Impacto: Carga contable automatizada en segundos con alta precisión.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Beneficios Cuantificables -->
     <section id="beneficios" class="py-24">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-                <div class="bg-cardbg/50 border border-gray-800 p-6 rounded-2xl">
-                    <div class="text-3xl font-extrabold text-blue-400 mb-2">+40 hrs</div>
-                    <p class="text-gray-400 text-sm">Ahorradas al mes por colaborador en tareas repetitivas.</p>
+                <div class="glass-card border border-gray-800/80 p-6 rounded-2xl shadow-sm hover:border-blue-500/30 transition-all">
+                    <div class="text-3xl font-extrabold text-cyan-400 mb-2">+40 hrs</div>
+                    <p class="text-gray-400 text-sm">Ahorradas al mes por colaborador en gestión manual.</p>
                 </div>
-                <div class="bg-cardbg/50 border border-gray-800 p-6 rounded-2xl">
-                    <div class="text-3xl font-extrabold text-blue-400 mb-2">0%</div>
-                    <p class="text-gray-400 text-sm">De margen de error humano en carga de datos.</p>
+                <div class="glass-card border border-gray-800/80 p-6 rounded-2xl shadow-sm hover:border-blue-500/30 transition-all">
+                    <div class="text-3xl font-extrabold text-cyan-400 mb-2">0%</div>
+                    <p class="text-gray-400 text-sm">Margen de error en la transcripción de datos.</p>
                 </div>
-                <div class="bg-cardbg/50 border border-gray-800 p-6 rounded-2xl">
-                    <div class="text-3xl font-extrabold text-blue-400 mb-2">24/7</div>
-                    <p class="text-gray-400 text-sm">Operatividad y respuesta inmediata a clientes.</p>
+                <div class="glass-card border border-gray-800/80 p-6 rounded-2xl shadow-sm hover:border-blue-500/30 transition-all">
+                    <div class="text-3xl font-extrabold text-cyan-400 mb-2">24/7</div>
+                    <p class="text-gray-400 text-sm">Disponibilidad operativa y respuesta instantánea.</p>
                 </div>
-                <div class="bg-cardbg/50 border border-gray-800 p-6 rounded-2xl">
-                    <div class="text-3xl font-extrabold text-blue-400 mb-2">&lt; 15 días</div>
-                    <p class="text-gray-400 text-sm">De implementación para ver el primer flujo funcionando.</p>
+                <div class="glass-card border border-gray-800/80 p-6 rounded-2xl shadow-sm hover:border-blue-500/30 transition-all">
+                    <div class="text-3xl font-extrabold text-cyan-400 mb-2">&lt; 15 días</div>
+                    <p class="text-gray-400 text-sm">De despliegue para validar el primer flujo productivo.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Proceso en 3 pasos -->
-    <section id="proceso" class="py-24 bg-gray-950/50 border-t border-gray-900">
+    <section id="proceso" class="py-24 bg-cardbg/30 border-t border-gray-800/60">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl font-bold text-white tracking-tight">Cómo transformamos tu operativa</h2>
-                <p class="mt-4 text-gray-400">Un enfoque ágil y metódico para garantizar resultados desde la primera semana.</p>
+                <h2 class="text-3xl font-bold text-white tracking-tight">Metodología de Implementación</h2>
+                <p class="mt-4 text-gray-400">Un enfoque estructurado y seguro para minimizar riesgos operativos.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-gray-900/40 border border-gray-800 p-8 rounded-2xl">
-                    <span class="text-blue-500 font-extrabold text-4xl block mb-4">01</span>
-                    <h3 class="text-lg font-bold text-white mb-2">Auditoría de Procesos</h3>
-                    <p class="text-gray-400 text-sm">Analizamos tus flujos de trabajo actuales para detectar cuellos de botella y tareas manuales con mayor margen de error.</p>
+                <div class="glass-card border border-gray-800 p-8 rounded-2xl hover:border-gray-700 transition-all">
+                    <span class="text-cyan-400 font-extrabold text-4xl block mb-4">01</span>
+                    <h3 class="text-lg font-bold text-white mb-2">Auditoría y Mapeo</h3>
+                    <p class="text-gray-400 text-sm">Analizamos los circuitos actuales para identificar demoras, redundancias y puntos críticos de mejora.</p>
                 </div>
-                <div class="bg-gray-900/40 border border-gray-800 p-8 rounded-2xl">
-                    <span class="text-blue-500 font-extrabold text-4xl block mb-4">02</span>
-                    <h3 class="text-lg font-bold text-white mb-2">Diseño e Implementación</h3>
-                    <p class="text-gray-400 text-sm">Construimos las conexiones técnicas entre tus herramientas utilizando plataformas robustas de automatización e IA.</p>
+                <div class="glass-card border border-gray-800 p-8 rounded-2xl hover:border-gray-700 transition-all">
+                    <span class="text-cyan-400 font-extrabold text-4xl block mb-4">02</span>
+                    <h3 class="text-lg font-bold text-white mb-2">Desarrollo e Integración</h3>
+                    <p class="text-gray-400 text-sm">Construimos los puentes lógicos y APIs utilizando herramientas robustas de automatización cloud.</p>
                 </div>
-                <div class="bg-gray-900/40 border border-gray-800 p-8 rounded-2xl">
-                    <span class="text-blue-500 font-extrabold text-4xl block mb-4">03</span>
-                    <h3 class="text-lg font-bold text-white mb-2">Puesta en Marcha y Escala</h3>
-                    <p class="text-gray-400 text-sm">Monitoreamos el funcionamiento en vivo, capacitamos a tu equipo y optimizamos continuamente el rendimiento.</p>
+                <div class="glass-card border border-gray-800 p-8 rounded-2xl hover:border-gray-700 transition-all">
+                    <span class="text-cyan-400 font-extrabold text-4xl block mb-4">03</span>
+                    <h3 class="text-lg font-bold text-white mb-2">Validación y Soporte</h3>
+                    <p class="text-gray-400 text-sm">Monitoreamos el comportamiento en entorno real, documentamos los flujos y capacitamos al equipo.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Sección de Contacto -->
-    <section id="contacto" class="py-24 border-t border-gray-900">
+    <section id="contacto" class="py-24 border-t border-gray-800/60">
         <div class="max-w-3xl mx-auto px-6">
-            <div class="bg-cardbg border border-gray-800 p-8 md:p-12 rounded-3xl shadow-2xl">
-                <div class="text-center mb-10">
-                    <h2 class="text-3xl font-bold text-white">Hablemos de tu proyecto</h2>
-                    <p class="mt-2 text-gray-400 text-sm">Completá el formulario y agendemos una sesión de diagnóstico gratuita.</p>
+            <div class="glass-card border border-gray-800 p-8 md:p-12 rounded-3xl shadow-2xl relative overflow-hidden">
+                <div class="absolute -right-20 -bottom-20 w-60 h-60 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
+                
+                <div class="text-center mb-10 relative z-10">
+                    <h2 class="text-3xl font-bold text-white">Iniciá la transformación digital de tu PyME</h2>
+                    <p class="mt-2 text-gray-400 text-sm">Completá el formulario para coordinar una sesión técnica de diagnóstico sin cargo.</p>
                 </div>
 
-                <form action="#" method="POST" class="space-y-6" onsubmit="event.preventDefault(); alert('¡Gracias por tu mensaje! En breve nos pondremos en contacto con vos.');">
+                <form action="#" method="POST" class="space-y-6 relative z-10" onsubmit="event.preventDefault(); alert('¡Gracias por tu mensaje! En breve nos pondremos en contacto con vos.');">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Nombre</label>
-                            <input type="text" required class="w-full bg-darkbg border border-gray-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accent text-sm" placeholder="Tu nombre">
+                            <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Nombre y Apellido</label>
+                            <input type="text" required class="w-full bg-darkbg border border-gray-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-400 text-sm transition-colors" placeholder="Tu nombre">
                         </div>
                         <div>
                             <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Email Corporativo</label>
-                            <input type="email" required class="w-full bg-darkbg border border-gray-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accent text-sm" placeholder="tu@empresa.com">
+                            <input type="email" required class="w-full bg-darkbg border border-gray-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-400 text-sm transition-colors" placeholder="tu@empresa.com">
                         </div>
                     </div>
                     <div>
                         <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">¿Qué proceso te gustaría automatizar?</label>
-                        <textarea rows="4" required class="w-full bg-darkbg border border-gray-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accent text-sm" placeholder="Contanos brevemente sobre tu negocio y qué tareas te quitan más tiempo..."></textarea>
+                        <textarea rows="4" required class="w-full bg-darkbg border border-gray-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-400 text-sm transition-colors" placeholder="Describí brevemente los sistemas que usás y qué tareas manuales consumen más tiempo..."></textarea>
                     </div>
-                    <button type="submit" class="w-full bg-accent hover:bg-accenthover text-white font-semibold py-4 rounded-xl transition-all shadow-lg shadow-blue-500/20">
-                        Enviar Solicitud de Asesoría
+                    <button type="submit" class="w-full bg-accent hover:bg-accenthover text-white font-semibold py-4 rounded-xl transition-all shadow-lg shadow-blue-600/30 border border-blue-400/20 hover:scale-[1.01] active:scale-[0.99]">
+                        Solicitar Sesión de Diagnóstico
                     </button>
                 </form>
             </div>
@@ -202,14 +342,14 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 border-t border-gray-900 text-center text-sm text-gray-500">
+    <footer class="py-12 border-t border-gray-800/60 text-center text-sm text-gray-500 bg-darkbg">
         <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
             <div class="flex items-center space-x-2">
                 <span class="font-bold text-white">Automatika</span>
                 <span>© 2026. Todos los derechos reservados.</span>
             </div>
             <div class="text-gray-400">
-                Automatización de Procesos Corporativos
+                Automatización de Procesos Administrativos
             </div>
         </div>
     </footer>
