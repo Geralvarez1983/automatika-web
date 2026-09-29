@@ -22,6 +22,7 @@
                         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                         'float': 'float 6s ease-in-out infinite',
                         'glow': 'glow 3s ease-in-out infinite alternate',
+                        'gradient-x': 'gradientX 8s ease infinite',
                     },
                     keyframes: {
                         float: {
@@ -31,6 +32,10 @@
                         glow: {
                             '0%': { opacity: '0.4' },
                             '100%': { opacity: '0.9' },
+                        },
+                        gradientX: {
+                            '0%, 100%': { 'background-size': '200% 200%', 'background-position': 'left center' },
+                            '50%': { 'background-size': '200% 200%', 'background-position': 'right center' },
                         }
                     }
                 }
@@ -93,9 +98,11 @@
                 <i class="fa-solid fa-bolt text-cyan-400"></i>
                 <span>Automatización Inteligente de Flujos de Trabajo</span>
             </div>
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white max-w-5xl mx-auto leading-[1.2]">
-                <span class="block">Automatizá tus procesos administrativos</span>
-                <span class="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-teal-300 mt-2">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight max-w-5xl mx-auto leading-[1.18]">
+                <span class="block text-white/95 drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]">
+                    Automatizá tus procesos administrativos
+                </span>
+                <span class="block mt-2 font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 via-teal-300 to-blue-400 bg-[length:200%_auto] animate-gradient-x drop-shadow-[0_0_30px_rgba(34,211,238,0.25)]">
                     y eliminá los cuellos de botella.
                 </span>
             </h1>
