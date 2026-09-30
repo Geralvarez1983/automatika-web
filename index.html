@@ -134,12 +134,12 @@
             <nav class="hidden lg:flex space-x-7 text-sm font-medium text-gray-300">
                 <a href="#soluciones" class="hover:text-cyan-400 transition-colors">Soluciones</a>
                 <a href="#proceso" class="hover:text-cyan-400 transition-colors">Cómo Trabajamos</a>
+                <a href="#sectores" class="hover:text-cyan-400 transition-colors">Para tu Negocio</a>
                 <a href="#ejemplos" class="hover:text-cyan-400 transition-colors">Casos de Uso</a>
                 <a href="#calculadora" class="hover:text-cyan-400 transition-colors flex items-center gap-1.5 text-cyan-300">
                     <i class="fa-solid fa-calculator text-xs"></i>
                     <span>Calculá tu Ahorro</span>
                 </a>
-                <a href="#sectores" class="hover:text-cyan-400 transition-colors">Para tu Negocio</a>
                 <a href="#faq" class="hover:text-cyan-400 transition-colors">Preguntas</a>
             </nav>
             <div class="hidden sm:flex items-center space-x-4">
@@ -165,6 +165,10 @@
                 <i class="fa-solid fa-list-check text-cyan-400 w-5"></i>
                 <span>Cómo Trabajamos</span>
             </a>
+            <a href="#sectores" class="mobile-link flex items-center space-x-3 text-gray-300 hover:text-cyan-400 text-sm font-medium py-2 border-b border-gray-900/80">
+                <i class="fa-solid fa-building text-cyan-400 w-5"></i>
+                <span>Para tu Tipo de Negocio</span>
+            </a>
             <a href="#ejemplos" class="mobile-link flex items-center space-x-3 text-gray-300 hover:text-cyan-400 text-sm font-medium py-2 border-b border-gray-900/80">
                 <i class="fa-solid fa-bolt text-cyan-400 w-5"></i>
                 <span>Casos de Uso (12 Procesos)</span>
@@ -172,10 +176,6 @@
             <a href="#calculadora" class="mobile-link flex items-center space-x-3 text-cyan-300 hover:text-cyan-200 text-sm font-semibold py-2 border-b border-gray-900/80">
                 <i class="fa-solid fa-calculator text-cyan-400 w-5"></i>
                 <span>Calculá tu Ahorro Estimado</span>
-            </a>
-            <a href="#sectores" class="mobile-link flex items-center space-x-3 text-gray-300 hover:text-cyan-400 text-sm font-medium py-2 border-b border-gray-900/80">
-                <i class="fa-solid fa-building text-cyan-400 w-5"></i>
-                <span>Para tu Tipo de Negocio</span>
             </a>
             <a href="#faq" class="mobile-link flex items-center space-x-3 text-gray-300 hover:text-cyan-400 text-sm font-medium py-2">
                 <i class="fa-solid fa-circle-question text-cyan-400 w-5"></i>
@@ -436,7 +436,92 @@
         </div>
     </section>
 
-    <!-- 3. DIAGRAMA VISUAL EN VIVO -->
+    <!-- 3. SECTORES Y RUBROS: PARA TU NEGOCIO (Swipeable en Móvil) -->
+    <section id="sectores" class="py-14 sm:py-24 bg-cardbg/20 border-t border-gray-800/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-16">
+                <span class="text-cyan-400 text-[10px] sm:text-xs font-bold uppercase tracking-widest">Adaptado a tu Industria</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight mt-1.5">¿Para qué tipo de negocios sirve?</h2>
+                <p class="mt-2 text-gray-400 text-xs sm:text-sm">Deslizá para ver cómo impacta según tu rubro particular:</p>
+            </div>
+
+            <!-- Contenedor Swipeable en Móvil / Grilla en Desktop -->
+            <div class="flex overflow-x-auto snap-x snap-mandatory no-scrollbar sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 pb-2 sm:pb-0">
+                <!-- Sector 1 -->
+                <div class="snap-center shrink-0 w-[82vw] sm:w-auto glass-card card-interactive border border-gray-800 p-5 sm:p-6 rounded-2xl">
+                    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-blue-600/10 text-cyan-400 flex items-center justify-center text-base sm:text-lg mb-3 border border-blue-500/20">
+                        <i class="fa-solid fa-shop"></i>
+                    </div>
+                    <h3 class="text-base sm:text-lg font-bold text-white mb-1.5">Comercios y E-commerce</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">
+                        Sincronización de stock entre mostrador, Tienda Nube y Mercado Libre, facturación automática por cada cobro y atención 24/7 en WhatsApp.
+                    </p>
+                </div>
+
+                <!-- Sector 2 -->
+                <div class="snap-center shrink-0 w-[82vw] sm:w-auto glass-card card-interactive border border-gray-800 p-5 sm:p-6 rounded-2xl">
+                    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-blue-600/10 text-cyan-400 flex items-center justify-center text-base sm:text-lg mb-3 border border-blue-500/20">
+                        <i class="fa-solid fa-briefcase"></i>
+                    </div>
+                    <h3 class="text-base sm:text-lg font-bold text-white mb-1.5">Estudios Profesionales</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">
+                        Contadores, abogados y consultores: lectura OCR de comprobantes fiscales, recordatorios de vencimiento a clientes y turnos sincronizados.
+                    </p>
+                </div>
+
+                <!-- Sector 3 -->
+                <div class="snap-center shrink-0 w-[82vw] sm:w-auto glass-card card-interactive border border-gray-800 p-5 sm:p-6 rounded-2xl">
+                    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-blue-600/10 text-cyan-400 flex items-center justify-center text-base sm:text-lg mb-3 border border-blue-500/20">
+                        <i class="fa-solid fa-boxes-packing"></i>
+                    </div>
+                    <h3 class="text-base sm:text-lg font-bold text-white mb-1.5">Distribuidoras y Mayoristas</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">
+                        Toma de pedidos por WhatsApp con listas de precios personalizadas, aviso automático de despachos y gestión de cobranzas.
+                    </p>
+                </div>
+
+                <!-- Sector 4 -->
+                <div class="snap-center shrink-0 w-[82vw] sm:w-auto glass-card card-interactive border border-gray-800 p-5 sm:p-6 rounded-2xl">
+                    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-blue-600/10 text-cyan-400 flex items-center justify-center text-base sm:text-lg mb-3 border border-blue-500/20">
+                        <i class="fa-solid fa-stethoscope"></i>
+                    </div>
+                    <h3 class="text-base sm:text-lg font-bold text-white mb-1.5">Salud, Clínicas y Belleza</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">
+                        Consultorios médicos, odontología y estética: agendamiento inteligente de turnos, confirmación automática por WhatsApp y baja de ausentismo.
+                    </p>
+                </div>
+
+                <!-- Sector 5 -->
+                <div class="snap-center shrink-0 w-[82vw] sm:w-auto glass-card card-interactive border border-gray-800 p-5 sm:p-6 rounded-2xl">
+                    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-blue-600/10 text-cyan-400 flex items-center justify-center text-base sm:text-lg mb-3 border border-blue-500/20">
+                        <i class="fa-solid fa-wrench"></i>
+                    </div>
+                    <h3 class="text-base sm:text-lg font-bold text-white mb-1.5">Servicios y Mantenimiento</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">
+                        Asignación de partes diarios a técnicos, envío automático de cotizaciones por PDF y firma digital de conformidad de trabajo en el celular.
+                    </p>
+                </div>
+
+                <!-- Sector 6 -->
+                <div class="snap-center shrink-0 w-[82vw] sm:w-auto glass-card card-interactive border border-gray-800 p-5 sm:p-6 rounded-2xl">
+                    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-blue-600/10 text-cyan-400 flex items-center justify-center text-base sm:text-lg mb-3 border border-blue-500/20">
+                        <i class="fa-solid fa-industry"></i>
+                    </div>
+                    <h3 class="text-base sm:text-lg font-bold text-white mb-1.5">Pequeñas Fábricas y Talleres</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">
+                        Seguimiento del estado de órdenes de producción, alertas de compra de insumos críticos y reportes ejecutivos semanales automáticos.
+                    </p>
+                </div>
+            </div>
+            <!-- Indicador visual de swipe en móvil -->
+            <div class="sm:hidden text-center text-[10px] text-gray-500 mt-2 flex items-center justify-center gap-1">
+                <span>Deslizá para explorar más rubros</span>
+                <i class="fa-solid fa-arrow-right text-[9px] text-cyan-400"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. DIAGRAMA VISUAL EN VIVO -->
     <section class="py-12 sm:py-16 bg-slate-950/60 border-t border-gray-800/60">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
             <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
@@ -998,90 +1083,7 @@
         </div>
     </section>
 
-    <!-- 6. SECTORES Y RUBROS (Swipeable en Móvil) -->
-    <section id="sectores" class="py-14 sm:py-24 bg-cardbg/20 border-t border-gray-800/60">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6">
-            <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-16">
-                <span class="text-cyan-400 text-[10px] sm:text-xs font-bold uppercase tracking-widest">Adaptado a tu Industria</span>
-                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight mt-1.5">¿Para qué tipo de negocios sirve?</h2>
-                <p class="mt-2 text-gray-400 text-xs sm:text-sm">Deslizá para ver cómo impacta según tu rubro particular:</p>
-            </div>
 
-            <!-- Contenedor Swipeable en Móvil / Grilla en Desktop -->
-            <div class="flex overflow-x-auto snap-x snap-mandatory no-scrollbar sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 pb-2 sm:pb-0">
-                <!-- Sector 1 -->
-                <div class="snap-center shrink-0 w-[82vw] sm:w-auto glass-card card-interactive border border-gray-800 p-5 sm:p-6 rounded-2xl">
-                    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-blue-600/10 text-cyan-400 flex items-center justify-center text-base sm:text-lg mb-3 border border-blue-500/20">
-                        <i class="fa-solid fa-shop"></i>
-                    </div>
-                    <h3 class="text-base sm:text-lg font-bold text-white mb-1.5">Comercios y E-commerce</h3>
-                    <p class="text-gray-400 text-xs leading-relaxed">
-                        Sincronización de stock entre mostrador, Tienda Nube y Mercado Libre, facturación automática por cada cobro y atención 24/7 en WhatsApp.
-                    </p>
-                </div>
-
-                <!-- Sector 2 -->
-                <div class="snap-center shrink-0 w-[82vw] sm:w-auto glass-card card-interactive border border-gray-800 p-5 sm:p-6 rounded-2xl">
-                    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-blue-600/10 text-cyan-400 flex items-center justify-center text-base sm:text-lg mb-3 border border-blue-500/20">
-                        <i class="fa-solid fa-briefcase"></i>
-                    </div>
-                    <h3 class="text-base sm:text-lg font-bold text-white mb-1.5">Estudios Profesionales</h3>
-                    <p class="text-gray-400 text-xs leading-relaxed">
-                        Contadores, abogados y consultores: lectura OCR de comprobantes fiscales, recordatorios de vencimiento a clientes y turnos sincronizados.
-                    </p>
-                </div>
-
-                <!-- Sector 3 -->
-                <div class="snap-center shrink-0 w-[82vw] sm:w-auto glass-card card-interactive border border-gray-800 p-5 sm:p-6 rounded-2xl">
-                    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-blue-600/10 text-cyan-400 flex items-center justify-center text-base sm:text-lg mb-3 border border-blue-500/20">
-                        <i class="fa-solid fa-boxes-packing"></i>
-                    </div>
-                    <h3 class="text-base sm:text-lg font-bold text-white mb-1.5">Distribuidoras y Mayoristas</h3>
-                    <p class="text-gray-400 text-xs leading-relaxed">
-                        Toma de pedidos por WhatsApp con listas de precios personalizadas, aviso automático de despachos y gestión de cobranzas.
-                    </p>
-                </div>
-
-                <!-- Sector 4 -->
-                <div class="snap-center shrink-0 w-[82vw] sm:w-auto glass-card card-interactive border border-gray-800 p-5 sm:p-6 rounded-2xl">
-                    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-blue-600/10 text-cyan-400 flex items-center justify-center text-base sm:text-lg mb-3 border border-blue-500/20">
-                        <i class="fa-solid fa-stethoscope"></i>
-                    </div>
-                    <h3 class="text-base sm:text-lg font-bold text-white mb-1.5">Salud, Clínicas y Belleza</h3>
-                    <p class="text-gray-400 text-xs leading-relaxed">
-                        Consultorios médicos, odontología y estética: agendamiento inteligente de turnos, confirmación automática por WhatsApp y baja de ausentismo.
-                    </p>
-                </div>
-
-                <!-- Sector 5 -->
-                <div class="snap-center shrink-0 w-[82vw] sm:w-auto glass-card card-interactive border border-gray-800 p-5 sm:p-6 rounded-2xl">
-                    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-blue-600/10 text-cyan-400 flex items-center justify-center text-base sm:text-lg mb-3 border border-blue-500/20">
-                        <i class="fa-solid fa-wrench"></i>
-                    </div>
-                    <h3 class="text-base sm:text-lg font-bold text-white mb-1.5">Servicios y Mantenimiento</h3>
-                    <p class="text-gray-400 text-xs leading-relaxed">
-                        Asignación de partes diarios a técnicos, envío automático de cotizaciones por PDF y firma digital de conformidad de trabajo en el celular.
-                    </p>
-                </div>
-
-                <!-- Sector 6 -->
-                <div class="snap-center shrink-0 w-[82vw] sm:w-auto glass-card card-interactive border border-gray-800 p-5 sm:p-6 rounded-2xl">
-                    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-blue-600/10 text-cyan-400 flex items-center justify-center text-base sm:text-lg mb-3 border border-blue-500/20">
-                        <i class="fa-solid fa-industry"></i>
-                    </div>
-                    <h3 class="text-base sm:text-lg font-bold text-white mb-1.5">Pequeñas Fábricas y Talleres</h3>
-                    <p class="text-gray-400 text-xs leading-relaxed">
-                        Seguimiento del estado de órdenes de producción, alertas de compra de insumos críticos y reportes ejecutivos semanales automáticos.
-                    </p>
-                </div>
-            </div>
-            <!-- Indicador visual de swipe en móvil -->
-            <div class="sm:hidden text-center text-[10px] text-gray-500 mt-2 flex items-center justify-center gap-1">
-                <span>Deslizá para explorar más rubros</span>
-                <i class="fa-solid fa-arrow-right text-[9px] text-cyan-400"></i>
-            </div>
-        </div>
-    </section>
 
     <!-- 7. BENEFICIOS CUANTIFICABLES -->
     <section id="beneficios" class="py-14 sm:py-20 border-t border-gray-800/60">
@@ -1258,6 +1260,7 @@
             <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs text-gray-400">
                 <a href="#soluciones" class="hover:text-cyan-400 transition-colors">Soluciones</a>
                 <a href="#proceso" class="hover:text-cyan-400 transition-colors">Cómo Trabajamos</a>
+                <a href="#sectores" class="hover:text-cyan-400 transition-colors">Para tu Negocio</a>
                 <a href="#ejemplos" class="hover:text-cyan-400 transition-colors">Casos de Uso</a>
                 <a href="#calculadora" class="hover:text-cyan-400 transition-colors">Calculadora</a>
                 <a href="#contacto" class="hover:text-cyan-400 transition-colors">Contacto</a>
