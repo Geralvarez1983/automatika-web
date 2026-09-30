@@ -126,6 +126,37 @@
             align-items: center;
             justify-content: center;
         }
+        /* Efectos 3D metálicos y luminosos para el logo */
+        .brand-text-3d {
+            background: linear-gradient(180deg, #ffffff 0%, #f8fafc 40%, #bae6fd 75%, #38bdf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.9)) 
+                    drop-shadow(0 4px 12px rgba(2, 132, 199, 0.5));
+            letter-spacing: -0.02em;
+            transform: perspective(500px) translateZ(0);
+            transition: all 0.3s ease;
+        }
+        .brand-box-3d {
+            box-shadow: 
+                0 10px 25px -5px rgba(2, 132, 199, 0.55),
+                inset 0 1.5px 2px rgba(255, 255, 255, 0.5),
+                inset 0 -2px 5px rgba(0, 0, 0, 0.8),
+                0 0 20px rgba(34, 211, 238, 0.4);
+            transform: perspective(600px) rotateY(-8deg) rotateX(6deg);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+        }
+        .group:hover .brand-box-3d {
+            transform: perspective(600px) rotateY(0deg) rotateX(0deg) scale(1.06);
+            box-shadow: 
+                0 15px 35px -5px rgba(2, 132, 199, 0.75),
+                inset 0 2px 3px rgba(255, 255, 255, 0.7),
+                0 0 28px rgba(34, 211, 238, 0.65);
+        }
+        .group:hover .brand-text-3d {
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.9)) 
+                    drop-shadow(0 0 22px rgba(56, 189, 248, 0.8));
+        }
     </style>
 </head>
 <body class="bg-darkbg text-gray-100 antialiased selection:bg-accent selection:text-white overflow-x-hidden pb-16 lg:pb-0">
@@ -133,12 +164,12 @@
     <!-- Header / Navbar -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-darkbg/90 backdrop-blur-md border-b border-gray-800/70 transition-all">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
-            <a href="#" class="flex items-center space-x-2.5 sm:space-x-3 group cursor-pointer">
+            <a href="#" class="flex items-center space-x-3 sm:space-x-3.5 group cursor-pointer select-none">
                 <div class="relative">
-                    <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-400 rounded-xl blur opacity-60 group-hover:opacity-100 transition duration-500 animate-glow"></div>
-                    <div class="relative w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-blue-600 via-blue-700 to-slate-900 border border-blue-400/40 flex items-center justify-center text-white shadow-xl overflow-hidden">
+                    <div class="absolute -inset-1.5 bg-gradient-to-r from-blue-600 via-cyan-400 to-indigo-500 rounded-2xl blur-md opacity-60 group-hover:opacity-100 transition duration-500 animate-glow"></div>
+                    <div class="relative w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-br from-blue-600 via-blue-700 to-slate-950 border border-cyan-400/50 flex items-center justify-center text-white brand-box-3d overflow-hidden">
                         <div class="spin-cube-continuous">
-                            <svg class="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400 drop-shadow-[0_0_6px_rgba(34,211,238,0.7)]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <svg class="w-5 h-5 sm:w-6 sm:h-6 text-cyan-300 drop-shadow-[0_0_8px_rgba(34,211,238,0.9)]" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 3l9 5.25v10.5L12 21l-9-5.25V8.25L12 3z"></path>
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 12l9-5.25M12 12L3 6.75M12 12v9"></path>
                             </svg>
@@ -146,8 +177,13 @@
                     </div>
                 </div>
                 <div class="flex flex-col">
-                    <span class="text-lg sm:text-xl font-extrabold tracking-tight text-white leading-none">Automatika</span>
-                    <span class="text-[8px] sm:text-[9px] uppercase tracking-wider text-cyan-400 font-semibold mt-0.5">Automatización PyMEs</span>
+                    <span class="text-xl sm:text-2xl md:text-3xl font-black tracking-tight leading-none brand-text-3d">
+                        Automatika
+                    </span>
+                    <span class="text-[9px] sm:text-[10px] md:text-[11px] uppercase tracking-[0.22em] font-extrabold text-cyan-400 mt-1 drop-shadow-[0_0_8px_rgba(34,211,238,0.7)] flex items-center">
+                        <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 mr-1.5 shadow-[0_0_6px_#22d3ee] animate-pulse"></span>
+                        AUTOMATIZACIÓN PYMES
+                    </span>
                 </div>
             </a>
             <nav class="hidden lg:flex space-x-7 text-sm font-medium text-gray-300">
@@ -1417,17 +1453,19 @@
     <!-- Footer -->
     <footer class="py-10 border-t border-gray-800/60 text-center text-sm text-gray-500 bg-darkbg mb-12 lg:mb-0">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-4">
-            <div class="flex items-center space-x-2.5">
-                <div class="w-7 h-7 rounded-lg bg-gradient-to-br from-blue-600 via-blue-700 to-slate-900 border border-blue-400/40 flex items-center justify-center text-white shadow-lg overflow-hidden">
+            <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-blue-600 via-blue-700 to-slate-950 border border-cyan-400/40 flex items-center justify-center text-white shadow-lg overflow-hidden brand-box-3d">
                     <div class="spin-cube-continuous">
-                        <svg class="w-3.5 h-3.5 text-cyan-400 drop-shadow-[0_0_4px_rgba(34,211,238,0.7)]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="w-4 h-4 text-cyan-300 drop-shadow-[0_0_6px_rgba(34,211,238,0.8)]" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 3l9 5.25v10.5L12 21l-9-5.25V8.25L12 3z"></path>
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 12l9-5.25M12 12L3 6.75M12 12v9"></path>
                         </svg>
                     </div>
                 </div>
-                <span class="font-bold text-white text-sm sm:text-base">Automatika</span>
-                <span class="text-xs">© 2026. Todos los derechos reservados.</span>
+                <div class="flex flex-col text-left">
+                    <span class="font-extrabold text-white text-base sm:text-lg tracking-tight leading-none brand-text-3d">Automatika</span>
+                    <span class="text-[9px] uppercase tracking-wider text-cyan-400 font-semibold mt-0.5">© 2026. Todos los derechos reservados.</span>
+                </div>
             </div>
             <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs text-gray-400">
                 <a href="#soluciones" class="hover:text-cyan-400 transition-colors">Soluciones</a>
