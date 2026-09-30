@@ -2,7 +2,7 @@
 <html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Automatika | Automatización de Procesos para PyMEs y Negocios</title>
     <meta name="description" content="Automatizamos tus procesos administrativos, comerciales y operativos. Conectamos WhatsApp, AFIP, Excel, CRM y ERPs para que tu PyME ahorre horas y dinero.">
     <!-- Favicon -->
@@ -29,7 +29,7 @@
                     keyframes: {
                         float: {
                             '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-8px)' },
+                            '50%': { transform: 'translateY(-6px)' },
                         },
                         glow: {
                             '0%': { opacity: '0.4' },
@@ -55,21 +55,53 @@
         .bg-grid-tech {
             background-image: 
                 radial-gradient(circle at 50% 15%, rgba(37, 99, 235, 0.18) 0%, transparent 65%),
-                linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-            background-size: 100% 100%, 40px 40px, 40px 40px;
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 100% 100%, 32px 32px, 32px 32px;
         }
         .card-interactive {
-            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .card-interactive:hover {
-            transform: translateY(-4px);
-            border-color: rgba(34, 211, 238, 0.45);
-            box-shadow: 0 20px 35px -15px rgba(2, 132, 199, 0.25), 0 0 25px -5px rgba(34, 211, 238, 0.15);
+        @media (hover: hover) {
+            .card-interactive:hover {
+                transform: translateY(-4px);
+                border-color: rgba(34, 211, 238, 0.45);
+                box-shadow: 0 20px 35px -15px rgba(2, 132, 199, 0.25), 0 0 25px -5px rgba(34, 211, 238, 0.15);
+            }
         }
-        /* Personalización de sliders */
+        /* Scrollbar oculta para sliders táctiles */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        /* Marquee infinito fluido */
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            display: flex;
+            width: max-content;
+            animation: marquee 28s linear infinite;
+        }
+        .animate-marquee:hover {
+            animation-play-state: paused;
+        }
+        /* Sliders táctiles amigables con el pulgar */
         input[type=range] {
             accent-color: #22d3ee;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 22px;
+            width: 22px;
+            border-radius: 50%;
+            background: #22d3ee;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(34, 211, 238, 0.6);
         }
         .filter-btn.active {
             background-color: #2563eb;
@@ -79,24 +111,24 @@
         }
     </style>
 </head>
-<body class="bg-darkbg text-gray-100 antialiased selection:bg-accent selection:text-white overflow-x-hidden">
+<body class="bg-darkbg text-gray-100 antialiased selection:bg-accent selection:text-white overflow-x-hidden pb-16 lg:pb-0">
 
     <!-- Header / Navbar -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-darkbg/90 backdrop-blur-md border-b border-gray-800/70 transition-all">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
-            <a href="#" class="flex items-center space-x-3 group cursor-pointer">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center space-x-2.5 sm:space-x-3 group cursor-pointer">
                 <div class="relative">
                     <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-400 rounded-xl blur opacity-60 group-hover:opacity-100 transition duration-500 animate-glow"></div>
-                    <div class="relative w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 via-blue-700 to-slate-900 border border-blue-400/40 flex items-center justify-center text-white shadow-xl">
-                        <svg class="w-5 h-5 text-cyan-400 group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <div class="relative w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-blue-600 via-blue-700 to-slate-900 border border-blue-400/40 flex items-center justify-center text-white shadow-xl">
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400 group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 3l9 5.25v10.5L12 21l-9-5.25V8.25L12 3z"></path>
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 12l9-5.25M12 12L3 6.75M12 12v9"></path>
                         </svg>
                     </div>
                 </div>
                 <div class="flex flex-col">
-                    <span class="text-xl font-extrabold tracking-tight text-white leading-none">Automatika</span>
-                    <span class="text-[9px] uppercase tracking-wider text-cyan-400 font-semibold mt-1">Automatización para PyMEs</span>
+                    <span class="text-lg sm:text-xl font-extrabold tracking-tight text-white leading-none">Automatika</span>
+                    <span class="text-[8px] sm:text-[9px] uppercase tracking-wider text-cyan-400 font-semibold mt-0.5">Automatización PyMEs</span>
                 </div>
             </a>
             <nav class="hidden lg:flex space-x-7 text-sm font-medium text-gray-300">
@@ -113,222 +145,289 @@
             <div class="hidden sm:flex items-center space-x-4">
                 <a href="#contacto" class="relative group overflow-hidden rounded-xl p-px inline-block">
                     <span class="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-400 transition-all duration-300 group-hover:scale-105"></span>
-                    <span class="relative block px-5 py-2.5 rounded-[11px] bg-darkbg text-white text-sm font-semibold transition-all group-hover:bg-opacity-0">
+                    <span class="relative block px-4 py-2 sm:px-5 sm:py-2.5 rounded-[11px] bg-darkbg text-white text-xs sm:text-sm font-semibold transition-all group-hover:bg-opacity-0">
                         Diagnóstico Sin Cargo
                     </span>
                 </a>
             </div>
             <!-- Botón menú hamburguesa móvil -->
-            <button id="mobile-menu-btn" class="lg:hidden text-gray-300 hover:text-white p-2 focus:outline-none" aria-label="Abrir menú">
-                <i id="mobile-menu-icon" class="fa-solid fa-bars text-xl"></i>
+            <button id="mobile-menu-btn" class="lg:hidden text-gray-300 hover:text-white p-2 rounded-lg bg-gray-900/60 border border-gray-800 focus:outline-none" aria-label="Abrir menú">
+                <i id="mobile-menu-icon" class="fa-solid fa-bars text-lg"></i>
             </button>
         </div>
-        <!-- Menú desplegable móvil -->
-        <div id="mobile-menu" class="hidden lg:hidden bg-slate-950/95 border-b border-gray-800 px-6 py-5 space-y-4 backdrop-blur-xl">
-            <a href="#soluciones" class="mobile-link block text-gray-300 hover:text-cyan-400 text-base font-medium py-1">Soluciones</a>
-            <a href="#proceso" class="mobile-link block text-gray-300 hover:text-cyan-400 text-base font-medium py-1">Cómo Trabajamos</a>
-            <a href="#ejemplos" class="mobile-link block text-gray-300 hover:text-cyan-400 text-base font-medium py-1">Casos de Uso (Procesos)</a>
-            <a href="#calculadora" class="mobile-link block text-cyan-400 hover:text-cyan-300 text-base font-medium py-1">
-                <i class="fa-solid fa-calculator mr-2"></i>Calculá tu Ahorro
+        <!-- Menú desplegable móvil ultra-minimalista -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-slate-950/98 border-b border-gray-800/90 px-5 py-4 space-y-3 backdrop-blur-2xl transition-all">
+            <a href="#soluciones" class="mobile-link flex items-center space-x-3 text-gray-300 hover:text-cyan-400 text-sm font-medium py-2 border-b border-gray-900/80">
+                <i class="fa-solid fa-network-wired text-cyan-400 w-5"></i>
+                <span>Soluciones</span>
             </a>
-            <a href="#sectores" class="mobile-link block text-gray-300 hover:text-cyan-400 text-base font-medium py-1">Para tu Negocio</a>
-            <a href="#faq" class="mobile-link block text-gray-300 hover:text-cyan-400 text-base font-medium py-1">Preguntas Frecuentes</a>
+            <a href="#proceso" class="mobile-link flex items-center space-x-3 text-gray-300 hover:text-cyan-400 text-sm font-medium py-2 border-b border-gray-900/80">
+                <i class="fa-solid fa-list-check text-cyan-400 w-5"></i>
+                <span>Cómo Trabajamos</span>
+            </a>
+            <a href="#ejemplos" class="mobile-link flex items-center space-x-3 text-gray-300 hover:text-cyan-400 text-sm font-medium py-2 border-b border-gray-900/80">
+                <i class="fa-solid fa-bolt text-cyan-400 w-5"></i>
+                <span>Casos de Uso (12 Procesos)</span>
+            </a>
+            <a href="#calculadora" class="mobile-link flex items-center space-x-3 text-cyan-300 hover:text-cyan-200 text-sm font-semibold py-2 border-b border-gray-900/80">
+                <i class="fa-solid fa-calculator text-cyan-400 w-5"></i>
+                <span>Calculá tu Ahorro Estimado</span>
+            </a>
+            <a href="#sectores" class="mobile-link flex items-center space-x-3 text-gray-300 hover:text-cyan-400 text-sm font-medium py-2 border-b border-gray-900/80">
+                <i class="fa-solid fa-building text-cyan-400 w-5"></i>
+                <span>Para tu Tipo de Negocio</span>
+            </a>
+            <a href="#faq" class="mobile-link flex items-center space-x-3 text-gray-300 hover:text-cyan-400 text-sm font-medium py-2">
+                <i class="fa-solid fa-circle-question text-cyan-400 w-5"></i>
+                <span>Preguntas Frecuentes</span>
+            </a>
             <div class="pt-2">
-                <a href="#contacto" class="mobile-link block w-full text-center bg-accent hover:bg-accenthover text-white font-semibold py-3 rounded-xl shadow-lg shadow-blue-600/30">
+                <a href="#contacto" class="mobile-link block w-full text-center bg-accent hover:bg-accenthover text-white text-sm font-semibold py-3 rounded-xl shadow-lg shadow-blue-600/30">
                     Solicitar Diagnóstico Sin Cargo
                 </a>
             </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="pt-32 pb-16 sm:pt-40 sm:pb-24 md:pt-48 md:pb-28 relative overflow-hidden bg-grid-tech">
-        <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[480px] bg-blue-600/15 blur-[160px] rounded-full pointer-events-none animate-pulse-slow"></div>
+    <!-- Hero Section Optimizado para Móvil -->
+    <section class="pt-24 pb-12 sm:pt-40 sm:pb-24 md:pt-48 md:pb-28 relative overflow-hidden bg-grid-tech">
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[700px] h-[350px] sm:h-[480px] bg-blue-600/15 blur-[120px] rounded-full pointer-events-none animate-pulse-slow"></div>
         
         <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center relative z-10">
-            <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-blue-950/80 border border-blue-700/50 text-cyan-300 text-xs font-semibold mb-6 shadow-sm animate-float">
-                <i class="fa-solid fa-bolt text-cyan-400"></i>
-                <span>Automatización Inteligente de Procesos para PyMEs y Negocios</span>
+            <!-- Badge compacto móvil -->
+            <div class="inline-flex items-center space-x-2 px-3 py-1 sm:px-4 sm:py-1.5 rounded-full bg-blue-950/80 border border-blue-700/50 text-cyan-300 text-[11px] sm:text-xs font-semibold mb-4 sm:mb-6 shadow-sm">
+                <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+                <span>Automatización con IA para PyMEs</span>
             </div>
             
-            <!-- Título Principal (con padding inferior para descenders de 'y' y 'p') -->
-            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight max-w-5xl mx-auto">
-                <span class="block text-white/95 drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)] leading-tight">
+            <!-- Título Principal adaptado a pantallas pequeñas -->
+            <h1 class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight max-w-5xl mx-auto leading-tight">
+                <span class="block text-white/95 drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]">
                     Automatizá tus procesos administrativos
                 </span>
-                <span class="inline-block mt-2 sm:mt-3 pb-3 sm:pb-4 pt-1 font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 via-teal-300 to-blue-400 bg-[length:200%_auto] animate-gradient-x drop-shadow-[0_0_30px_rgba(34,211,238,0.25)] leading-tight sm:leading-snug">
+                <span class="inline-block mt-1 sm:mt-3 pb-3 sm:pb-4 pt-1 font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 via-teal-300 to-blue-400 bg-[length:200%_auto] animate-gradient-x drop-shadow-[0_0_30px_rgba(34,211,238,0.25)] leading-tight sm:leading-snug">
                     y optimizá tiempo y dinero.
                 </span>
             </h1>
 
-            <p class="mt-6 text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto font-normal leading-relaxed">
-                Conectamos tus herramientas diarias (<strong class="text-white font-semibold">WhatsApp, Facturación AFIP, Excel, CRM, ERPs y Pasarelas de Pago</strong>) en circuitos autónomos con IA. Tu equipo deja de copiar y pegar datos; tu negocio gana velocidad, elimina errores humanos y reduce costos operativos.
+            <p class="mt-4 sm:mt-6 text-xs sm:text-base md:text-xl text-gray-300 max-w-3xl mx-auto font-normal leading-relaxed">
+                Conectamos tus sistemas (<strong class="text-white font-semibold">WhatsApp, Facturas AFIP, Excel, CRM, ERPs y Pagos</strong>) en flujos autónomos con IA. Tu equipo deja de copiar datos y tu negocio reduce costos desde el primer mes.
             </p>
 
-            <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#ejemplos" class="w-full sm:w-auto bg-accent hover:bg-accenthover text-white font-semibold px-8 py-4 rounded-xl transition-all shadow-xl shadow-blue-600/30 flex items-center justify-center space-x-2 border border-blue-400/20 hover:scale-[1.02] duration-200">
-                    <span>Explorar Procesos Automatizables</span>
-                    <i class="fa-solid fa-arrow-down text-sm"></i>
+            <div class="mt-6 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+                <a href="#ejemplos" class="w-full sm:w-auto bg-accent hover:bg-accenthover text-white text-sm sm:text-base font-semibold px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl transition-all shadow-xl shadow-blue-600/30 flex items-center justify-center space-x-2 border border-blue-400/20 active:scale-98">
+                    <span>Ver Procesos Automatizables</span>
+                    <i class="fa-solid fa-arrow-down text-xs sm:text-sm"></i>
                 </a>
-                <a href="#calculadora" class="w-full sm:w-auto glass-card hover:bg-gray-800/80 border border-gray-700/80 text-cyan-300 font-semibold px-8 py-4 rounded-xl transition-all flex items-center justify-center space-x-2 hover:border-cyan-500/40">
-                    <i class="fa-solid fa-calculator text-sm"></i>
-                    <span>Calcular Mi Ahorro Estimado</span>
+                <a href="#calculadora" class="w-full sm:w-auto glass-card hover:bg-gray-800/80 border border-gray-700/80 text-cyan-300 text-sm sm:text-base font-semibold px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl transition-all flex items-center justify-center space-x-2 hover:border-cyan-500/40">
+                    <i class="fa-solid fa-calculator text-xs sm:text-sm"></i>
+                    <span>Calcular Mi Ahorro</span>
                 </a>
             </div>
 
-            <!-- Mini badges de confianza -->
-            <div class="mt-12 pt-8 border-t border-gray-800/70 max-w-4xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs font-semibold text-gray-400">
-                <div class="flex items-center justify-center space-x-2">
+            <!-- Mini badges de confianza (2x2 en móvil, limpios) -->
+            <div class="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-gray-800/70 max-w-4xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4 text-[11px] sm:text-xs font-medium text-gray-400">
+                <div class="flex items-center justify-center space-x-1.5 p-2 rounded-lg bg-gray-900/40 border border-gray-800/60">
                     <i class="fa-solid fa-shield-halved text-cyan-400"></i>
                     <span>Sin cambiar tus sistemas</span>
                 </div>
-                <div class="flex items-center justify-center space-x-2">
+                <div class="flex items-center justify-center space-x-1.5 p-2 rounded-lg bg-gray-900/40 border border-gray-800/60">
                     <i class="fa-solid fa-stopwatch text-cyan-400"></i>
-                    <span>Puesta en marcha &lt; 15 días</span>
+                    <span>Puesta en &lt; 15 días</span>
                 </div>
-                <div class="flex items-center justify-center space-x-2">
+                <div class="flex items-center justify-center space-x-1.5 p-2 rounded-lg bg-gray-900/40 border border-gray-800/60">
                     <i class="fa-solid fa-chart-line text-cyan-400"></i>
-                    <span>ROI rápido y medible</span>
+                    <span>Ahorro medible</span>
                 </div>
-                <div class="flex items-center justify-center space-x-2">
+                <div class="flex items-center justify-center space-x-1.5 p-2 rounded-lg bg-gray-900/40 border border-gray-800/60">
                     <i class="fa-solid fa-lock text-cyan-400"></i>
-                    <span>100% Seguro y Privado</span>
+                    <span>100% Confidencial</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Cinta de Integraciones y Ecosistema -->
-    <div class="border-y border-gray-800/80 bg-slate-950/70 backdrop-blur-md py-8 relative z-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6">
-            <p class="text-center text-[11px] font-bold uppercase tracking-widest text-gray-400 mb-6">
-                Conectamos de forma autónoma las plataformas que ya utilizás
-            </p>
-            <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-5 md:gap-6 text-xs sm:text-sm text-gray-300 font-semibold">
-                <div class="flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-gray-900/80 border border-gray-800 hover:border-emerald-500/50 transition-colors shadow-sm">
-                    <i class="fa-brands fa-whatsapp text-emerald-400 text-base sm:text-lg"></i>
+    <!-- Cinta de Integraciones (Marquee Infinito Ultra-Limpio en Móvil) -->
+    <div class="border-y border-gray-800/80 bg-slate-950/80 backdrop-blur-md py-4 sm:py-6 relative z-20 overflow-hidden">
+        <p class="text-center text-[10px] sm:text-[11px] font-bold uppercase tracking-widest text-gray-400 mb-3 sm:mb-4 px-4">
+            Ecosistema que integramos de forma autónoma
+        </p>
+        <div class="flex overflow-hidden select-none">
+            <div class="animate-marquee flex items-center gap-3 sm:gap-5 text-xs sm:text-sm text-gray-300 font-semibold px-2">
+                <div class="flex items-center space-x-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-gray-900/90 border border-gray-800 shrink-0">
+                    <i class="fa-brands fa-whatsapp text-emerald-400 text-sm sm:text-base"></i>
                     <span>WhatsApp Business API</span>
                 </div>
-                <div class="flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-gray-900/80 border border-gray-800 hover:border-cyan-500/50 transition-colors shadow-sm">
-                    <i class="fa-solid fa-file-invoice-dollar text-cyan-400 text-base sm:text-lg"></i>
-                    <span>Facturación AFIP / Fiscal</span>
+                <div class="flex items-center space-x-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-gray-900/90 border border-gray-800 shrink-0">
+                    <i class="fa-solid fa-file-invoice-dollar text-cyan-400 text-sm sm:text-base"></i>
+                    <span>Facturación AFIP</span>
                 </div>
-                <div class="flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-gray-900/80 border border-gray-800 hover:border-emerald-500/50 transition-colors shadow-sm">
-                    <i class="fa-solid fa-table-cells text-emerald-400 text-base sm:text-lg"></i>
-                    <span>Google Sheets / Excel</span>
+                <div class="flex items-center space-x-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-gray-900/90 border border-gray-800 shrink-0">
+                    <i class="fa-solid fa-table-cells text-emerald-400 text-sm sm:text-base"></i>
+                    <span>Google Sheets & Excel</span>
                 </div>
-                <div class="flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-gray-900/80 border border-gray-800 hover:border-sky-500/50 transition-colors shadow-sm">
-                    <i class="fa-solid fa-credit-card text-sky-400 text-base sm:text-lg"></i>
+                <div class="flex items-center space-x-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-gray-900/90 border border-gray-800 shrink-0">
+                    <i class="fa-solid fa-credit-card text-sky-400 text-sm sm:text-base"></i>
                     <span>Mercado Pago & Bancos</span>
                 </div>
-                <div class="flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-gray-900/80 border border-gray-800 hover:border-blue-500/50 transition-colors shadow-sm">
-                    <i class="fa-solid fa-brain text-blue-400 text-base sm:text-lg"></i>
+                <div class="flex items-center space-x-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-gray-900/90 border border-gray-800 shrink-0">
+                    <i class="fa-solid fa-brain text-blue-400 text-sm sm:text-base"></i>
                     <span>OpenAI & Modelos IA</span>
                 </div>
-                <div class="flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-gray-900/80 border border-gray-800 hover:border-indigo-500/50 transition-colors shadow-sm">
-                    <i class="fa-solid fa-database text-indigo-400 text-base sm:text-lg"></i>
-                    <span>Tango, Bejerman, SAP & ERPs</span>
+                <div class="flex items-center space-x-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-gray-900/90 border border-gray-800 shrink-0">
+                    <i class="fa-solid fa-database text-indigo-400 text-sm sm:text-base"></i>
+                    <span>Tango, SAP & ERPs</span>
                 </div>
-                <div class="flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-gray-900/80 border border-gray-800 hover:border-purple-500/50 transition-colors shadow-sm">
-                    <i class="fa-solid fa-users text-purple-400 text-base sm:text-lg"></i>
-                    <span>HubSpot, Zoho & CRMs</span>
+                <div class="flex items-center space-x-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-gray-900/90 border border-gray-800 shrink-0">
+                    <i class="fa-solid fa-users text-purple-400 text-sm sm:text-base"></i>
+                    <span>HubSpot & CRMs</span>
                 </div>
-                <div class="flex items-center space-x-2.5 px-3.5 py-2 rounded-xl bg-gray-900/80 border border-gray-800 hover:border-amber-500/50 transition-colors shadow-sm">
-                    <i class="fa-solid fa-store text-amber-400 text-base sm:text-lg"></i>
-                    <span>Tienda Nube / Mercado Libre</span>
+                <div class="flex items-center space-x-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-gray-900/90 border border-gray-800 shrink-0">
+                    <i class="fa-solid fa-store text-amber-400 text-sm sm:text-base"></i>
+                    <span>Tienda Nube & MeLi</span>
+                </div>
+            </div>
+            <!-- Duplicado para loop continuo -->
+            <div class="animate-marquee flex items-center gap-3 sm:gap-5 text-xs sm:text-sm text-gray-300 font-semibold px-2" aria-hidden="true">
+                <div class="flex items-center space-x-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-gray-900/90 border border-gray-800 shrink-0">
+                    <i class="fa-brands fa-whatsapp text-emerald-400 text-sm sm:text-base"></i>
+                    <span>WhatsApp Business API</span>
+                </div>
+                <div class="flex items-center space-x-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-gray-900/90 border border-gray-800 shrink-0">
+                    <i class="fa-solid fa-file-invoice-dollar text-cyan-400 text-sm sm:text-base"></i>
+                    <span>Facturación AFIP</span>
+                </div>
+                <div class="flex items-center space-x-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-gray-900/90 border border-gray-800 shrink-0">
+                    <i class="fa-solid fa-table-cells text-emerald-400 text-sm sm:text-base"></i>
+                    <span>Google Sheets & Excel</span>
+                </div>
+                <div class="flex items-center space-x-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-gray-900/90 border border-gray-800 shrink-0">
+                    <i class="fa-solid fa-credit-card text-sky-400 text-sm sm:text-base"></i>
+                    <span>Mercado Pago & Bancos</span>
+                </div>
+                <div class="flex items-center space-x-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-gray-900/90 border border-gray-800 shrink-0">
+                    <i class="fa-solid fa-brain text-blue-400 text-sm sm:text-base"></i>
+                    <span>OpenAI & Modelos IA</span>
+                </div>
+                <div class="flex items-center space-x-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-gray-900/90 border border-gray-800 shrink-0">
+                    <i class="fa-solid fa-database text-indigo-400 text-sm sm:text-base"></i>
+                    <span>Tango, SAP & ERPs</span>
+                </div>
+                <div class="flex items-center space-x-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-gray-900/90 border border-gray-800 shrink-0">
+                    <i class="fa-solid fa-users text-purple-400 text-sm sm:text-base"></i>
+                    <span>HubSpot & CRMs</span>
+                </div>
+                <div class="flex items-center space-x-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-gray-900/90 border border-gray-800 shrink-0">
+                    <i class="fa-solid fa-store text-amber-400 text-sm sm:text-base"></i>
+                    <span>Tienda Nube & MeLi</span>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- 1. BLOQUE GENERAL: QUÉ HACEMOS (ARQUITECTURA DE PROCESOS) -->
-    <section id="soluciones" class="py-24 bg-cardbg/20 border-t border-gray-800/60 relative">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-cyan-400 text-xs font-bold uppercase tracking-widest">Nuestra Propuesta de Valor</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight mt-2">Tecnología que trabaja por vos, no más trabajo para vos</h2>
-                <p class="mt-4 text-gray-400 leading-relaxed">
-                    No necesitás contratar programadores de planta ni cambiar el software contable o de ventas que ya conocés. Construimos puentes lógicos y robots que asumen el trabajo repetitivo de punta a punta.
+    <!-- 1. SOLUCIONES -->
+    <section id="soluciones" class="py-14 sm:py-24 bg-cardbg/20 border-t border-gray-800/60 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
+                <span class="text-cyan-400 text-[10px] sm:text-xs font-bold uppercase tracking-widest">Nuestra Propuesta de Valor</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight mt-1.5">Tecnología que trabaja por vos</h2>
+                <p class="mt-2 sm:mt-4 text-xs sm:text-sm text-gray-400 leading-relaxed">
+                    No necesitás programadores en tu empresa ni cambiar tus programas actuales. Construimos robots que asumen el trabajo repetitivo de punta a punta.
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-                <div class="glass-card card-interactive border border-gray-800/80 p-6 sm:p-8 rounded-3xl group shadow-lg">
-                    <div class="w-12 h-12 bg-blue-600/10 text-cyan-400 rounded-xl flex items-center justify-center text-xl font-bold mb-6 group-hover:bg-accent group-hover:text-white transition-all duration-300 border border-blue-500/20">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-8">
+                <div class="glass-card card-interactive border border-gray-800/80 p-5 sm:p-8 rounded-2xl sm:rounded-3xl shadow-lg">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-blue-600/10 text-cyan-400 rounded-xl flex items-center justify-center text-lg sm:text-xl font-bold mb-4 sm:mb-6 border border-blue-500/20">
                         <i class="fa-solid fa-network-wired"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Integración Total de Software</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
-                        Conectamos plataformas que hoy no se hablan: desde tu tienda online o WhatsApp, pasando por tu planilla de control, hasta tu sistema de facturación y bancos.
+                    <h3 class="text-base sm:text-xl font-bold text-white mb-2">Integración Total de Software</h3>
+                    <p class="text-gray-400 text-xs sm:text-sm leading-relaxed mb-3">
+                        Conectamos plataformas que hoy no se hablan: desde WhatsApp hasta tu planilla de control, facturación fiscal y bancos.
                     </p>
-                    <div class="text-xs text-cyan-400 font-semibold flex items-center">
-                        <i class="fa-solid fa-check mr-2"></i> Fin a la doble carga manual de datos
+                    <div class="text-[11px] sm:text-xs text-cyan-400 font-semibold flex items-center">
+                        <i class="fa-solid fa-check mr-1.5"></i> Fin al copiado manual de datos
                     </div>
                 </div>
 
-                <div class="glass-card card-interactive border border-gray-800/80 p-6 sm:p-8 rounded-3xl group shadow-lg">
-                    <div class="w-12 h-12 bg-blue-600/10 text-cyan-400 rounded-xl flex items-center justify-center text-xl font-bold mb-6 group-hover:bg-accent group-hover:text-white transition-all duration-300 border border-blue-500/20">
+                <div class="glass-card card-interactive border border-gray-800/80 p-5 sm:p-8 rounded-2xl sm:rounded-3xl shadow-lg">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-blue-600/10 text-cyan-400 rounded-xl flex items-center justify-center text-lg sm:text-xl font-bold mb-4 sm:mb-6 border border-blue-500/20">
                         <i class="fa-solid fa-brain"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Inteligencia Artificial Práctica</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
-                        Aplicamos modelos de lenguaje y visión (OCR) para leer facturas en PDF recibidas por mail, extraer importes e ítems, responder dudas de clientes y clasificar consultas complejas.
+                    <h3 class="text-base sm:text-xl font-bold text-white mb-2">Inteligencia Artificial Práctica</h3>
+                    <p class="text-gray-400 text-xs sm:text-sm leading-relaxed mb-3">
+                        Modelos de OCR para leer facturas en PDF recibidas por mail, extraer importes, responder dudas de clientes y clasificar consultas.
                     </p>
-                    <div class="text-xs text-cyan-400 font-semibold flex items-center">
-                        <i class="fa-solid fa-check mr-2"></i> Lectura y respuesta inteligente 24/7
+                    <div class="text-[11px] sm:text-xs text-cyan-400 font-semibold flex items-center">
+                        <i class="fa-solid fa-check mr-1.5"></i> Lectura y respuesta inteligente 24/7
                     </div>
                 </div>
 
-                <div class="glass-card card-interactive border border-gray-800/80 p-6 sm:p-8 rounded-3xl group shadow-lg">
-                    <div class="w-12 h-12 bg-blue-600/10 text-cyan-400 rounded-xl flex items-center justify-center text-xl font-bold mb-6 group-hover:bg-accent group-hover:text-white transition-all duration-300 border border-blue-500/20">
+                <div class="glass-card card-interactive border border-gray-800/80 p-5 sm:p-8 rounded-2xl sm:rounded-3xl shadow-lg">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-blue-600/10 text-cyan-400 rounded-xl flex items-center justify-center text-lg sm:text-xl font-bold mb-4 sm:mb-6 border border-blue-500/20">
                         <i class="fa-solid fa-clock-rotate-left"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Ejecución 24/7 Desatendida</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
-                        Circuitos automáticos que operan día y noche con alertas inmediatas si algo requiere atención humana, liberando hasta un 40% del tiempo de tu personal administrativo.
+                    <h3 class="text-base sm:text-xl font-bold text-white mb-2">Ejecución 24/7 Desatendida</h3>
+                    <p class="text-gray-400 text-xs sm:text-sm leading-relaxed mb-3">
+                        Circuitos automáticos que operan día y noche, liberando hasta 40 horas al mes del tiempo de tu personal administrativo.
                     </p>
-                    <div class="text-xs text-cyan-400 font-semibold flex items-center">
-                        <i class="fa-solid fa-check mr-2"></i> Tu empresa responde aun estando cerrada
+                    <div class="text-[11px] sm:text-xs text-cyan-400 font-semibold flex items-center">
+                        <i class="fa-solid fa-check mr-1.5"></i> Tu empresa responde aun cerrada
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 2. METODOLOGÍA DE IMPLEMENTACIÓN: CÓMO TRABAJAMOS -->
-    <section id="proceso" class="py-24 bg-cardbg/30 border-t border-gray-800/60">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-cyan-400 text-xs font-bold uppercase tracking-widest">Paso a Paso</span>
-                <h2 class="text-3xl font-bold text-white tracking-tight mt-1">Cómo Trabajamos con tu Negocio</h2>
-                <p class="mt-3 text-gray-400 text-sm">Un método estructurado, sin riesgos y sin interrumpir tus ventas ni tu administración.</p>
+    <!-- 2. CÓMO TRABAJAMOS (Timeline Conectado en Móvil) -->
+    <section id="proceso" class="py-14 sm:py-24 bg-cardbg/30 border-t border-gray-800/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
+                <span class="text-cyan-400 text-[10px] sm:text-xs font-bold uppercase tracking-widest">Paso a Paso</span>
+                <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight mt-1">Cómo Trabajamos con tu Negocio</h2>
+                <p class="mt-2 text-gray-400 text-xs sm:text-sm">Un método estructurado, sin riesgos y sin interrumpir tu operativa diaria.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                <div class="glass-card card-interactive border border-gray-800 p-6 rounded-2xl transition-all">
-                    <span class="text-cyan-400 font-extrabold text-3xl block mb-3">01</span>
-                    <h3 class="text-base font-bold text-white mb-2">Diagnóstico y Mapeo</h3>
+            <!-- Timeline en Móvil / Grilla en Desktop -->
+            <div class="relative pl-6 sm:pl-0 sm:grid sm:grid-cols-4 gap-6">
+                <!-- Línea conectora vertical en móvil -->
+                <div class="absolute left-2.5 top-3 bottom-3 w-0.5 bg-gradient-to-b from-blue-500 via-cyan-400 to-teal-400 sm:hidden"></div>
+
+                <!-- Paso 1 -->
+                <div class="glass-card card-interactive border border-gray-800 p-5 rounded-2xl relative mb-4 sm:mb-0">
+                    <span class="absolute -left-[27px] top-4 w-5 h-5 rounded-full bg-blue-600 border-2 border-darkbg flex items-center justify-center text-[9px] font-bold text-white sm:hidden">1</span>
+                    <span class="text-cyan-400 font-extrabold text-2xl sm:text-3xl block mb-2">01</span>
+                    <h3 class="text-sm sm:text-base font-bold text-white mb-1">Diagnóstico y Mapeo</h3>
                     <p class="text-gray-400 text-xs leading-relaxed">
                         Revisamos juntos qué herramientas usás y detectamos qué tareas consumen más tiempo o generan errores de carga.
                     </p>
                 </div>
-                <div class="glass-card card-interactive border border-gray-800 p-6 rounded-2xl transition-all">
-                    <span class="text-cyan-400 font-extrabold text-3xl block mb-3">02</span>
-                    <h3 class="text-base font-bold text-white mb-2">Diseño de Arquitectura</h3>
+
+                <!-- Paso 2 -->
+                <div class="glass-card card-interactive border border-gray-800 p-5 rounded-2xl relative mb-4 sm:mb-0">
+                    <span class="absolute -left-[27px] top-4 w-5 h-5 rounded-full bg-cyan-500 border-2 border-darkbg flex items-center justify-center text-[9px] font-bold text-white sm:hidden">2</span>
+                    <span class="text-cyan-400 font-extrabold text-2xl sm:text-3xl block mb-2">02</span>
+                    <h3 class="text-sm sm:text-base font-bold text-white mb-1">Diseño de Arquitectura</h3>
                     <p class="text-gray-400 text-xs leading-relaxed">
                         Definimos el camino de los datos (APIs, webhooks, credenciales cifradas) garantizando total privacidad de tu información.
                     </p>
                 </div>
-                <div class="glass-card card-interactive border border-gray-800 p-6 rounded-2xl transition-all">
-                    <span class="text-cyan-400 font-extrabold text-3xl block mb-3">03</span>
-                    <h3 class="text-base font-bold text-white mb-2">Desarrollo y Pruebas</h3>
+
+                <!-- Paso 3 -->
+                <div class="glass-card card-interactive border border-gray-800 p-5 rounded-2xl relative mb-4 sm:mb-0">
+                    <span class="absolute -left-[27px] top-4 w-5 h-5 rounded-full bg-emerald-500 border-2 border-darkbg flex items-center justify-center text-[9px] font-bold text-white sm:hidden">3</span>
+                    <span class="text-cyan-400 font-extrabold text-2xl sm:text-3xl block mb-2">03</span>
+                    <h3 class="text-sm sm:text-base font-bold text-white mb-1">Desarrollo y Pruebas</h3>
                     <p class="text-gray-400 text-xs leading-relaxed">
                         Construimos el flujo en entorno seguro y probamos casos extremos antes de conectarlo a la operación real.
                     </p>
                 </div>
-                <div class="glass-card card-interactive border border-gray-800 p-6 rounded-2xl transition-all">
-                    <span class="text-cyan-400 font-extrabold text-3xl block mb-3">04</span>
-                    <h3 class="text-base font-bold text-white mb-2">Puesta en Marcha & Soporte</h3>
+
+                <!-- Paso 4 -->
+                <div class="glass-card card-interactive border border-gray-800 p-5 rounded-2xl relative">
+                    <span class="absolute -left-[27px] top-4 w-5 h-5 rounded-full bg-teal-400 border-2 border-darkbg flex items-center justify-center text-[9px] font-bold text-white sm:hidden">4</span>
+                    <span class="text-cyan-400 font-extrabold text-2xl sm:text-3xl block mb-2">04</span>
+                    <h3 class="text-sm sm:text-base font-bold text-white mb-1">Puesta en Marcha</h3>
                     <p class="text-gray-400 text-xs leading-relaxed">
                         Desplegamos el flujo productivo, capacitamos brevemente a tu equipo y monitoreamos su funcionamiento 24/7.
                     </p>
@@ -337,546 +436,532 @@
         </div>
     </section>
 
-    <!-- 3. DIAGRAMA VISUAL: CÓMO VIAJA UN DATO EN UN FLUJO AUTOMÁTICO -->
-    <section class="py-16 bg-slate-950/60 border-t border-gray-800/60">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center max-w-2xl mx-auto mb-12">
-                <span class="text-cyan-400 text-xs font-bold uppercase tracking-widest">Flujo en Tiempo Real</span>
-                <h3 class="text-2xl md:text-3xl font-bold text-white tracking-tight mt-1">Así funciona un circuito automático</h3>
-                <p class="text-gray-400 text-xs sm:text-sm mt-2">Ejemplo: Un cliente realiza una compra o consulta en tu canal comercial</p>
+    <!-- 3. DIAGRAMA VISUAL EN VIVO -->
+    <section class="py-12 sm:py-16 bg-slate-950/60 border-t border-gray-800/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
+                <span class="text-cyan-400 text-[10px] sm:text-xs font-bold uppercase tracking-widest">Flujo en Tiempo Real</span>
+                <h3 class="text-xl sm:text-2xl md:text-3xl font-bold text-white tracking-tight mt-1">Así viajan tus datos de forma autónoma</h3>
+                <p class="text-gray-400 text-[11px] sm:text-xs mt-1">Ejemplo: Una venta o consulta entrante en tu negocio</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 relative">
-                <!-- Paso 1 -->
-                <div class="glass-card border border-gray-800 p-5 rounded-2xl relative">
-                    <div class="text-xs font-bold text-blue-400 mb-2 flex items-center justify-between">
+            <!-- Steps compactos con scroll horizontal en móvil o 4 columnas -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+                <div class="glass-card border border-gray-800/90 p-3.5 sm:p-5 rounded-xl sm:rounded-2xl">
+                    <div class="text-[10px] sm:text-xs font-bold text-blue-400 mb-1 flex items-center justify-between">
                         <span>PASO 01</span>
-                        <i class="fa-solid fa-bell text-sm"></i>
+                        <i class="fa-solid fa-bell text-xs"></i>
                     </div>
-                    <h4 class="text-base font-bold text-white mb-1">Disparador (Trigger)</h4>
-                    <p class="text-gray-400 text-xs leading-relaxed">
-                        Entra un WhatsApp, se acredita un pago en Mercado Pago o llega un comprobante en PDF al mail.
+                    <h4 class="text-xs sm:text-base font-bold text-white mb-1">Disparador</h4>
+                    <p class="text-gray-400 text-[11px] sm:text-xs leading-relaxed">
+                        WhatsApp recibido, pago acreditado o factura PDF en email.
                     </p>
                 </div>
-                <!-- Paso 2 -->
-                <div class="glass-card border border-gray-800 p-5 rounded-2xl relative">
-                    <div class="text-xs font-bold text-cyan-400 mb-2 flex items-center justify-between">
+                <div class="glass-card border border-gray-800/90 p-3.5 sm:p-5 rounded-xl sm:rounded-2xl">
+                    <div class="text-[10px] sm:text-xs font-bold text-cyan-400 mb-1 flex items-center justify-between">
                         <span>PASO 02</span>
-                        <i class="fa-solid fa-microchip text-sm"></i>
+                        <i class="fa-solid fa-microchip text-xs"></i>
                     </div>
-                    <h4 class="text-base font-bold text-white mb-1">Procesamiento con IA</h4>
-                    <p class="text-gray-400 text-xs leading-relaxed">
-                        El robot valida datos, lee CUIT y montos con OCR o califica la intención del cliente en lenguaje natural.
+                    <h4 class="text-xs sm:text-base font-bold text-white mb-1">Lectura e IA</h4>
+                    <p class="text-gray-400 text-[11px] sm:text-xs leading-relaxed">
+                        Extracción inteligente con OCR y validación de reglas.
                     </p>
                 </div>
-                <!-- Paso 3 -->
-                <div class="glass-card border border-gray-800 p-5 rounded-2xl relative">
-                    <div class="text-xs font-bold text-emerald-400 mb-2 flex items-center justify-between">
+                <div class="glass-card border border-gray-800/90 p-3.5 sm:p-5 rounded-xl sm:rounded-2xl">
+                    <div class="text-[10px] sm:text-xs font-bold text-emerald-400 mb-1 flex items-center justify-between">
                         <span>PASO 03</span>
-                        <i class="fa-solid fa-arrows-rotate text-sm"></i>
+                        <i class="fa-solid fa-arrows-rotate text-xs"></i>
                     </div>
-                    <h4 class="text-base font-bold text-white mb-1">Sincronización & AFIP</h4>
-                    <p class="text-gray-400 text-xs leading-relaxed">
-                        Emite la factura electrónica, descuenta stock del sistema y registra el movimiento en tu planilla o ERP.
+                    <h4 class="text-xs sm:text-base font-bold text-white mb-1">AFIP & ERP</h4>
+                    <p class="text-gray-400 text-[11px] sm:text-xs leading-relaxed">
+                        Emisión fiscal de factura y registro en sistema contable.
                     </p>
                 </div>
-                <!-- Paso 4 -->
-                <div class="glass-card border border-gray-800 p-5 rounded-2xl relative">
-                    <div class="text-xs font-bold text-teal-400 mb-2 flex items-center justify-between">
+                <div class="glass-card border border-gray-800/90 p-3.5 sm:p-5 rounded-xl sm:rounded-2xl">
+                    <div class="text-[10px] sm:text-xs font-bold text-teal-400 mb-1 flex items-center justify-between">
                         <span>PASO 04</span>
-                        <i class="fa-solid fa-paper-plane text-sm"></i>
+                        <i class="fa-solid fa-paper-plane text-xs"></i>
                     </div>
-                    <h4 class="text-base font-bold text-white mb-1">Confirmación al Cliente</h4>
-                    <p class="text-gray-400 text-xs leading-relaxed">
-                        Envía el PDF de la factura y tracking por WhatsApp al cliente y avisa al equipo en Slack o email.
+                    <h4 class="text-xs sm:text-base font-bold text-white mb-1">Notificación</h4>
+                    <p class="text-gray-400 text-[11px] sm:text-xs leading-relaxed">
+                        Envío de comprobante por WhatsApp y reporte a socios.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 3. CATÁLOGO COMPLETO DE CASOS DE USO (12 PROCESOS PARA PYMES) -->
-    <section id="ejemplos" class="py-24 bg-cardbg/40 border-t border-gray-800/60 relative">
+    <!-- 4. CATÁLOGO COMPLETO DE CASOS DE USO (INTERACTIVO EN MÓVIL) -->
+    <section id="ejemplos" class="py-14 sm:py-24 bg-cardbg/40 border-t border-gray-800/60 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
-            <div class="text-center max-w-3xl mx-auto mb-12">
-                <span class="text-cyan-400 text-xs font-bold uppercase tracking-widest">Catálogo de Soluciones</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight mt-2">Procesos que tu PyME o Negocio Puede Automatizar</h2>
-                <p class="mt-4 text-gray-400 text-sm sm:text-base">
-                    Seleccioná una categoría para explorar ejemplos reales de tareas cotidianas que consumen horas en tu empresa y cómo las transformamos en flujos 100% autónomos.
+            <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
+                <span class="text-cyan-400 text-[10px] sm:text-xs font-bold uppercase tracking-widest">Catálogo de Soluciones</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight mt-1.5">Procesos que Podés Automatizar</h2>
+                <p class="mt-2 text-gray-400 text-xs sm:text-sm">
+                    Tocá una categoría para explorar ejemplos reales de tareas cotidianas que convertimos en flujos 100% autónomos.
                 </p>
             </div>
 
-            <!-- Filtros por Categoría -->
-            <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-12" id="filter-container">
-                <button data-filter="all" class="filter-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all border border-gray-700 bg-gray-900/80 text-gray-300 hover:text-white hover:border-gray-500">
-                    <i class="fa-solid fa-layer-group mr-1.5"></i> Todos los Procesos (12)
+            <!-- Filtros por Categoría con Scroll Horizontal Fluido en Móvil -->
+            <div class="flex overflow-x-auto no-scrollbar gap-2 pb-3 mb-6 sm:mb-10 justify-start sm:justify-center" id="filter-container">
+                <button data-filter="all" class="filter-btn active whitespace-nowrap px-3.5 py-2 rounded-xl text-xs font-semibold transition-all border border-gray-700 bg-gray-900/80 text-gray-300 shrink-0">
+                    <i class="fa-solid fa-layer-group mr-1 text-cyan-400"></i> Todos (12)
                 </button>
-                <button data-filter="ventas" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all border border-gray-700 bg-gray-900/80 text-gray-300 hover:text-white hover:border-gray-500">
-                    <i class="fa-brands fa-whatsapp mr-1.5 text-emerald-400"></i> Ventas & Clientes
+                <button data-filter="ventas" class="filter-btn whitespace-nowrap px-3.5 py-2 rounded-xl text-xs font-semibold transition-all border border-gray-700 bg-gray-900/80 text-gray-300 shrink-0">
+                    <i class="fa-brands fa-whatsapp mr-1 text-emerald-400"></i> Ventas & Clientes
                 </button>
-                <button data-filter="finanzas" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all border border-gray-700 bg-gray-900/80 text-gray-300 hover:text-white hover:border-gray-500">
-                    <i class="fa-solid fa-file-invoice-dollar mr-1.5 text-cyan-400"></i> Facturación & Finanzas
+                <button data-filter="finanzas" class="filter-btn whitespace-nowrap px-3.5 py-2 rounded-xl text-xs font-semibold transition-all border border-gray-700 bg-gray-900/80 text-gray-300 shrink-0">
+                    <i class="fa-solid fa-file-invoice-dollar mr-1 text-cyan-400"></i> Facturación & AFIP
                 </button>
-                <button data-filter="operaciones" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all border border-gray-700 bg-gray-900/80 text-gray-300 hover:text-white hover:border-gray-500">
-                    <i class="fa-solid fa-boxes-stacked mr-1.5 text-amber-400"></i> Stock & Operaciones
+                <button data-filter="operaciones" class="filter-btn whitespace-nowrap px-3.5 py-2 rounded-xl text-xs font-semibold transition-all border border-gray-700 bg-gray-900/80 text-gray-300 shrink-0">
+                    <i class="fa-solid fa-boxes-stacked mr-1 text-amber-400"></i> Stock & Operaciones
                 </button>
-                <button data-filter="gestion" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all border border-gray-700 bg-gray-900/80 text-gray-300 hover:text-white hover:border-gray-500">
-                    <i class="fa-solid fa-users-gear mr-1.5 text-purple-400"></i> Gestión & RRHH
+                <button data-filter="gestion" class="filter-btn whitespace-nowrap px-3.5 py-2 rounded-xl text-xs font-semibold transition-all border border-gray-700 bg-gray-900/80 text-gray-300 shrink-0">
+                    <i class="fa-solid fa-users-gear mr-1 text-purple-400"></i> Gestión & RRHH
                 </button>
             </div>
 
-            <!-- Grilla de Tarjetas de Procesos -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="process-cards">
+            <!-- Grilla de Tarjetas -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6" id="process-cards">
                 
                 <!-- PROCESO 1: Ventas / WhatsApp Leads -->
-                <div class="process-card glass-card card-interactive border border-gray-800/80 p-6 rounded-3xl shadow-xl flex flex-col justify-between" data-category="ventas">
+                <div class="process-card glass-card card-interactive border border-gray-800/80 p-5 sm:p-6 rounded-2xl sm:rounded-3xl shadow-xl flex flex-col justify-between" data-category="ventas">
                     <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="w-11 h-11 bg-emerald-500/10 text-emerald-400 rounded-xl flex items-center justify-center text-lg font-bold border border-emerald-500/20">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="w-9 h-9 sm:w-11 sm:h-11 bg-emerald-500/10 text-emerald-400 rounded-xl flex items-center justify-center text-base sm:text-lg font-bold border border-emerald-500/20">
                                 <i class="fa-brands fa-whatsapp"></i>
                             </div>
-                            <span class="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-emerald-950/80 text-emerald-300 border border-emerald-800/50">Ventas & Atención</span>
+                            <span class="text-[10px] sm:text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-emerald-950/80 text-emerald-300 border border-emerald-800/50">Ventas & Atención</span>
                         </div>
-                        <span class="text-[10px] font-bold uppercase tracking-wider text-cyan-400 mb-1 block">Ideal para: Comercios, Servicios y Consultoría</span>
-                        <h3 class="text-lg font-bold text-white mb-3">Atención y Calificación de Leads 24/7 en WhatsApp</h3>
-                        <p class="text-gray-400 text-xs leading-relaxed mb-3">
-                            <strong class="text-gray-200">El problema:</strong> Mensajes a deshora o en fines de semana que nadie atiende. Cuando el vendedor contesta al día siguiente, el cliente ya le compró a la competencia.
+                        <span class="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-cyan-400 mb-1 block">Comercios, Servicios y Consultoría</span>
+                        <h3 class="text-base sm:text-lg font-bold text-white mb-2">Atención y Calificación de Leads 24/7 en WhatsApp</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed mb-2">
+                            <strong class="text-gray-200">El problema:</strong> Mensajes a deshora o feriados que nadie atiende; el cliente se va a la competencia.
                         </p>
                         <p class="text-gray-400 text-xs leading-relaxed mb-4">
-                            <strong class="text-gray-200">Solución Automatika:</strong> Agente inteligente con IA que responde al instante con catálogo y precios, califica el interés del cliente, registra sus datos en CRM/Sheets y avisa al vendedor cuando el lead está listo para cerrar.
+                            <strong class="text-gray-200">Solución:</strong> Asistente con IA que responde al instante, califica al cliente, agenda reunión y actualiza CRM.
                         </p>
                     </div>
                     <div>
-                        <div class="flex flex-wrap gap-1.5 mb-4">
-                            <span class="text-[10px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">WhatsApp API</span>
-                            <span class="text-[10px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">OpenAI</span>
-                            <span class="text-[10px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">CRM / Sheets</span>
+                        <div class="flex flex-wrap gap-1.5 mb-3">
+                            <span class="text-[9px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">WhatsApp API</span>
+                            <span class="text-[9px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">OpenAI</span>
+                            <span class="text-[9px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">Sheets/CRM</span>
                         </div>
-                        <div class="bg-darkbg/90 border border-gray-800/90 p-3 rounded-xl text-xs text-emerald-300 font-medium flex items-center justify-between">
-                            <span><i class="fa-solid fa-circle-check mr-1.5"></i> Cero oportunidades perdidas</span>
-                            <button onclick="prefillContact('Atención y Calificación de Leads en WhatsApp')" class="text-cyan-400 hover:text-white font-semibold text-[11px] underline">Quiero esto</button>
+                        <div class="bg-darkbg/90 border border-gray-800/90 p-2.5 rounded-xl text-xs text-emerald-300 font-medium flex items-center justify-between">
+                            <span class="text-[11px]"><i class="fa-solid fa-circle-check mr-1 text-emerald-400"></i> Cero leads desatendidos</span>
+                            <button onclick="prefillContact('Atención y Calificación de Leads en WhatsApp')" class="text-cyan-400 hover:text-white font-bold text-xs underline py-1 px-2">Quiero esto</button>
                         </div>
                     </div>
                 </div>
 
                 <!-- PROCESO 2: Finanzas / Facturación AFIP -->
-                <div class="process-card glass-card card-interactive border border-gray-800/80 p-6 rounded-3xl shadow-xl flex flex-col justify-between" data-category="finanzas">
+                <div class="process-card glass-card card-interactive border border-gray-800/80 p-5 sm:p-6 rounded-2xl sm:rounded-3xl shadow-xl flex flex-col justify-between" data-category="finanzas">
                     <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="w-11 h-11 bg-cyan-500/10 text-cyan-400 rounded-xl flex items-center justify-center text-lg font-bold border border-cyan-500/20">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="w-9 h-9 sm:w-11 sm:h-11 bg-cyan-500/10 text-cyan-400 rounded-xl flex items-center justify-center text-base sm:text-lg font-bold border border-cyan-500/20">
                                 <i class="fa-solid fa-file-invoice-dollar"></i>
                             </div>
-                            <span class="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-cyan-950/80 text-cyan-300 border border-cyan-800/50">Facturación & AFIP</span>
+                            <span class="text-[10px] sm:text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-cyan-950/80 text-cyan-300 border border-cyan-800/50">Facturación & AFIP</span>
                         </div>
-                        <span class="text-[10px] font-bold uppercase tracking-wider text-cyan-400 mb-1 block">Ideal para: E-commerce, Distribuidoras y Servicios</span>
-                        <h3 class="text-lg font-bold text-white mb-3">Facturación Electrónica Automática y Envío al Cliente</h3>
-                        <p class="text-gray-400 text-xs leading-relaxed mb-3">
-                            <strong class="text-gray-200">El problema:</strong> Alguien del equipo debe entrar a la web de AFIP o al sistema contable para cargar manualmente cada comprobante, generar el PDF y enviarlo por mail.
+                        <span class="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-cyan-400 mb-1 block">E-commerce, Distribuidoras y Servicios</span>
+                        <h3 class="text-base sm:text-lg font-bold text-white mb-2">Facturación Fiscal AFIP y Envío Automático</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed mb-2">
+                            <strong class="text-gray-200">El problema:</strong> Carga manual y repetitiva de comprobantes en la web de AFIP o ERP contable.
                         </p>
                         <p class="text-gray-400 text-xs leading-relaxed mb-4">
-                            <strong class="text-gray-200">Solución Automatika:</strong> Al registrarse un cobro en Mercado Pago, banco o pasarela, el flujo solicita el CAE a AFIP, genera el comprobante fiscal y se lo despacha por email o WhatsApp al cliente sin tocar una tecla.
+                            <strong class="text-gray-200">Solución:</strong> Al registrarse un cobro web o transferencia, emite el CAE en AFIP y envía el PDF por mail/WhatsApp.
                         </p>
                     </div>
                     <div>
-                        <div class="flex flex-wrap gap-1.5 mb-4">
-                            <span class="text-[10px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">WebServices AFIP</span>
-                            <span class="text-[10px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">Mercado Pago</span>
-                            <span class="text-[10px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">Email/WhatsApp</span>
+                        <div class="flex flex-wrap gap-1.5 mb-3">
+                            <span class="text-[9px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">AFIP WebServices</span>
+                            <span class="text-[9px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">Mercado Pago</span>
+                            <span class="text-[9px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">PDF Email</span>
                         </div>
-                        <div class="bg-darkbg/90 border border-gray-800/90 p-3 rounded-xl text-xs text-cyan-300 font-medium flex items-center justify-between">
-                            <span><i class="fa-solid fa-circle-check mr-1.5"></i> Ahorro de 20+ hs/mes en administración</span>
-                            <button onclick="prefillContact('Facturación Electrónica Automática AFIP')" class="text-cyan-400 hover:text-white font-semibold text-[11px] underline">Quiero esto</button>
+                        <div class="bg-darkbg/90 border border-gray-800/90 p-2.5 rounded-xl text-xs text-cyan-300 font-medium flex items-center justify-between">
+                            <span class="text-[11px]"><i class="fa-solid fa-circle-check mr-1 text-cyan-400"></i> Ahorro de 20+ hs al mes</span>
+                            <button onclick="prefillContact('Facturación Fiscal AFIP Automática')" class="text-cyan-400 hover:text-white font-bold text-xs underline py-1 px-2">Quiero esto</button>
                         </div>
                     </div>
                 </div>
 
                 <!-- PROCESO 3: Finanzas / Cobranzas y Mora -->
-                <div class="process-card glass-card card-interactive border border-gray-800/80 p-6 rounded-3xl shadow-xl flex flex-col justify-between" data-category="finanzas">
+                <div class="process-card glass-card card-interactive border border-gray-800/80 p-5 sm:p-6 rounded-2xl sm:rounded-3xl shadow-xl flex flex-col justify-between" data-category="finanzas">
                     <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="w-11 h-11 bg-rose-500/10 text-rose-400 rounded-xl flex items-center justify-center text-lg font-bold border border-rose-500/20">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="w-9 h-9 sm:w-11 sm:h-11 bg-rose-500/10 text-rose-400 rounded-xl flex items-center justify-center text-base sm:text-lg font-bold border border-rose-500/20">
                                 <i class="fa-solid fa-hand-holding-dollar"></i>
                             </div>
-                            <span class="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-rose-950/80 text-rose-300 border border-rose-800/50">Cobranzas</span>
+                            <span class="text-[10px] sm:text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-rose-950/80 text-rose-300 border border-rose-800/50">Cobranzas</span>
                         </div>
-                        <span class="text-[10px] font-bold uppercase tracking-wider text-cyan-400 mb-1 block">Ideal para: Servicios recurrentes, Colegios, Abonos</span>
-                        <h3 class="text-lg font-bold text-white mb-3">Reclamación y Recordatorio Escalonado de Deudas</h3>
-                        <p class="text-gray-400 text-xs leading-relaxed mb-3">
-                            <strong class="text-gray-200">El problema:</strong> Clientes que olvidan pagar facturas a tiempo; el equipo pierde horas llamando o redactando correos incómodos uno por uno.
+                        <span class="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-cyan-400 mb-1 block">Abonos, Colegios, Servicios Recurrentes</span>
+                        <h3 class="text-base sm:text-lg font-bold text-white mb-2">Reclamación de Deudas y Recordatorio de Pago</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed mb-2">
+                            <strong class="text-gray-200">El problema:</strong> Olvidos de pago que obligan al equipo a enviar mensajes incómodos uno por uno.
                         </p>
                         <p class="text-gray-400 text-xs leading-relaxed mb-4">
-                            <strong class="text-gray-200">Solución Automatika:</strong> Flujo inteligente que detecta facturas por vencer y vencidas, enviando recordatorios amables y personalizados por WhatsApp con botón de pago directo y actualizando el estado de cuenta.
+                            <strong class="text-gray-200">Solución:</strong> Avisos preventivos y de mora automáticos por WhatsApp con botón de pago directo y conciliación.
                         </p>
                     </div>
                     <div>
-                        <div class="flex flex-wrap gap-1.5 mb-4">
-                            <span class="text-[10px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">WhatsApp</span>
-                            <span class="text-[10px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">ERP / Excel</span>
-                            <span class="text-[10px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">Links de Pago</span>
+                        <div class="flex flex-wrap gap-1.5 mb-3">
+                            <span class="text-[9px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">WhatsApp</span>
+                            <span class="text-[9px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">Link de Pago</span>
+                            <span class="text-[9px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">ERP/Excel</span>
                         </div>
-                        <div class="bg-darkbg/90 border border-gray-800/90 p-3 rounded-xl text-xs text-rose-300 font-medium flex items-center justify-between">
-                            <span><i class="fa-solid fa-circle-check mr-1.5"></i> Cobranza 40% más rápida</span>
-                            <button onclick="prefillContact('Reclamación y Recordatorio de Cobranzas')" class="text-cyan-400 hover:text-white font-semibold text-[11px] underline">Quiero esto</button>
+                        <div class="bg-darkbg/90 border border-gray-800/90 p-2.5 rounded-xl text-xs text-rose-300 font-medium flex items-center justify-between">
+                            <span class="text-[11px]"><i class="fa-solid fa-circle-check mr-1 text-rose-400"></i> Cobranza 40% más rápida</span>
+                            <button onclick="prefillContact('Reclamación de Deudas y Recordatorio de Pago')" class="text-cyan-400 hover:text-white font-bold text-xs underline py-1 px-2">Quiero esto</button>
                         </div>
                     </div>
                 </div>
 
                 <!-- PROCESO 4: Finanzas / OCR Facturas Proveedores -->
-                <div class="process-card glass-card card-interactive border border-gray-800/80 p-6 rounded-3xl shadow-xl flex flex-col justify-between" data-category="finanzas">
+                <div class="process-card glass-card card-interactive border border-gray-800/80 p-5 sm:p-6 rounded-2xl sm:rounded-3xl shadow-xl flex flex-col justify-between" data-category="finanzas">
                     <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="w-11 h-11 bg-blue-500/10 text-blue-400 rounded-xl flex items-center justify-center text-lg font-bold border border-blue-500/20">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="w-9 h-9 sm:w-11 sm:h-11 bg-blue-500/10 text-blue-400 rounded-xl flex items-center justify-center text-base sm:text-lg font-bold border border-blue-500/20">
                                 <i class="fa-solid fa-receipt"></i>
                             </div>
-                            <span class="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-blue-950/80 text-blue-300 border border-blue-800/50">Contabilidad & Pagos</span>
+                            <span class="text-[10px] sm:text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-blue-950/80 text-blue-300 border border-blue-800/50">Contabilidad & Pagos</span>
                         </div>
-                        <span class="text-[10px] font-bold uppercase tracking-wider text-cyan-400 mb-1 block">Ideal para: Estudios Contables, Comercios, Constructoras</span>
-                        <h3 class="text-lg font-bold text-white mb-3">Lectura Inteligente de Facturas de Proveedores (OCR IA)</h3>
-                        <p class="text-gray-400 text-xs leading-relaxed mb-3">
-                            <strong class="text-gray-200">El problema:</strong> Cientos de PDFs y fotos de comprobantes llegan al correo administrativo y deben cargarse a mano (fecha, CUIT, importes, IVA) con riesgo de errores de tipeo.
+                        <span class="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-cyan-400 mb-1 block">Estudios Contables, Comercios y PyMEs</span>
+                        <h3 class="text-base sm:text-lg font-bold text-white mb-2">Lectura de Facturas de Proveedores (OCR IA)</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed mb-2">
+                            <strong class="text-gray-200">El problema:</strong> Cientos de PDFs recibidos por mail que se deben tipear a mano en el sistema contable.
                         </p>
                         <p class="text-gray-400 text-xs leading-relaxed mb-4">
-                            <strong class="text-gray-200">Solución Automatika:</strong> Un modelo con OCR lee el correo electrónico, extrae los datos fiscales del comprobante adjunto y los exporta directamente a tu ERP contable o Google Sheets.
+                            <strong class="text-gray-200">Solución:</strong> Un robot con OCR lee los adjuntos, extrae CUIT, fechas e IVA y los ingresa directo a tu ERP.
                         </p>
                     </div>
                     <div>
-                        <div class="flex flex-wrap gap-1.5 mb-4">
-                            <span class="text-[10px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">OCR con IA</span>
-                            <span class="text-[10px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">Gmail / Outlook</span>
-                            <span class="text-[10px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">ERP Contable</span>
+                        <div class="flex flex-wrap gap-1.5 mb-3">
+                            <span class="text-[9px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">OCR con IA</span>
+                            <span class="text-[9px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">Gmail/Outlook</span>
+                            <span class="text-[9px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">ERP Contable</span>
                         </div>
-                        <div class="bg-darkbg/90 border border-gray-800/90 p-3 rounded-xl text-xs text-blue-300 font-medium flex items-center justify-between">
-                            <span><i class="fa-solid fa-circle-check mr-1.5"></i> Carga contable en segundos</span>
-                            <button onclick="prefillContact('Lectura Inteligente de Facturas de Proveedores con OCR')" class="text-cyan-400 hover:text-white font-semibold text-[11px] underline">Quiero esto</button>
+                        <div class="bg-darkbg/90 border border-gray-800/90 p-2.5 rounded-xl text-xs text-blue-300 font-medium flex items-center justify-between">
+                            <span class="text-[11px]"><i class="fa-solid fa-circle-check mr-1 text-blue-400"></i> Carga contable en segundos</span>
+                            <button onclick="prefillContact('Lectura de Facturas con OCR')" class="text-cyan-400 hover:text-white font-bold text-xs underline py-1 px-2">Quiero esto</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- PROCESO 5: Ventas / Agendamiento de Turnos y Citas -->
-                <div class="process-card glass-card card-interactive border border-gray-800/80 p-6 rounded-3xl shadow-xl flex flex-col justify-between" data-category="ventas">
+                <!-- PROCESO 5: Ventas / Turnos y Citas -->
+                <div class="process-card glass-card card-interactive border border-gray-800/80 p-5 sm:p-6 rounded-2xl sm:rounded-3xl shadow-xl flex flex-col justify-between" data-category="ventas">
                     <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="w-11 h-11 bg-teal-500/10 text-teal-400 rounded-xl flex items-center justify-center text-lg font-bold border border-teal-500/20">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="w-9 h-9 sm:w-11 sm:h-11 bg-teal-500/10 text-teal-400 rounded-xl flex items-center justify-center text-base sm:text-lg font-bold border border-teal-500/20">
                                 <i class="fa-solid fa-calendar-check"></i>
                             </div>
-                            <span class="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-teal-950/80 text-teal-300 border border-teal-800/50">Agendas & Turnos</span>
+                            <span class="text-[10px] sm:text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-teal-950/80 text-teal-300 border border-teal-800/50">Agendas & Turnos</span>
                         </div>
-                        <span class="text-[10px] font-bold uppercase tracking-wider text-cyan-400 mb-1 block">Ideal para: Clínicas, Consultorios, Abogados, Salones</span>
-                        <h3 class="text-lg font-bold text-white mb-3">Agendamiento y Recordatorio Autónomo de Citas</h3>
-                        <p class="text-gray-400 text-xs leading-relaxed mb-3">
-                            <strong class="text-gray-200">El problema:</strong> Idas y vueltas por WhatsApp para coordinar día y horario, sumado al ausentismo de clientes que se olvidan de su turno.
+                        <span class="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-cyan-400 mb-1 block">Clínicas, Consultorios, Abogados, Salones</span>
+                        <h3 class="text-base sm:text-lg font-bold text-white mb-2">Agendamiento y Recordatorio de Turnos</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed mb-2">
+                            <strong class="text-gray-200">El problema:</strong> Idas y vueltas para coordinar horario y ausentismo de pacientes que se olvidan.
                         </p>
                         <p class="text-gray-400 text-xs leading-relaxed mb-4">
-                            <strong class="text-gray-200">Solución Automatika:</strong> El cliente elige horario en tu calendario digital; el sistema agenda, bloquea la disponibilidad y le envía recordatorios interactivos por WhatsApp 24hs antes solicitando confirmación con un clic.
+                            <strong class="text-gray-200">Solución:</strong> Reserva online sincronizada con Google Calendar y recordatorio WhatsApp 24hs antes con confirmación.
                         </p>
                     </div>
                     <div>
-                        <div class="flex flex-wrap gap-1.5 mb-4">
-                            <span class="text-[10px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">Google Calendar</span>
-                            <span class="text-[10px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">WhatsApp API</span>
-                            <span class="text-[10px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">Cal.com/Calendly</span>
+                        <div class="flex flex-wrap gap-1.5 mb-3">
+                            <span class="text-[9px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">Google Calendar</span>
+                            <span class="text-[9px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">WhatsApp API</span>
                         </div>
-                        <div class="bg-darkbg/90 border border-gray-800/90 p-3 rounded-xl text-xs text-teal-300 font-medium flex items-center justify-between">
-                            <span><i class="fa-solid fa-circle-check mr-1.5"></i> Reduce ausentismo en un 70%</span>
-                            <button onclick="prefillContact('Agendamiento y Recordatorio de Turnos')" class="text-cyan-400 hover:text-white font-semibold text-[11px] underline">Quiero esto</button>
+                        <div class="bg-darkbg/90 border border-gray-800/90 p-2.5 rounded-xl text-xs text-teal-300 font-medium flex items-center justify-between">
+                            <span class="text-[11px]"><i class="fa-solid fa-circle-check mr-1 text-teal-400"></i> -70% ausentismo</span>
+                            <button onclick="prefillContact('Agendamiento de Turnos por WhatsApp')" class="text-cyan-400 hover:text-white font-bold text-xs underline py-1 px-2">Quiero esto</button>
                         </div>
                     </div>
                 </div>
 
                 <!-- PROCESO 6: Operaciones / Stock Multicanal -->
-                <div class="process-card glass-card card-interactive border border-gray-800/80 p-6 rounded-3xl shadow-xl flex flex-col justify-between" data-category="operaciones">
+                <div class="process-card glass-card card-interactive border border-gray-800/80 p-5 sm:p-6 rounded-2xl sm:rounded-3xl shadow-xl flex flex-col justify-between" data-category="operaciones">
                     <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="w-11 h-11 bg-amber-500/10 text-amber-400 rounded-xl flex items-center justify-center text-lg font-bold border border-amber-500/20">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="w-9 h-9 sm:w-11 sm:h-11 bg-amber-500/10 text-amber-400 rounded-xl flex items-center justify-center text-base sm:text-lg font-bold border border-amber-500/20">
                                 <i class="fa-solid fa-boxes-stacked"></i>
                             </div>
-                            <span class="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-amber-950/80 text-amber-300 border border-amber-800/50">Inventario & Stock</span>
+                            <span class="text-[10px] sm:text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-amber-950/80 text-amber-300 border border-amber-800/50">Inventario</span>
                         </div>
-                        <span class="text-[10px] font-bold uppercase tracking-wider text-cyan-400 mb-1 block">Ideal para: Comercios, Retail, E-commerce Multicanal</span>
-                        <h3 class="text-lg font-bold text-white mb-3">Sincronización Multicanal de Precios y Stock</h3>
-                        <p class="text-gray-400 text-xs leading-relaxed mb-3">
-                            <strong class="text-gray-200">El problema:</strong> Vender en Mercado Libre, en tu tienda web y en el mostrador físico genera quiebres de stock o ventas de productos que ya no existen, o precios desactualizados.
+                        <span class="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-cyan-400 mb-1 block">Retail, Comercios, E-commerce</span>
+                        <h3 class="text-base sm:text-lg font-bold text-white mb-2">Sincronización Multicanal de Stock y Precios</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed mb-2">
+                            <strong class="text-gray-200">El problema:</strong> Vender en Mercado Libre, tienda web y local físico genera quiebres o sobreventas.
                         </p>
                         <p class="text-gray-400 text-xs leading-relaxed mb-4">
-                            <strong class="text-gray-200">Solución Automatika:</strong> Al registrarse una venta o cambiar un precio en tu sistema principal, se propaga en segundos a todas las plataformas online de forma unificada.
+                            <strong class="text-gray-200">Solución:</strong> Una venta física o cambio de precio se replica en segundos en todos los canales online.
                         </p>
                     </div>
                     <div>
-                        <div class="flex flex-wrap gap-1.5 mb-4">
-                            <span class="text-[10px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">Mercado Libre</span>
-                            <span class="text-[10px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">Tienda Nube</span>
-                            <span class="text-[10px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">ERP / Excel</span>
+                        <div class="flex flex-wrap gap-1.5 mb-3">
+                            <span class="text-[9px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">Mercado Libre</span>
+                            <span class="text-[9px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">Tienda Nube</span>
+                            <span class="text-[9px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">ERP Local</span>
                         </div>
-                        <div class="bg-darkbg/90 border border-gray-800/90 p-3 rounded-xl text-xs text-amber-300 font-medium flex items-center justify-between">
-                            <span><i class="fa-solid fa-circle-check mr-1.5"></i> Cero sobreventas ni reclamos</span>
-                            <button onclick="prefillContact('Sincronización Multicanal de Stock y Precios')" class="text-cyan-400 hover:text-white font-semibold text-[11px] underline">Quiero esto</button>
+                        <div class="bg-darkbg/90 border border-gray-800/90 p-2.5 rounded-xl text-xs text-amber-300 font-medium flex items-center justify-between">
+                            <span class="text-[11px]"><i class="fa-solid fa-circle-check mr-1 text-amber-400"></i> Cero sobreventas</span>
+                            <button onclick="prefillContact('Sincronización Multicanal de Stock y Precios')" class="text-cyan-400 hover:text-white font-bold text-xs underline py-1 px-2">Quiero esto</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- PROCESO 7: Operaciones / Logística y Notificación Envíos -->
-                <div class="process-card glass-card card-interactive border border-gray-800/80 p-6 rounded-3xl shadow-xl flex flex-col justify-between" data-category="operaciones">
+                <!-- PROCESO 7: Operaciones / Logística Envíos -->
+                <div class="process-card glass-card card-interactive border border-gray-800/80 p-5 sm:p-6 rounded-2xl sm:rounded-3xl shadow-xl flex flex-col justify-between" data-category="operaciones">
                     <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="w-11 h-11 bg-indigo-500/10 text-indigo-400 rounded-xl flex items-center justify-center text-lg font-bold border border-indigo-500/20">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="w-9 h-9 sm:w-11 sm:h-11 bg-indigo-500/10 text-indigo-400 rounded-xl flex items-center justify-center text-base sm:text-lg font-bold border border-indigo-500/20">
                                 <i class="fa-solid fa-truck-fast"></i>
                             </div>
-                            <span class="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-indigo-950/80 text-indigo-300 border border-indigo-800/50">Logística & Envíos</span>
+                            <span class="text-[10px] sm:text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-indigo-950/80 text-indigo-300 border border-indigo-800/50">Logística</span>
                         </div>
-                        <span class="text-[10px] font-bold uppercase tracking-wider text-cyan-400 mb-1 block">Ideal for: Distribuidoras, Tiendas online, Fábricas</span>
-                        <h3 class="text-lg font-bold text-white mb-3">Notificación de Despacho y Tracking en Tiempo Real</h3>
-                        <p class="text-gray-400 text-xs leading-relaxed mb-3">
-                            <strong class="text-gray-200">El problema:</strong> Clientes preguntando "¿cuándo llega mi pedido?" continuamente, obligando al personal de logística a buscar números de guía manualmente.
+                        <span class="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-cyan-400 mb-1 block">Distribuidoras, Tiendas Online, Depósitos</span>
+                        <h3 class="text-base sm:text-lg font-bold text-white mb-2">Tracking y Notificación Automática de Envíos</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed mb-2">
+                            <strong class="text-gray-200">El problema:</strong> Consultas continuas de "¿dónde está mi pedido?" consumiendo tiempo del equipo.
                         </p>
                         <p class="text-gray-400 text-xs leading-relaxed mb-4">
-                            <strong class="text-gray-200">Solución Automatika:</strong> Al cambiar el estado de la orden en el depósito o transportista, se envía automáticamente un mensaje por WhatsApp con el link de seguimiento exacto.
+                            <strong class="text-gray-200">Solución:</strong> Al despachar, el cliente recibe por WhatsApp el número de guía y link de seguimiento exacto.
                         </p>
                     </div>
                     <div>
-                        <div class="flex flex-wrap gap-1.5 mb-4">
-                            <span class="text-[10px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">Andreani / Correo</span>
-                            <span class="text-[10px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">WhatsApp API</span>
-                            <span class="text-[10px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">Webhooks</span>
+                        <div class="flex flex-wrap gap-1.5 mb-3">
+                            <span class="text-[9px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">Correo/Andreani</span>
+                            <span class="text-[9px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">WhatsApp API</span>
                         </div>
-                        <div class="bg-darkbg/90 border border-gray-800/90 p-3 rounded-xl text-xs text-indigo-300 font-medium flex items-center justify-between">
-                            <span><i class="fa-solid fa-circle-check mr-1.5"></i> -80% consultas de estado</span>
-                            <button onclick="prefillContact('Notificación de Despacho y Tracking de Envíos')" class="text-cyan-400 hover:text-white font-semibold text-[11px] underline">Quiero esto</button>
+                        <div class="bg-darkbg/90 border border-gray-800/90 p-2.5 rounded-xl text-xs text-indigo-300 font-medium flex items-center justify-between">
+                            <span class="text-[11px]"><i class="fa-solid fa-circle-check mr-1 text-indigo-400"></i> -80% consultas de estado</span>
+                            <button onclick="prefillContact('Tracking y Notificación de Envíos')" class="text-cyan-400 hover:text-white font-bold text-xs underline py-1 px-2">Quiero esto</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- PROCESO 8: Ventas / Cotizaciones y Carritos Abandonados -->
-                <div class="process-card glass-card card-interactive border border-gray-800/80 p-6 rounded-3xl shadow-xl flex flex-col justify-between" data-category="ventas">
+                <!-- PROCESO 8: Ventas / Cotizaciones -->
+                <div class="process-card glass-card card-interactive border border-gray-800/80 p-5 sm:p-6 rounded-2xl sm:rounded-3xl shadow-xl flex flex-col justify-between" data-category="ventas">
                     <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="w-11 h-11 bg-purple-500/10 text-purple-400 rounded-xl flex items-center justify-center text-lg font-bold border border-purple-500/20">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="w-9 h-9 sm:w-11 sm:h-11 bg-purple-500/10 text-purple-400 rounded-xl flex items-center justify-center text-base sm:text-lg font-bold border border-purple-500/20">
                                 <i class="fa-solid fa-cart-shopping"></i>
                             </div>
-                            <span class="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-purple-950/80 text-purple-300 border border-purple-800/50">Cierre de Ventas</span>
+                            <span class="text-[10px] sm:text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-purple-950/80 text-purple-300 border border-purple-800/50">Cierre de Ventas</span>
                         </div>
-                        <span class="text-[10px] font-bold uppercase tracking-wider text-cyan-400 mb-1 block">Ideal para: Servicios B2B, Venta Mayorista, Tiendas</span>
-                        <h3 class="text-lg font-bold text-white mb-3">Seguimiento Automático de Presupuestos Enviados</h3>
-                        <p class="text-gray-400 text-xs leading-relaxed mb-3">
-                            <strong class="text-gray-200">El problema:</strong> Se envían decenas de cotizaciones por semana y los vendedores se olvidan de hacer el seguimiento ("follow-up") a los 3 y 7 días.
+                        <span class="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-cyan-400 mb-1 block">Servicios B2B, Mayoristas, Presupuestos</span>
+                        <h3 class="text-base sm:text-lg font-bold text-white mb-2">Seguimiento Automático de Presupuestos</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed mb-2">
+                            <strong class="text-gray-200">El problema:</strong> Presupuestos enviados que quedan en el olvido por falta de tiempo para hacer seguimiento.
                         </p>
                         <p class="text-gray-400 text-xs leading-relaxed mb-4">
-                            <strong class="text-gray-200">Solución Automatika:</strong> Flujo que detecta si el presupuesto fue abierto o si pasaron 48hs sin respuesta para enviar un recordatorio estratégico por WhatsApp consultando si surgieron dudas.
+                            <strong class="text-gray-200">Solución:</strong> Flujo que detecta cotizaciones sin respuesta a las 48hs y envía recordatorios amables por WhatsApp.
                         </p>
                     </div>
                     <div>
-                        <div class="flex flex-wrap gap-1.5 mb-4">
-                            <span class="text-[10px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">CRM</span>
-                            <span class="text-[10px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">WhatsApp API</span>
-                            <span class="text-[10px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">Gmail</span>
+                        <div class="flex flex-wrap gap-1.5 mb-3">
+                            <span class="text-[9px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">CRM</span>
+                            <span class="text-[9px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">WhatsApp API</span>
                         </div>
-                        <div class="bg-darkbg/90 border border-gray-800/90 p-3 rounded-xl text-xs text-purple-300 font-medium flex items-center justify-between">
-                            <span><i class="fa-solid fa-circle-check mr-1.5"></i> +25% conversiones de ventas</span>
-                            <button onclick="prefillContact('Seguimiento Automático de Cotizaciones')" class="text-cyan-400 hover:text-white font-semibold text-[11px] underline">Quiero esto</button>
+                        <div class="bg-darkbg/90 border border-gray-800/90 p-2.5 rounded-xl text-xs text-purple-300 font-medium flex items-center justify-between">
+                            <span class="text-[11px]"><i class="fa-solid fa-circle-check mr-1 text-purple-400"></i> +25% cierres de venta</span>
+                            <button onclick="prefillContact('Seguimiento de Cotizaciones')" class="text-cyan-400 hover:text-white font-bold text-xs underline py-1 px-2">Quiero esto</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- PROCESO 9: Gestión / Licencias y Turnos de Personal -->
-                <div class="process-card glass-card card-interactive border border-gray-800/80 p-6 rounded-3xl shadow-xl flex flex-col justify-between" data-category="gestion">
+                <!-- PROCESO 9: Gestión / Licencias RRHH -->
+                <div class="process-card glass-card card-interactive border border-gray-800/80 p-5 sm:p-6 rounded-2xl sm:rounded-3xl shadow-xl flex flex-col justify-between" data-category="gestion">
                     <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="w-11 h-11 bg-blue-500/10 text-cyan-400 rounded-xl flex items-center justify-center text-lg font-bold border border-blue-500/20">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="w-9 h-9 sm:w-11 sm:h-11 bg-blue-500/10 text-cyan-400 rounded-xl flex items-center justify-center text-base sm:text-lg font-bold border border-blue-500/20">
                                 <i class="fa-solid fa-user-clock"></i>
                             </div>
-                            <span class="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-blue-950/80 text-blue-300 border border-blue-800/50">Recursos Humanos</span>
+                            <span class="text-[10px] sm:text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-blue-950/80 text-blue-300 border border-blue-800/50">Recursos Humanos</span>
                         </div>
-                        <span class="text-[10px] font-bold uppercase tracking-wider text-cyan-400 mb-1 block">Ideal para: Empresas con 5 a 50+ empleados</span>
-                        <h3 class="text-lg font-bold text-white mb-3">Gestión de Vacaciones, Licencias y Fichadas</h3>
-                        <p class="text-gray-400 text-xs leading-relaxed mb-3">
-                            <strong class="text-gray-200">El problema:</strong> Solicitudes de días de descanso en papelitos o chats sueltos, provocando solapamiento de personal y cálculos manuales de días pendientes.
+                        <span class="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-cyan-400 mb-1 block">Empresas de 5 a 50+ colaboradores</span>
+                        <h3 class="text-base sm:text-lg font-bold text-white mb-2">Gestión de Vacaciones, Licencias y Fichadas</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed mb-2">
+                            <strong class="text-gray-200">El problema:</strong> Pedidos de días de descanso en papel o chats sueltos provocando solapamientos.
                         </p>
                         <p class="text-gray-400 text-xs leading-relaxed mb-4">
-                            <strong class="text-gray-200">Solución Automatika:</strong> Portal simple o chatbot interno donde el colaborador pide días, se valida automáticamente con el calendario del área y el supervisor aprueba en un clic.
+                            <strong class="text-gray-200">Solución:</strong> Portal o bot interno donde el empleado pide días, se valida con el equipo y se aprueba en 1 clic.
                         </p>
                     </div>
                     <div>
-                        <div class="flex flex-wrap gap-1.5 mb-4">
-                            <span class="text-[10px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">Google Workspace</span>
-                            <span class="text-[10px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">Slack/WhatsApp</span>
-                            <span class="text-[10px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">HR System</span>
+                        <div class="flex flex-wrap gap-1.5 mb-3">
+                            <span class="text-[9px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">Google Workspace</span>
+                            <span class="text-[9px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">Slack/WhatsApp</span>
                         </div>
-                        <div class="bg-darkbg/90 border border-gray-800/90 p-3 rounded-xl text-xs text-cyan-300 font-medium flex items-center justify-between">
-                            <span><i class="fa-solid fa-circle-check mr-1.5"></i> Control transparente y sin fricciones</span>
-                            <button onclick="prefillContact('Gestión de Vacaciones y Licencias de Personal')" class="text-cyan-400 hover:text-white font-semibold text-[11px] underline">Quiero esto</button>
+                        <div class="bg-darkbg/90 border border-gray-800/90 p-2.5 rounded-xl text-xs text-cyan-300 font-medium flex items-center justify-between">
+                            <span class="text-[11px]"><i class="fa-solid fa-circle-check mr-1 text-cyan-400"></i> Orden total en RRHH</span>
+                            <button onclick="prefillContact('Gestión de Vacaciones y Licencias')" class="text-cyan-400 hover:text-white font-bold text-xs underline py-1 px-2">Quiero esto</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- PROCESO 10: Finanzas / Conciliación Bancaria y Reporte Diario -->
-                <div class="process-card glass-card card-interactive border border-gray-800/80 p-6 rounded-3xl shadow-xl flex flex-col justify-between" data-category="finanzas">
+                <!-- PROCESO 10: Finanzas / Conciliación Bancaria -->
+                <div class="process-card glass-card card-interactive border border-gray-800/80 p-5 sm:p-6 rounded-2xl sm:rounded-3xl shadow-xl flex flex-col justify-between" data-category="finanzas">
                     <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="w-11 h-11 bg-emerald-500/10 text-emerald-400 rounded-xl flex items-center justify-center text-lg font-bold border border-emerald-500/20">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="w-9 h-9 sm:w-11 sm:h-11 bg-emerald-500/10 text-emerald-400 rounded-xl flex items-center justify-center text-base sm:text-lg font-bold border border-emerald-500/20">
                                 <i class="fa-solid fa-scale-balanced"></i>
                             </div>
-                            <span class="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-emerald-950/80 text-emerald-300 border border-emerald-800/50">Caja & Bancos</span>
+                            <span class="text-[10px] sm:text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-emerald-950/80 text-emerald-300 border border-emerald-800/50">Caja & Bancos</span>
                         </div>
-                        <span class="text-[10px] font-bold uppercase tracking-wider text-cyan-400 mb-1 block">Ideal para: Comercios, Puntos de Venta, Gerencia</span>
-                        <h3 class="text-lg font-bold text-white mb-3">Conciliación Bancaria y Cierre Diario de Caja</h3>
-                        <p class="text-gray-400 text-xs leading-relaxed mb-3">
-                            <strong class="text-gray-200">El problema:</strong> Conciliar extractos bancarios con los cupones de tarjetas y ventas del día lleva horas de trabajo todas las tardes o fines de mes.
+                        <span class="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-cyan-400 mb-1 block">Comercios, Puntos de Venta, Gerencia</span>
+                        <h3 class="text-base sm:text-lg font-bold text-white mb-2">Conciliación Bancaria y Cierre Diario de Caja</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed mb-2">
+                            <strong class="text-gray-200">El problema:</strong> Conciliar extractos bancarios con cupones de tarjetas lleva horas al final del día.
                         </p>
                         <p class="text-gray-400 text-xs leading-relaxed mb-4">
-                            <strong class="text-gray-200">Solución Automatika:</strong> Cruce automático diario entre movimientos bancarios/pasarelas y comprobantes de venta, alertando anomalías y diferencias al instante.
+                            <strong class="text-gray-200">Solución:</strong> Cruce automático de movimientos bancarios con tickets de venta, alertando diferencias al instante.
                         </p>
                     </div>
                     <div>
-                        <div class="flex flex-wrap gap-1.5 mb-4">
-                            <span class="text-[10px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">Open Banking/APIs</span>
-                            <span class="text-[10px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">Google Sheets</span>
-                            <span class="text-[10px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">Alertas Telegram</span>
+                        <div class="flex flex-wrap gap-1.5 mb-3">
+                            <span class="text-[9px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">Open Banking</span>
+                            <span class="text-[9px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">Google Sheets</span>
                         </div>
-                        <div class="bg-darkbg/90 border border-gray-800/90 p-3 rounded-xl text-xs text-emerald-300 font-medium flex items-center justify-between">
-                            <span><i class="fa-solid fa-circle-check mr-1.5"></i> Cierre de caja en 5 minutos</span>
-                            <button onclick="prefillContact('Conciliación Bancaria y Cierre Diario')" class="text-cyan-400 hover:text-white font-semibold text-[11px] underline">Quiero esto</button>
+                        <div class="bg-darkbg/90 border border-gray-800/90 p-2.5 rounded-xl text-xs text-emerald-300 font-medium flex items-center justify-between">
+                            <span class="text-[11px]"><i class="fa-solid fa-circle-check mr-1 text-emerald-400"></i> Cierre de caja en 5 min</span>
+                            <button onclick="prefillContact('Conciliación Bancaria y Cierre Diario')" class="text-cyan-400 hover:text-white font-bold text-xs underline py-1 px-2">Quiero esto</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- PROCESO 11: Operaciones / Alertas de Reposición a Proveedores -->
-                <div class="process-card glass-card card-interactive border border-gray-800/80 p-6 rounded-3xl shadow-xl flex flex-col justify-between" data-category="operaciones">
+                <!-- PROCESO 11: Operaciones / Alertas Stock Crítico -->
+                <div class="process-card glass-card card-interactive border border-gray-800/80 p-5 sm:p-6 rounded-2xl sm:rounded-3xl shadow-xl flex flex-col justify-between" data-category="operaciones">
                     <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="w-11 h-11 bg-yellow-500/10 text-yellow-400 rounded-xl flex items-center justify-center text-lg font-bold border border-yellow-500/20">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="w-9 h-9 sm:w-11 sm:h-11 bg-yellow-500/10 text-yellow-400 rounded-xl flex items-center justify-center text-base sm:text-lg font-bold border border-yellow-500/20">
                                 <i class="fa-solid fa-triangle-exclamation"></i>
                             </div>
-                            <span class="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-yellow-950/80 text-yellow-300 border border-yellow-800/50">Compras & Insumos</span>
+                            <span class="text-[10px] sm:text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-yellow-950/80 text-yellow-300 border border-yellow-800/50">Compras & Insumos</span>
                         </div>
-                        <span class="text-[10px] font-bold uppercase tracking-wider text-cyan-400 mb-1 block">Ideal para: Distribuidoras, Gastronomía, Talleres</span>
-                        <h3 class="text-lg font-bold text-white mb-3">Alertas de Stock Crítico y Órdenes de Compra</h3>
-                        <p class="text-gray-400 text-xs leading-relaxed mb-3">
-                            <strong class="text-gray-200">El problema:</strong> Enterarse de que no hay stock cuando el cliente ya está en el mostrador o cuando la línea de producción se frena por falta de insumos.
+                        <span class="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-cyan-400 mb-1 block">Distribuidoras, Gastronomía, Talleres</span>
+                        <h3 class="text-base sm:text-lg font-bold text-white mb-2">Alertas de Stock Crítico y Órdenes de Compra</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed mb-2">
+                            <strong class="text-gray-200">El problema:</strong> Enterarse de que no hay stock cuando el cliente ya está en el mostrador.
                         </p>
                         <p class="text-gray-400 text-xs leading-relaxed mb-4">
-                            <strong class="text-gray-200">Solución Automatika:</strong> Monitoreo constante del nivel de stock que genera automáticamente el borrador de orden de compra al proveedor habitual antes del quiebre.
+                            <strong class="text-gray-200">Solución:</strong> Monitoreo de stock que genera automáticamente el borrador de compra al proveedor antes del quiebre.
                         </p>
                     </div>
                     <div>
-                        <div class="flex flex-wrap gap-1.5 mb-4">
-                            <span class="text-[10px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">Base de Datos</span>
-                            <span class="text-[10px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">Email Proveedores</span>
-                            <span class="text-[10px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">PDF Generator</span>
+                        <div class="flex flex-wrap gap-1.5 mb-3">
+                            <span class="text-[9px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">Base de Datos</span>
+                            <span class="text-[9px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">Email Proveedor</span>
                         </div>
-                        <div class="bg-darkbg/90 border border-gray-800/90 p-3 rounded-xl text-xs text-yellow-300 font-medium flex items-center justify-between">
-                            <span><i class="fa-solid fa-circle-check mr-1.5"></i> Abastecimiento preventivo</span>
-                            <button onclick="prefillContact('Alertas de Stock Crítico y Órdenes de Compra')" class="text-cyan-400 hover:text-white font-semibold text-[11px] underline">Quiero esto</button>
+                        <div class="bg-darkbg/90 border border-gray-800/90 p-2.5 rounded-xl text-xs text-yellow-300 font-medium flex items-center justify-between">
+                            <span class="text-[11px]"><i class="fa-solid fa-circle-check mr-1 text-yellow-400"></i> Compra preventiva</span>
+                            <button onclick="prefillContact('Alertas de Stock Crítico')" class="text-cyan-400 hover:text-white font-bold text-xs underline py-1 px-2">Quiero esto</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- PROCESO 12: Gestión / Reportes Ejecutivos Automáticos -->
-                <div class="process-card glass-card card-interactive border border-gray-800/80 p-6 rounded-3xl shadow-xl flex flex-col justify-between" data-category="gestion">
+                <!-- PROCESO 12: Dirección / Reporte Semanal -->
+                <div class="process-card glass-card card-interactive border border-gray-800/80 p-5 sm:p-6 rounded-2xl sm:rounded-3xl shadow-xl flex flex-col justify-between" data-category="gestion">
                     <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="w-11 h-11 bg-cyan-500/10 text-cyan-400 rounded-xl flex items-center justify-center text-lg font-bold border border-cyan-500/20">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="w-9 h-9 sm:w-11 sm:h-11 bg-cyan-500/10 text-cyan-400 rounded-xl flex items-center justify-center text-base sm:text-lg font-bold border border-cyan-500/20">
                                 <i class="fa-solid fa-chart-pie"></i>
                             </div>
-                            <span class="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-cyan-950/80 text-cyan-300 border border-cyan-800/50">Dirección & Socios</span>
+                            <span class="text-[10px] sm:text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-cyan-950/80 text-cyan-300 border border-cyan-800/50">Dirección & Socios</span>
                         </div>
-                        <span class="text-[10px] font-bold uppercase tracking-wider text-cyan-400 mb-1 block">Ideal para: Socios, Gerentes y Dueños de PyMEs</span>
-                        <h3 class="text-lg font-bold text-white mb-3">Reporte Ejecutivo Semanal Consolidado (WhatsApp/PDF)</h3>
-                        <p class="text-gray-400 text-xs leading-relaxed mb-3">
-                            <strong class="text-gray-200">El problema:</strong> Para saber cuánto se vendió, cuánto se cobró y cuánto se debe, hay que pedirle informes a 3 personas distintas y esperar días.
+                        <span class="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-cyan-400 mb-1 block">Dueños de PyMEs y Gerentes</span>
+                        <h3 class="text-base sm:text-lg font-bold text-white mb-2">Reporte Ejecutivo Semanal por WhatsApp</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed mb-2">
+                            <strong class="text-gray-200">El problema:</strong> Pedir informes a 3 personas distintas y esperar días para saber ventas y deudores.
                         </p>
                         <p class="text-gray-400 text-xs leading-relaxed mb-4">
-                            <strong class="text-gray-200">Solución Automatika:</strong> Todos los lunes a las 8:00 AM, los socios reciben en su WhatsApp un resumen claro con KPIs de ventas, cobranzas pendientes y flujo de fondos.
+                            <strong class="text-gray-200">Solución:</strong> Cada lunes a las 8:00 AM, los socios reciben en WhatsApp un resumen con ventas, cobros y saldos.
                         </p>
                     </div>
                     <div>
-                        <div class="flex flex-wrap gap-1.5 mb-4">
-                            <span class="text-[10px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">WhatsApp Direct</span>
-                            <span class="text-[10px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">Google Looker/Sheets</span>
-                            <span class="text-[10px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">Cron Jobs</span>
+                        <div class="flex flex-wrap gap-1.5 mb-3">
+                            <span class="text-[9px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">WhatsApp Direct</span>
+                            <span class="text-[9px] px-2 py-0.5 rounded bg-gray-900 border border-gray-800 text-gray-300">Sheets/Looker</span>
                         </div>
-                        <div class="bg-darkbg/90 border border-gray-800/90 p-3 rounded-xl text-xs text-cyan-300 font-medium flex items-center justify-between">
-                            <span><i class="fa-solid fa-circle-check mr-1.5"></i> Control total en tu celular</span>
-                            <button onclick="prefillContact('Reporte Ejecutivo Semanal Consolidado')" class="text-cyan-400 hover:text-white font-semibold text-[11px] underline">Quiero esto</button>
+                        <div class="bg-darkbg/90 border border-gray-800/90 p-2.5 rounded-xl text-xs text-cyan-300 font-medium flex items-center justify-between">
+                            <span class="text-[11px]"><i class="fa-solid fa-circle-check mr-1 text-cyan-400"></i> Control total en tu celular</span>
+                            <button onclick="prefillContact('Reporte Ejecutivo Semanal')" class="text-cyan-400 hover:text-white font-bold text-xs underline py-1 px-2">Quiero esto</button>
                         </div>
                     </div>
                 </div>
 
             </div>
 
-            <!-- Banner pie de catálogo -->
-            <div class="mt-12 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-blue-950/60 via-slate-900/90 to-blue-950/60 border border-blue-800/40 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-6">
+            <!-- Banner pie de catálogo móvil -->
+            <div class="mt-8 sm:mt-12 p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-gradient-to-r from-blue-950/60 via-slate-900/90 to-blue-950/60 border border-blue-800/40 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
                 <div>
-                    <h4 class="text-lg sm:text-xl font-bold text-white mb-1">¿Tenés un proceso específico que no figura en la lista?</h4>
-                    <p class="text-gray-400 text-xs sm:text-sm">Si tu proceso tiene una regla repetitiva o usa una computadora, podemos automatizarlo.</p>
+                    <h4 class="text-base sm:text-xl font-bold text-white mb-1">¿Tenés un proceso específico no listado?</h4>
+                    <p class="text-gray-400 text-xs sm:text-sm">Si tu tarea sigue una regla repetitiva en computadora, podemos automatizarla.</p>
                 </div>
-                <a href="#contacto" class="whitespace-nowrap px-6 py-3 rounded-xl bg-accent hover:bg-accenthover text-white text-sm font-semibold transition-all shadow-lg shadow-blue-600/30">
+                <a href="#contacto" class="w-full sm:w-auto text-center px-6 py-3 rounded-xl bg-accent hover:bg-accenthover text-white text-xs sm:text-sm font-semibold transition-all shadow-lg shadow-blue-600/30">
                     Consultar por mi caso a medida
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- 4. CALCULADORA INTERACTIVA DE AHORRO Y RETORNO (ROI) -->
-    <section id="calculadora" class="py-24 bg-darkbg border-t border-gray-800/60 relative">
+    <!-- 5. CALCULADORA DE AHORRO Y ROI (TÁCTIL Y REACTIVA) -->
+    <section id="calculadora" class="py-14 sm:py-24 bg-darkbg border-t border-gray-800/60 relative">
         <div class="max-w-5xl mx-auto px-4 sm:px-6">
-            <div class="text-center max-w-2xl mx-auto mb-14">
-                <span class="text-cyan-400 text-xs font-bold uppercase tracking-widest">Herramienta Interactiva</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight mt-2">Calculá el Ahorro de tu PyME</h2>
-                <p class="mt-3 text-gray-400 text-sm sm:text-base">
-                    Ajustá los controles según el tamaño de tu equipo administrativo y descubrí cuántas horas y dinero podés recuperar cada mes.
+            <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+                <span class="text-cyan-400 text-[10px] sm:text-xs font-bold uppercase tracking-widest">Herramienta Interactiva</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight mt-1">Calculá tu Ahorro Estimado</h2>
+                <p class="mt-2 text-gray-400 text-xs sm:text-sm">
+                    Deslizá los controles según tu equipo y mirá el impacto directo en horas y dinero recuperado.
                 </p>
             </div>
 
-            <div class="glass-card border border-gray-800/90 rounded-3xl p-6 sm:p-10 md:p-12 shadow-2xl">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="glass-card border border-gray-800/90 rounded-2xl sm:rounded-3xl p-5 sm:p-10 md:p-12 shadow-2xl">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center">
                     
-                    <!-- Controles de la Calculadora -->
-                    <div class="lg:col-span-7 space-y-7">
+                    <!-- Controles -->
+                    <div class="lg:col-span-7 space-y-6 sm:space-y-7">
                         <div>
                             <div class="flex justify-between items-center mb-2">
-                                <label class="text-xs sm:text-sm font-bold text-gray-200 uppercase tracking-wide">
-                                    Colaboradores en tareas administrativas/ventas:
+                                <label class="text-xs sm:text-sm font-bold text-gray-200">
+                                    Colaboradores en administración/ventas:
                                 </label>
-                                <span id="val-people" class="text-cyan-400 font-extrabold text-base bg-blue-950/80 px-3 py-1 rounded-lg border border-blue-800/60">3 personas</span>
+                                <span id="val-people" class="text-cyan-300 font-extrabold text-xs sm:text-sm bg-blue-950/90 px-3 py-1 rounded-lg border border-blue-800/60">3 personas</span>
                             </div>
-                            <input type="range" id="input-people" min="1" max="15" value="3" step="1" class="w-full h-2 bg-gray-800 rounded-lg appearance-none cursor-pointer">
-                            <div class="flex justify-between text-[11px] text-gray-500 mt-1">
-                                <span>1 persona</span>
+                            <input type="range" id="input-people" min="1" max="15" value="3" step="1" class="w-full h-2.5 bg-gray-800 rounded-lg appearance-none cursor-pointer">
+                            <div class="flex justify-between text-[10px] text-gray-500 mt-1">
+                                <span>1</span>
                                 <span>5 personas</span>
-                                <span>10 personas</span>
-                                <span>15 personas</span>
+                                <span>10</span>
+                                <span>15</span>
                             </div>
                         </div>
 
                         <div>
                             <div class="flex justify-between items-center mb-2">
-                                <label class="text-xs sm:text-sm font-bold text-gray-200 uppercase tracking-wide">
-                                    Horas semanales dedicadas a tareas manuales repetitivas:
+                                <label class="text-xs sm:text-sm font-bold text-gray-200">
+                                    Horas semanales en tareas repetitivas:
                                 </label>
-                                <span id="val-hours" class="text-cyan-400 font-extrabold text-base bg-blue-950/80 px-3 py-1 rounded-lg border border-blue-800/60">12 hs / pers</span>
+                                <span id="val-hours" class="text-cyan-300 font-extrabold text-xs sm:text-sm bg-blue-950/90 px-3 py-1 rounded-lg border border-blue-800/60">12 hs / pers</span>
                             </div>
-                            <input type="range" id="input-hours" min="4" max="30" value="12" step="1" class="w-full h-2 bg-gray-800 rounded-lg appearance-none cursor-pointer">
-                            <div class="flex justify-between text-[11px] text-gray-500 mt-1">
-                                <span>4 hs (baja)</span>
-                                <span>12 hs (media)</span>
-                                <span>20 hs (alta)</span>
-                                <span>30 hs (crítica)</span>
+                            <input type="range" id="input-hours" min="4" max="30" value="12" step="1" class="w-full h-2.5 bg-gray-800 rounded-lg appearance-none cursor-pointer">
+                            <div class="flex justify-between text-[10px] text-gray-500 mt-1">
+                                <span>4 hs</span>
+                                <span>12 hs</span>
+                                <span>20 hs</span>
+                                <span>30 hs</span>
                             </div>
-                            <p class="text-[11px] text-gray-400 mt-1 italic">
-                                * Carga de facturas, responder dudas reiteradas por WhatsApp, copiar planillas, armar presupuestos.
-                            </p>
                         </div>
 
                         <div>
                             <div class="flex justify-between items-center mb-2">
-                                <label class="text-xs sm:text-sm font-bold text-gray-200 uppercase tracking-wide">
-                                    Costo promedio estimado por hora (USD o equivalente):
+                                <label class="text-xs sm:text-sm font-bold text-gray-200">
+                                    Costo promedio hora de trabajo:
                                 </label>
-                                <span id="val-rate" class="text-cyan-400 font-extrabold text-base bg-blue-950/80 px-3 py-1 rounded-lg border border-blue-800/60">$ 8 USD/h</span>
+                                <span id="val-rate" class="text-cyan-300 font-extrabold text-xs sm:text-sm bg-blue-950/90 px-3 py-1 rounded-lg border border-blue-800/60">$ 8 USD/h</span>
                             </div>
-                            <input type="range" id="input-rate" min="4" max="25" value="8" step="1" class="w-full h-2 bg-gray-800 rounded-lg appearance-none cursor-pointer">
-                            <div class="flex justify-between text-[11px] text-gray-500 mt-1">
+                            <input type="range" id="input-rate" min="4" max="25" value="8" step="1" class="w-full h-2.5 bg-gray-800 rounded-lg appearance-none cursor-pointer">
+                            <div class="flex justify-between text-[10px] text-gray-500 mt-1">
                                 <span>$ 4 USD/h</span>
-                                <span>$ 8 USD/h</span>
                                 <span>$ 15 USD/h</span>
                                 <span>$ 25 USD/h</span>
                             </div>
@@ -884,34 +969,28 @@
                     </div>
 
                     <!-- Resultados en Vivo -->
-                    <div class="lg:col-span-5 bg-gradient-to-br from-slate-900 to-blue-950/90 border border-blue-800/60 p-6 sm:p-8 rounded-2xl flex flex-col justify-between text-center relative overflow-hidden">
-                        <div class="absolute -right-12 -top-12 w-32 h-32 bg-cyan-500/10 rounded-full blur-2xl"></div>
+                    <div class="lg:col-span-5 bg-gradient-to-br from-slate-900 to-blue-950/90 border border-blue-800/60 p-5 sm:p-8 rounded-2xl flex flex-col justify-between text-center relative overflow-hidden">
+                        <div class="absolute -right-12 -top-12 w-28 h-28 bg-cyan-500/10 rounded-full blur-2xl"></div>
                         
                         <div>
-                            <span class="text-[11px] font-bold uppercase tracking-wider text-cyan-400 block mb-1">Impacto Mensual Proyectado</span>
-                            <div class="text-4xl sm:text-5xl font-black text-white tracking-tight my-2">
-                                <span id="res-hours" class="text-cyan-300">144</span> <span class="text-xl text-gray-300 font-medium">horas</span>
+                            <span class="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-cyan-400 block mb-1">Impacto Mensual</span>
+                            <div class="text-3xl sm:text-5xl font-black text-white tracking-tight my-1.5 sm:my-2">
+                                <span id="res-hours" class="text-cyan-300">144</span> <span class="text-base sm:text-xl text-gray-300 font-medium">horas</span>
                             </div>
-                            <p class="text-xs text-gray-400">recuperadas por mes para que tu equipo atienda clientes y haga crecer el negocio.</p>
+                            <p class="text-[11px] sm:text-xs text-gray-400">recuperadas cada mes para enfocarte en clientes y ventas.</p>
                         </div>
 
-                        <div class="my-6 py-6 border-y border-gray-800/90">
-                            <span class="text-[11px] font-bold uppercase tracking-wider text-emerald-400 block mb-1">Ahorro Económico Anual Estimado</span>
-                            <div class="text-3xl sm:text-4xl font-extrabold text-emerald-400">
-                                <span id="res-money">$ 13.824</span> <span class="text-sm font-semibold text-emerald-300">USD/año</span>
+                        <div class="my-4 sm:my-6 py-4 sm:py-6 border-y border-gray-800/90">
+                            <span class="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-emerald-400 block mb-1">Ahorro Económico Anual</span>
+                            <div class="text-2xl sm:text-4xl font-extrabold text-emerald-400">
+                                <span id="res-money">$ 13.824</span> <span class="text-xs sm:text-sm font-semibold text-emerald-300">USD/año</span>
                             </div>
-                            <p class="text-[11px] text-gray-400 mt-1">en costos ocultos de horas perdidas y errores de carga.</p>
+                            <p class="text-[10px] sm:text-[11px] text-gray-400 mt-1">en costos de horas operativas y errores manuales.</p>
                         </div>
 
-                        <div class="space-y-3">
-                            <div class="flex items-center justify-between text-xs text-gray-300 px-2">
-                                <span>Reducción de errores:</span>
-                                <span class="text-cyan-400 font-bold">Hasta 99%</span>
-                            </div>
-                            <a href="#contacto" id="calc-cta-btn" class="block w-full py-3 px-4 rounded-xl bg-accent hover:bg-accenthover text-white font-semibold text-sm transition-all shadow-lg shadow-blue-600/30">
-                                Quiero recuperar este tiempo
-                            </a>
-                        </div>
+                        <a href="#contacto" class="block w-full py-3 px-4 rounded-xl bg-accent hover:bg-accenthover text-white font-semibold text-xs sm:text-sm transition-all shadow-lg shadow-blue-600/30">
+                            Quiero recuperar este tiempo
+                        </a>
                     </div>
 
                 </div>
@@ -919,217 +998,219 @@
         </div>
     </section>
 
-    <!-- 5. SECTORES Y RUBROS: PARA TU TIPO DE NEGOCIO -->
-    <section id="sectores" class="py-24 bg-cardbg/20 border-t border-gray-800/60">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-cyan-400 text-xs font-bold uppercase tracking-widest">Adaptado a Cada Rubro</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight mt-2">¿Para qué tipo de negocios sirve?</h2>
-                <p class="mt-4 text-gray-400 leading-relaxed">
-                    Nuestras soluciones están pensadas para negocios particulares y PyMEs de diversas industrias que buscan dar el salto hacia la eficiencia digital.
-                </p>
+    <!-- 6. SECTORES Y RUBROS (Swipeable en Móvil) -->
+    <section id="sectores" class="py-14 sm:py-24 bg-cardbg/20 border-t border-gray-800/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-16">
+                <span class="text-cyan-400 text-[10px] sm:text-xs font-bold uppercase tracking-widest">Adaptado a tu Industria</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight mt-1.5">¿Para qué tipo de negocios sirve?</h2>
+                <p class="mt-2 text-gray-400 text-xs sm:text-sm">Deslizá para ver cómo impacta según tu rubro particular:</p>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Contenedor Swipeable en Móvil / Grilla en Desktop -->
+            <div class="flex overflow-x-auto snap-x snap-mandatory no-scrollbar sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 pb-2 sm:pb-0">
                 <!-- Sector 1 -->
-                <div class="glass-card card-interactive border border-gray-800 p-6 rounded-2xl">
-                    <div class="w-10 h-10 rounded-xl bg-blue-600/10 text-cyan-400 flex items-center justify-center text-lg mb-4 border border-blue-500/20">
+                <div class="snap-center shrink-0 w-[82vw] sm:w-auto glass-card card-interactive border border-gray-800 p-5 sm:p-6 rounded-2xl">
+                    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-blue-600/10 text-cyan-400 flex items-center justify-center text-base sm:text-lg mb-3 border border-blue-500/20">
                         <i class="fa-solid fa-shop"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Comercios y E-commerce</h3>
+                    <h3 class="text-base sm:text-lg font-bold text-white mb-1.5">Comercios y E-commerce</h3>
                     <p class="text-gray-400 text-xs leading-relaxed">
-                        Sincronización de catálogo y stock entre mostrador, Tienda Nube y Mercado Libre, facturación automática por cada cobro y atención 24/7 en WhatsApp.
+                        Sincronización de stock entre mostrador, Tienda Nube y Mercado Libre, facturación automática por cada cobro y atención 24/7 en WhatsApp.
                     </p>
                 </div>
 
                 <!-- Sector 2 -->
-                <div class="glass-card card-interactive border border-gray-800 p-6 rounded-2xl">
-                    <div class="w-10 h-10 rounded-xl bg-blue-600/10 text-cyan-400 flex items-center justify-center text-lg mb-4 border border-blue-500/20">
+                <div class="snap-center shrink-0 w-[82vw] sm:w-auto glass-card card-interactive border border-gray-800 p-5 sm:p-6 rounded-2xl">
+                    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-blue-600/10 text-cyan-400 flex items-center justify-center text-base sm:text-lg mb-3 border border-blue-500/20">
                         <i class="fa-solid fa-briefcase"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Estudios Profesionales</h3>
+                    <h3 class="text-base sm:text-lg font-bold text-white mb-1.5">Estudios Profesionales</h3>
                     <p class="text-gray-400 text-xs leading-relaxed">
-                        Contadores, abogados y consultores: lectura OCR de comprobantes fiscales, recordatorios de vencimiento a clientes y turnos sincronizados en Google Calendar.
+                        Contadores, abogados y consultores: lectura OCR de comprobantes fiscales, recordatorios de vencimiento a clientes y turnos sincronizados.
                     </p>
                 </div>
 
                 <!-- Sector 3 -->
-                <div class="glass-card card-interactive border border-gray-800 p-6 rounded-2xl">
-                    <div class="w-10 h-10 rounded-xl bg-blue-600/10 text-cyan-400 flex items-center justify-center text-lg mb-4 border border-blue-500/20">
+                <div class="snap-center shrink-0 w-[82vw] sm:w-auto glass-card card-interactive border border-gray-800 p-5 sm:p-6 rounded-2xl">
+                    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-blue-600/10 text-cyan-400 flex items-center justify-center text-base sm:text-lg mb-3 border border-blue-500/20">
                         <i class="fa-solid fa-boxes-packing"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Distribuidoras y Mayoristas</h3>
+                    <h3 class="text-base sm:text-lg font-bold text-white mb-1.5">Distribuidoras y Mayoristas</h3>
                     <p class="text-gray-400 text-xs leading-relaxed">
-                        Toma de pedidos por WhatsApp con listas de precios personalizadas, aviso automático de despachos por transporte y gestión de cobranzas de cuentas corrientes.
+                        Toma de pedidos por WhatsApp con listas de precios personalizadas, aviso automático de despachos y gestión de cobranzas.
                     </p>
                 </div>
 
                 <!-- Sector 4 -->
-                <div class="glass-card card-interactive border border-gray-800 p-6 rounded-2xl">
-                    <div class="w-10 h-10 rounded-xl bg-blue-600/10 text-cyan-400 flex items-center justify-center text-lg mb-4 border border-blue-500/20">
+                <div class="snap-center shrink-0 w-[82vw] sm:w-auto glass-card card-interactive border border-gray-800 p-5 sm:p-6 rounded-2xl">
+                    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-blue-600/10 text-cyan-400 flex items-center justify-center text-base sm:text-lg mb-3 border border-blue-500/20">
                         <i class="fa-solid fa-stethoscope"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Salud, Clínicas y Belleza</h3>
+                    <h3 class="text-base sm:text-lg font-bold text-white mb-1.5">Salud, Clínicas y Belleza</h3>
                     <p class="text-gray-400 text-xs leading-relaxed">
-                        Consultorios médicos, odontología y centros estéticos: agendamiento inteligente de turnos, confirmación automática por WhatsApp y reducción del ausentismo.
+                        Consultorios médicos, odontología y estética: agendamiento inteligente de turnos, confirmación automática por WhatsApp y baja de ausentismo.
                     </p>
                 </div>
 
                 <!-- Sector 5 -->
-                <div class="glass-card card-interactive border border-gray-800 p-6 rounded-2xl">
-                    <div class="w-10 h-10 rounded-xl bg-blue-600/10 text-cyan-400 flex items-center justify-center text-lg mb-4 border border-blue-500/20">
+                <div class="snap-center shrink-0 w-[82vw] sm:w-auto glass-card card-interactive border border-gray-800 p-5 sm:p-6 rounded-2xl">
+                    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-blue-600/10 text-cyan-400 flex items-center justify-center text-base sm:text-lg mb-3 border border-blue-500/20">
                         <i class="fa-solid fa-wrench"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Empresas de Servicios y Mantenimiento</h3>
+                    <h3 class="text-base sm:text-lg font-bold text-white mb-1.5">Servicios y Mantenimiento</h3>
                     <p class="text-gray-400 text-xs leading-relaxed">
                         Asignación de partes diarios a técnicos, envío automático de cotizaciones por PDF y firma digital de conformidad de trabajo en el celular.
                     </p>
                 </div>
 
                 <!-- Sector 6 -->
-                <div class="glass-card card-interactive border border-gray-800 p-6 rounded-2xl">
-                    <div class="w-10 h-10 rounded-xl bg-blue-600/10 text-cyan-400 flex items-center justify-center text-lg mb-4 border border-blue-500/20">
+                <div class="snap-center shrink-0 w-[82vw] sm:w-auto glass-card card-interactive border border-gray-800 p-5 sm:p-6 rounded-2xl">
+                    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-blue-600/10 text-cyan-400 flex items-center justify-center text-base sm:text-lg mb-3 border border-blue-500/20">
                         <i class="fa-solid fa-industry"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Pequeñas Fábricas y Talleres</h3>
+                    <h3 class="text-base sm:text-lg font-bold text-white mb-1.5">Pequeñas Fábricas y Talleres</h3>
                     <p class="text-gray-400 text-xs leading-relaxed">
-                        Seguimiento del estado de órdenes de producción, alertas de compra de insumos críticos y reportes ejecutivos semanales automáticos para los socios.
+                        Seguimiento del estado de órdenes de producción, alertas de compra de insumos críticos y reportes ejecutivos semanales automáticos.
                     </p>
                 </div>
+            </div>
+            <!-- Indicador visual de swipe en móvil -->
+            <div class="sm:hidden text-center text-[10px] text-gray-500 mt-2 flex items-center justify-center gap-1">
+                <span>Deslizá para explorar más rubros</span>
+                <i class="fa-solid fa-arrow-right text-[9px] text-cyan-400"></i>
             </div>
         </div>
     </section>
 
-    <!-- 6. BENEFICIOS CUANTIFICABLES -->
-    <section id="beneficios" class="py-20 border-t border-gray-800/60">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 text-center">
-                <div class="glass-card border border-gray-800/80 p-6 rounded-2xl shadow-sm hover:border-blue-500/40 transition-all">
-                    <div class="text-4xl font-extrabold text-cyan-400 mb-2">+40 hs</div>
-                    <p class="text-gray-400 text-xs sm:text-sm">Ahorradas al mes por persona en copiado manual y planillas.</p>
+    <!-- 7. BENEFICIOS CUANTIFICABLES -->
+    <section id="beneficios" class="py-14 sm:py-20 border-t border-gray-800/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 text-center">
+                <div class="glass-card border border-gray-800/80 p-4 sm:p-6 rounded-2xl shadow-sm">
+                    <div class="text-2xl sm:text-4xl font-extrabold text-cyan-400 mb-1">+40 hs</div>
+                    <p class="text-gray-400 text-[11px] sm:text-xs">Ahorradas al mes por persona en gestión manual.</p>
                 </div>
-                <div class="glass-card border border-gray-800/80 p-6 rounded-2xl shadow-sm hover:border-blue-500/40 transition-all">
-                    <div class="text-4xl font-extrabold text-cyan-400 mb-2">0%</div>
-                    <p class="text-gray-400 text-xs sm:text-sm">Margen de error humano en transcripción de comprobantes.</p>
+                <div class="glass-card border border-gray-800/80 p-4 sm:p-6 rounded-2xl shadow-sm">
+                    <div class="text-2xl sm:text-4xl font-extrabold text-cyan-400 mb-1">0%</div>
+                    <p class="text-gray-400 text-[11px] sm:text-xs">Margen de error en transcripción de datos.</p>
                 </div>
-                <div class="glass-card border border-gray-800/80 p-6 rounded-2xl shadow-sm hover:border-blue-500/40 transition-all">
-                    <div class="text-4xl font-extrabold text-cyan-400 mb-2">24/7</div>
-                    <p class="text-gray-400 text-xs sm:text-sm">Operación desatendida en fines de semana y feriados.</p>
+                <div class="glass-card border border-gray-800/80 p-4 sm:p-6 rounded-2xl shadow-sm">
+                    <div class="text-2xl sm:text-4xl font-extrabold text-cyan-400 mb-1">24/7</div>
+                    <p class="text-gray-400 text-[11px] sm:text-xs">Operación continua fines de semana y feriados.</p>
                 </div>
-                <div class="glass-card border border-gray-800/80 p-6 rounded-2xl shadow-sm hover:border-blue-500/40 transition-all">
-                    <div class="text-4xl font-extrabold text-cyan-400 mb-2">&lt; 15 días</div>
-                    <p class="text-gray-400 text-xs sm:text-sm">De implementación para ver tu primer flujo en producción.</p>
+                <div class="glass-card border border-gray-800/80 p-4 sm:p-6 rounded-2xl shadow-sm">
+                    <div class="text-2xl sm:text-4xl font-extrabold text-cyan-400 mb-1">&lt; 15 días</div>
+                    <p class="text-gray-400 text-[11px] sm:text-xs">Para tener tu primer flujo en producción.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- 8. PREGUNTAS FRECUENTES (FAQ) -->
-    <section id="faq" class="py-24 bg-cardbg/20 border-t border-gray-800/60 relative">
+    <section id="faq" class="py-14 sm:py-24 bg-cardbg/20 border-t border-gray-800/60 relative">
         <div class="max-w-4xl mx-auto px-4 sm:px-6">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <span class="text-cyan-400 text-xs font-bold uppercase tracking-widest">Preguntas Frecuentes</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight mt-2">Todo lo que necesitás saber</h2>
-                <p class="mt-4 text-gray-400 text-sm sm:text-base">Respuestas transparentes para que tomes la mejor decisión para tu PyME.</p>
+            <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-16">
+                <span class="text-cyan-400 text-[10px] sm:text-xs font-bold uppercase tracking-widest">Preguntas Frecuentes</span>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight mt-1.5">Todo lo que necesitás saber</h2>
+                <p class="mt-2 text-gray-400 text-xs sm:text-sm">Respuestas transparentes para que tomes la mejor decisión para tu PyME.</p>
             </div>
 
-            <div class="space-y-4" id="faq-accordion">
-                <!-- FAQ Item 1 -->
-                <div class="glass-card card-interactive border border-gray-800 rounded-2xl overflow-hidden transition-all">
-                    <button class="faq-toggle w-full px-6 py-5 text-left flex items-center justify-between font-semibold text-white text-base sm:text-lg focus:outline-none">
-                        <span>¿Tenemos que cambiar los sistemas, programas o planillas que ya usamos?</span>
-                        <i class="fa-solid fa-chevron-down text-cyan-400 text-sm transition-transform duration-300"></i>
+            <div class="space-y-3 sm:space-y-4" id="faq-accordion">
+                <!-- FAQ 1 -->
+                <div class="glass-card card-interactive border border-gray-800 rounded-xl sm:rounded-2xl overflow-hidden transition-all">
+                    <button class="faq-toggle w-full px-5 py-4 text-left flex items-center justify-between font-semibold text-white text-sm sm:text-base focus:outline-none">
+                        <span>¿Tenemos que cambiar los sistemas que ya usamos?</span>
+                        <i class="fa-solid fa-chevron-down text-cyan-400 text-xs transition-transform duration-300"></i>
                     </button>
-                    <div class="faq-content hidden px-6 pb-5 text-sm text-gray-400 leading-relaxed border-t border-gray-800/60 pt-4">
-                        <strong>No, de ninguna manera.</strong> Uno de los mayores diferenciales de Automatika es que trabajamos sobre el software que tu empresa ya tiene incorporado (Google Sheets, Excel, WhatsApp, sistemas de facturación AFIP, Tango, Bejerman, SAP o cualquier CRM). Creamos puentes digitales para que esas herramientas se comuniquen entre sí de forma transparente.
+                    <div class="faq-content hidden px-5 pb-4 text-xs sm:text-sm text-gray-400 leading-relaxed border-t border-gray-800/60 pt-3">
+                        <strong>No, en lo absoluto.</strong> Trabajamos sobre el software que tu empresa ya tiene incorporado (Google Sheets, Excel, WhatsApp, facturación AFIP, Tango, Bejerman, SAP o cualquier CRM). Creamos puentes digitales para que se comuniquen entre sí de forma transparente.
                     </div>
                 </div>
 
-                <!-- FAQ Item 2 -->
-                <div class="glass-card card-interactive border border-gray-800 rounded-2xl overflow-hidden transition-all">
-                    <button class="faq-toggle w-full px-6 py-5 text-left flex items-center justify-between font-semibold text-white text-base sm:text-lg focus:outline-none">
+                <!-- FAQ 2 -->
+                <div class="glass-card card-interactive border border-gray-800 rounded-xl sm:rounded-2xl overflow-hidden transition-all">
+                    <button class="faq-toggle w-full px-5 py-4 text-left flex items-center justify-between font-semibold text-white text-sm sm:text-base focus:outline-none">
                         <span>¿Cuánto tiempo demora ver el primer proceso funcionando?</span>
-                        <i class="fa-solid fa-chevron-down text-cyan-400 text-sm transition-transform duration-300"></i>
+                        <i class="fa-solid fa-chevron-down text-cyan-400 text-xs transition-transform duration-300"></i>
                     </button>
-                    <div class="faq-content hidden px-6 pb-5 text-sm text-gray-400 leading-relaxed border-t border-gray-800/60 pt-4">
-                        Nuestra metodología ágil permite que el primer circuito productivo esté <strong>operando y validado en menos de 15 días corridos</strong>. Priorizamos resolver el "cuello de botella" más urgente de tu negocio para que percibas el ahorro de tiempo y el retorno de inversión de inmediato.
+                    <div class="faq-content hidden px-5 pb-4 text-xs sm:text-sm text-gray-400 leading-relaxed border-t border-gray-800/60 pt-3">
+                        Nuestra metodología permite que el primer circuito productivo esté <strong>operando y validado en menos de 15 días corridos</strong>. Priorizamos resolver el cuello de botella más urgente para que percibas el retorno de inmediato.
                     </div>
                 </div>
 
-                <!-- FAQ Item 3 -->
-                <div class="glass-card card-interactive border border-gray-800 rounded-2xl overflow-hidden transition-all">
-                    <button class="faq-toggle w-full px-6 py-5 text-left flex items-center justify-between font-semibold text-white text-base sm:text-lg focus:outline-none">
-                        <span>¿Es seguro para los datos contables y clientes de mi empresa?</span>
-                        <i class="fa-solid fa-chevron-down text-cyan-400 text-sm transition-transform duration-300"></i>
+                <!-- FAQ 3 -->
+                <div class="glass-card card-interactive border border-gray-800 rounded-xl sm:rounded-2xl overflow-hidden transition-all">
+                    <button class="faq-toggle w-full px-5 py-4 text-left flex items-center justify-between font-semibold text-white text-sm sm:text-base focus:outline-none">
+                        <span>¿Es seguro para los datos de mi empresa?</span>
+                        <i class="fa-solid fa-chevron-down text-cyan-400 text-xs transition-transform duration-300"></i>
                     </button>
-                    <div class="faq-content hidden px-6 pb-5 text-sm text-gray-400 leading-relaxed border-t border-gray-800/60 pt-4">
-                        Totalmente. Todos los flujos se implementan bajo estándares de cifrado bancario SSL/TLS de extremo a extremo. <strong>Nosotros no almacenamos datos confidenciales, saldos bancarios ni información privada de tus clientes</strong>; únicamente programamos la tubería lógica por donde viaja la información entre tus propios sistemas.
+                    <div class="faq-content hidden px-5 pb-4 text-xs sm:text-sm text-gray-400 leading-relaxed border-t border-gray-800/60 pt-3">
+                        Totalmente. Todos los flujos se implementan bajo cifrado SSL/TLS de extremo a extremo. <strong>Nosotros no almacenamos datos confidenciales ni bancarios</strong>; únicamente programamos la tubería lógica por donde viaja la información entre tus propios sistemas.
                     </div>
                 </div>
 
-                <!-- FAQ Item 4 -->
-                <div class="glass-card card-interactive border border-gray-800 rounded-2xl overflow-hidden transition-all">
-                    <button class="faq-toggle w-full px-6 py-5 text-left flex items-center justify-between font-semibold text-white text-base sm:text-lg focus:outline-none">
-                        <span>¿Qué sucede si AFIP, WhatsApp o mi sistema externo se actualiza?</span>
-                        <i class="fa-solid fa-chevron-down text-cyan-400 text-sm transition-transform duration-300"></i>
+                <!-- FAQ 4 -->
+                <div class="glass-card card-interactive border border-gray-800 rounded-xl sm:rounded-2xl overflow-hidden transition-all">
+                    <button class="faq-toggle w-full px-5 py-4 text-left flex items-center justify-between font-semibold text-white text-sm sm:text-base focus:outline-none">
+                        <span>¿Qué sucede si un sistema externo se actualiza?</span>
+                        <i class="fa-solid fa-chevron-down text-cyan-400 text-xs transition-transform duration-300"></i>
                     </button>
-                    <div class="faq-content hidden px-6 pb-5 text-sm text-gray-400 leading-relaxed border-t border-gray-800/60 pt-4">
-                        Contamos con esquemas de monitoreo continuo y soporte de mantenimiento. Si una plataforma conectada modifica sus métodos de integración o su API, nuestro equipo aplica las adaptaciones necesarias para que tus procesos sigan funcionando sin interrupciones.
+                    <div class="faq-content hidden px-5 pb-4 text-xs sm:text-sm text-gray-400 leading-relaxed border-t border-gray-800/60 pt-3">
+                        Contamos con esquemas de monitoreo continuo y soporte de mantenimiento. Si una plataforma conectada (AFIP, WhatsApp, tu ERP) modifica sus métodos de integración, aplicamos las adaptaciones para garantizar estabilidad 24/7.
                     </div>
                 </div>
 
-                <!-- FAQ Item 5 -->
-                <div class="glass-card card-interactive border border-gray-800 rounded-2xl overflow-hidden transition-all">
-                    <button class="faq-toggle w-full px-6 py-5 text-left flex items-center justify-between font-semibold text-white text-base sm:text-lg focus:outline-none">
-                        <span>¿Mi negocio es demasiado pequeño para justificar una automatización?</span>
-                        <i class="fa-solid fa-chevron-down text-cyan-400 text-sm transition-transform duration-300"></i>
+                <!-- FAQ 5 -->
+                <div class="glass-card card-interactive border border-gray-800 rounded-xl sm:rounded-2xl overflow-hidden transition-all">
+                    <button class="faq-toggle w-full px-5 py-4 text-left flex items-center justify-between font-semibold text-white text-sm sm:text-base focus:outline-none">
+                        <span>¿Mi negocio es pequeño para justificar esto?</span>
+                        <i class="fa-solid fa-chevron-down text-cyan-400 text-xs transition-transform duration-300"></i>
                     </button>
-                    <div class="faq-content hidden px-6 pb-5 text-sm text-gray-400 leading-relaxed border-t border-gray-800/60 pt-4">
-                        Al contrario: los negocios pequeños y unipersonales son los que más sufren al hacer todo a pulmón. Automatizar la facturación, los turnos o la respuesta de WhatsApp le devuelve al dueño entre 10 y 20 horas por semana para dedicarse a vender y atender bien a sus clientes en vez de hacer tareas de secretaría.
+                    <div class="faq-content hidden px-5 pb-4 text-xs sm:text-sm text-gray-400 leading-relaxed border-t border-gray-800/60 pt-3">
+                        Al contrario: los negocios pequeños son los que más sufren al hacer todo a pulmón. Automatizar la facturación o la atención en WhatsApp le devuelve al dueño 15 a 20 horas por semana para dedicarse a vender y crecer.
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 9. SECCIÓN DE CONTACTO / DIAGNÓSTICO SIN CARGO -->
-    <section id="contacto" class="py-20 sm:py-24 border-t border-gray-800/60 relative">
+    <!-- 9. CONTACTO / DIAGNÓSTICO SIN CARGO -->
+    <section id="contacto" class="py-14 sm:py-24 border-t border-gray-800/60 relative">
         <div class="max-w-3xl mx-auto px-4 sm:px-6">
-            <div class="glass-card card-interactive border border-gray-800 p-6 sm:p-10 md:p-12 rounded-3xl shadow-2xl relative overflow-hidden">
+            <div class="glass-card card-interactive border border-gray-800 p-5 sm:p-10 md:p-12 rounded-2xl sm:rounded-3xl shadow-2xl relative overflow-hidden">
                 <div class="absolute -right-20 -bottom-20 w-60 h-60 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
                 
-                <div class="text-center mb-8 sm:mb-10 relative z-10">
-                    <span class="text-cyan-400 text-xs font-bold uppercase tracking-widest">Empezá Hoy Mismo</span>
-                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mt-1">Solicitá una Sesión de Diagnóstico Sin Cargo</h2>
-                    <p class="mt-2 text-gray-400 text-xs sm:text-sm">En 20 minutos analizamos tus procesos actuales y te mostramos exactamente qué flujos podés automatizar y cuánto podés ahorrar.</p>
+                <div class="text-center mb-6 sm:mb-10 relative z-10">
+                    <span class="text-cyan-400 text-[10px] sm:text-xs font-bold uppercase tracking-widest">Empezá Hoy Mismo</span>
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mt-1">Diagnóstico Técnico Sin Cargo</h2>
+                    <p class="mt-2 text-gray-400 text-xs sm:text-sm">En 20 minutos analizamos tus procesos actuales y te mostramos qué flujos podés automatizar y cuánto podés ahorrar.</p>
                 </div>
 
-                <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" class="space-y-5 sm:space-y-6 relative z-10">
-                    <!-- Clave de Web3Forms -->
+                <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" class="space-y-4 sm:space-y-6 relative z-10">
                     <input type="hidden" name="access_key" value="4b9bc2f9-dd3b-4551-8824-b06f9cdb059b">
                     <input type="hidden" name="subject" value="Nuevo contacto desde Automatika Web">
                     <input type="hidden" name="from_name" value="Automatika Landing">
-                    <!-- Filtro anti-spam honeypot -->
                     <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                         <div>
-                            <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Nombre y Apellido *</label>
+                            <label class="block text-[11px] sm:text-xs font-semibold text-gray-300 uppercase tracking-wider mb-1.5">Nombre y Apellido *</label>
                             <input type="text" name="name" required class="w-full bg-darkbg border border-gray-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-400 text-sm sm:text-base transition-colors" placeholder="Tu nombre">
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Email Corporativo o Personal *</label>
+                            <label class="block text-[11px] sm:text-xs font-semibold text-gray-300 uppercase tracking-wider mb-1.5">Email *</label>
                             <input type="email" name="email" required class="w-full bg-darkbg border border-gray-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-400 text-sm sm:text-base transition-colors" placeholder="tu@empresa.com">
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                         <div>
-                            <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Teléfono / WhatsApp *</label>
+                            <label class="block text-[11px] sm:text-xs font-semibold text-gray-300 uppercase tracking-wider mb-1.5">WhatsApp / Celular *</label>
                             <input type="tel" name="phone" required class="w-full bg-darkbg border border-gray-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-400 text-sm sm:text-base transition-colors" placeholder="+54 9 11 ...">
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Tipo de Negocio / Empresa</label>
+                            <label class="block text-[11px] sm:text-xs font-semibold text-gray-300 uppercase tracking-wider mb-1.5">Tipo de Negocio</label>
                             <select name="business_type" class="w-full bg-darkbg border border-gray-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-400 text-sm sm:text-base transition-colors">
                                 <option value="Comercio / E-commerce">Comercio Minorista / E-commerce</option>
                                 <option value="Estudio Profesional">Estudio Profesional (Contable/Legal)</option>
@@ -1142,19 +1223,19 @@
                     </div>
 
                     <div>
-                        <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">¿Qué proceso te gustaría automatizar? *</label>
-                        <textarea id="message-field" rows="4" name="message" required class="w-full bg-darkbg border border-gray-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-400 text-sm sm:text-base transition-colors" placeholder="Describí brevemente qué sistemas usás hoy (ej. Excel, AFIP, WhatsApp) y qué tareas manuales consumen más tiempo de tu equipo..."></textarea>
+                        <label class="block text-[11px] sm:text-xs font-semibold text-gray-300 uppercase tracking-wider mb-1.5">¿Qué proceso te gustaría automatizar? *</label>
+                        <textarea id="message-field" rows="3" name="message" required class="w-full bg-darkbg border border-gray-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-400 text-sm sm:text-base transition-colors" placeholder="Describí brevemente qué tareas manuales consumen más tiempo de tu equipo..."></textarea>
                     </div>
 
-                    <button id="submit-btn" type="submit" class="w-full bg-accent hover:bg-accenthover text-white font-semibold py-3.5 sm:py-4 rounded-xl transition-all shadow-lg shadow-blue-600/30 border border-blue-400/20 hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center space-x-2">
-                        <i class="fa-solid fa-calendar-check text-sm"></i>
+                    <button id="submit-btn" type="submit" class="w-full bg-accent hover:bg-accenthover text-white font-semibold py-3.5 sm:py-4 rounded-xl transition-all shadow-lg shadow-blue-600/30 border border-blue-400/20 active:scale-98 flex items-center justify-center space-x-2 text-sm sm:text-base">
+                        <i class="fa-solid fa-calendar-check text-xs sm:text-sm"></i>
                         <span>Solicitar Sesión de Diagnóstico Sin Cargo</span>
                     </button>
-                    <div id="form-result" class="hidden text-center p-4 rounded-xl text-sm font-medium"></div>
+                    <div id="form-result" class="hidden text-center p-3.5 rounded-xl text-xs sm:text-sm font-medium"></div>
                 </form>
 
                 <!-- Alternativa directa por WhatsApp -->
-                <div class="mt-6 pt-6 border-t border-gray-800 text-center text-xs text-gray-400">
+                <div class="mt-5 pt-5 border-t border-gray-800 text-center text-xs text-gray-400">
                     ¿Preferís una respuesta rápida directa? 
                     <a href="https://wa.me/5491136826065?text=Hola%20Automatika%2C%20quiero%20coordinar%20una%20sesi%C3%B3n%20de%20diagn%C3%B3stico%20sin%20cargo%20para%20mi%20empresa." target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:text-emerald-300 font-semibold inline-flex items-center ml-1">
                         <i class="fa-brands fa-whatsapp mr-1 text-sm"></i> Chatear por WhatsApp
@@ -1165,43 +1246,64 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 border-t border-gray-800/60 text-center text-sm text-gray-500 bg-darkbg">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
-            <div class="flex items-center space-x-3">
-                <div class="w-7 h-7 rounded-lg bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center text-white text-xs font-bold">
+    <footer class="py-10 border-t border-gray-800/60 text-center text-sm text-gray-500 bg-darkbg mb-12 lg:mb-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center space-x-2.5">
+                <div class="w-6 h-6 rounded-lg bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center text-white text-xs font-bold">
                     A
                 </div>
-                <span class="font-bold text-white text-base">Automatika</span>
-                <span>© 2026. Todos los derechos reservados.</span>
+                <span class="font-bold text-white text-sm sm:text-base">Automatika</span>
+                <span class="text-xs">© 2026. Todos los derechos reservados.</span>
             </div>
-            <div class="flex flex-wrap items-center justify-center gap-6 text-xs text-gray-400">
+            <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs text-gray-400">
                 <a href="#soluciones" class="hover:text-cyan-400 transition-colors">Soluciones</a>
                 <a href="#proceso" class="hover:text-cyan-400 transition-colors">Cómo Trabajamos</a>
                 <a href="#ejemplos" class="hover:text-cyan-400 transition-colors">Casos de Uso</a>
-                <a href="#calculadora" class="hover:text-cyan-400 transition-colors">Calculadora ROI</a>
-                <a href="#sectores" class="hover:text-cyan-400 transition-colors">Sectores</a>
+                <a href="#calculadora" class="hover:text-cyan-400 transition-colors">Calculadora</a>
                 <a href="#contacto" class="hover:text-cyan-400 transition-colors">Contacto</a>
             </div>
-            <div class="text-gray-400 text-xs">
+            <div class="text-gray-400 text-[11px] sm:text-xs">
                 Automatización Inteligente para PyMEs y Negocios
             </div>
         </div>
     </footer>
 
-    <!-- Botón Flotante de WhatsApp -->
+    <!-- DOCK FLOTANTE INFERIOR PARA MÓVILES (App-Like Navigation) -->
+    <div class="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-slate-950/95 border-t border-gray-800/90 backdrop-blur-xl px-2 py-2 flex items-center justify-around shadow-2xl">
+        <a href="#soluciones" class="flex flex-col items-center justify-center text-gray-400 hover:text-cyan-400 active:text-cyan-400 transition-colors py-1 px-2">
+            <i class="fa-solid fa-network-wired text-sm mb-0.5"></i>
+            <span class="text-[9px] font-semibold">Soluciones</span>
+        </a>
+        <a href="#proceso" class="flex flex-col items-center justify-center text-gray-400 hover:text-cyan-400 active:text-cyan-400 transition-colors py-1 px-2">
+            <i class="fa-solid fa-list-check text-sm mb-0.5"></i>
+            <span class="text-[9px] font-semibold">Pasos</span>
+        </a>
+        <a href="#ejemplos" class="flex flex-col items-center justify-center text-cyan-400 active:text-cyan-300 transition-colors py-1 px-2">
+            <i class="fa-solid fa-bolt text-sm mb-0.5"></i>
+            <span class="text-[9px] font-bold">Procesos</span>
+        </a>
+        <a href="#calculadora" class="flex flex-col items-center justify-center text-gray-400 hover:text-cyan-400 active:text-cyan-400 transition-colors py-1 px-2">
+            <i class="fa-solid fa-calculator text-sm mb-0.5"></i>
+            <span class="text-[9px] font-semibold">Ahorro</span>
+        </a>
+        <a href="#contacto" class="flex flex-col items-center justify-center bg-accent text-white rounded-lg py-1 px-3 shadow-md shadow-blue-600/30">
+            <i class="fa-solid fa-calendar-check text-xs mb-0.5"></i>
+            <span class="text-[9px] font-bold">Contacto</span>
+        </a>
+    </div>
+
+    <!-- Botón Flotante de WhatsApp (Adaptado para no tapar el dock móvil) -->
     <a href="https://wa.me/5491136826065?text=Hola%20Automatika%2C%20quiero%20consultar%20por%20una%20soluci%C3%B3n%20de%20automatizaci%C3%B3n%20para%20mi%20empresa." 
        target="_blank" 
        rel="noopener noreferrer" 
        aria-label="Contactar por WhatsApp"
-       class="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-50 flex items-center group">
-        <!-- Tooltip flotante -->
-        <span class="mr-3 px-3.5 py-1.5 rounded-full bg-slate-900/95 text-xs font-semibold text-gray-200 shadow-xl border border-gray-700/80 backdrop-blur-md hidden sm:block opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
+       class="fixed bottom-16 right-4 sm:bottom-6 sm:right-6 z-40 flex items-center group">
+        <span class="mr-3 px-3 py-1 rounded-full bg-slate-900/95 text-xs font-semibold text-gray-200 shadow-xl border border-gray-700/80 backdrop-blur-md hidden sm:block opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
             ¿Dudas? Chateá con nosotros
         </span>
-        <!-- Botón circular WhatsApp -->
-        <div class="relative w-13 h-13 sm:w-14 sm:h-14 p-3.5 sm:p-0 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white flex items-center justify-center shadow-xl shadow-emerald-500/30 transition-transform duration-300 group-hover:scale-110 active:scale-95">
+        <div class="relative w-12 h-12 sm:w-14 sm:h-14 p-3 sm:p-0 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white flex items-center justify-center shadow-xl shadow-emerald-500/30 transition-transform duration-300 group-hover:scale-110 active:scale-95">
             <span class="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-25"></span>
-            <i class="fa-brands fa-whatsapp text-2xl sm:text-3xl"></i>
+            <i class="fa-brands fa-whatsapp text-xl sm:text-3xl"></i>
         </div>
     </a>
 
@@ -1262,9 +1364,7 @@
             valHours.textContent = `${hoursPerWeek} hs / pers`;
             valRate.textContent = `$ ${hourlyRate} USD/h`;
 
-            // Cálculo mensual (4 semanas por mes)
             const monthlyHours = people * hoursPerWeek * 4;
-            // Cálculo anual
             const annualSavings = monthlyHours * 12 * hourlyRate;
 
             if (resHours) resHours.textContent = monthlyHours.toLocaleString('es-AR');
@@ -1306,16 +1406,16 @@
                 .then(async (response) => {
                     const resJson = await response.json();
                     if (response.status === 200) {
-                        result.className = "text-center p-4 rounded-xl text-sm font-semibold bg-emerald-950/70 border border-emerald-500/50 text-emerald-300";
+                        result.className = "text-center p-3.5 rounded-xl text-xs sm:text-sm font-semibold bg-emerald-950/70 border border-emerald-500/50 text-emerald-300";
                         result.innerHTML = '<i class="fa-solid fa-circle-check mr-2 text-emerald-400"></i> ¡Gracias! Hemos recibido tu solicitud. Nos pondremos en contacto a la brevedad.';
                         form.reset();
                     } else {
-                        result.className = "text-center p-4 rounded-xl text-sm font-semibold bg-rose-950/70 border border-rose-500/50 text-rose-300";
+                        result.className = "text-center p-3.5 rounded-xl text-xs sm:text-sm font-semibold bg-rose-950/70 border border-rose-500/50 text-rose-300";
                         result.innerHTML = '<i class="fa-solid fa-triangle-exclamation mr-2 text-rose-400"></i> ' + (resJson.message || 'Ocurrió un error al enviar el formulario.');
                     }
                 })
                 .catch(error => {
-                    result.className = "text-center p-4 rounded-xl text-sm font-semibold bg-rose-950/70 border border-rose-500/50 text-rose-300";
+                    result.className = "text-center p-3.5 rounded-xl text-xs sm:text-sm font-semibold bg-rose-950/70 border border-rose-500/50 text-rose-300";
                     result.innerHTML = '<i class="fa-solid fa-triangle-exclamation mr-2 text-rose-400"></i> Error de conexión. Por favor intentá nuevamente.';
                 })
                 .finally(() => {
@@ -1336,14 +1436,14 @@
             mobileMenuBtn.addEventListener('click', () => {
                 const isHidden = mobileMenu.classList.toggle('hidden');
                 if (mobileMenuIcon) {
-                    mobileMenuIcon.className = isHidden ? 'fa-solid fa-bars text-xl' : 'fa-solid fa-xmark text-xl';
+                    mobileMenuIcon.className = isHidden ? 'fa-solid fa-bars text-lg' : 'fa-solid fa-xmark text-lg';
                 }
             });
 
             mobileLinks.forEach(link => {
                 link.addEventListener('click', () => {
                     mobileMenu.classList.add('hidden');
-                    if (mobileMenuIcon) mobileMenuIcon.className = 'fa-solid fa-bars text-xl';
+                    if (mobileMenuIcon) mobileMenuIcon.className = 'fa-solid fa-bars text-lg';
                 });
             });
         }
@@ -1356,11 +1456,9 @@
                 const icon = toggle.querySelector('i');
                 const isOpen = !content.classList.contains('hidden');
 
-                // Cerrar todos los demás
                 document.querySelectorAll('.faq-content').forEach(c => c.classList.add('hidden'));
                 document.querySelectorAll('.faq-toggle i').forEach(i => i.classList.remove('rotate-180'));
 
-                // Si no estaba abierto, abrirlo
                 if (!isOpen) {
                     content.classList.remove('hidden');
                     if (icon) icon.classList.add('rotate-180');
