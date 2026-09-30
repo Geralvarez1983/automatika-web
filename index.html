@@ -1332,32 +1332,6 @@
                             <p class="text-xs sm:text-sm text-gray-400 mt-1">Completá el formulario y coordinamos el encuentro según tu disponibilidad horaria.</p>
                         </div>
 
-                        <!-- Selector Rápido de Interés (Chips) -->
-                        <div class="mb-5 relative z-10">
-                            <label class="block text-[11px] sm:text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">
-                                ¿Qué proceso te interesa automatizar principalmente?
-                            </label>
-                            <div class="flex flex-wrap gap-2" id="interest-chips">
-                                <button type="button" onclick="selectChip(this, 'WhatsApp & Ventas 24/7')" class="interest-chip px-3 py-1.5 rounded-lg text-xs font-medium bg-darkbg border border-gray-700/80 text-gray-300 hover:border-cyan-400/60 hover:text-cyan-300 transition-all">
-                                    <i class="fa-brands fa-whatsapp text-emerald-400 mr-1"></i> WhatsApp 24/7
-                                </button>
-                                <button type="button" onclick="selectChip(this, 'Facturación AFIP y Cobranzas')" class="interest-chip px-3 py-1.5 rounded-lg text-xs font-medium bg-darkbg border border-gray-700/80 text-gray-300 hover:border-cyan-400/60 hover:text-cyan-300 transition-all">
-                                    <i class="fa-solid fa-receipt text-cyan-400 mr-1"></i> Facturación AFIP
-                                </button>
-                                <button type="button" onclick="selectChip(this, 'Conciliación de Pagos y Bancos')" class="interest-chip px-3 py-1.5 rounded-lg text-xs font-medium bg-darkbg border border-gray-700/80 text-gray-300 hover:border-cyan-400/60 hover:text-cyan-300 transition-all">
-                                    <i class="fa-solid fa-coins text-amber-400 mr-1"></i> Cobranzas / Pagos
-                                </button>
-                                <button type="button" onclick="selectChip(this, 'Sincronización de Stock y ERP')" class="interest-chip px-3 py-1.5 rounded-lg text-xs font-medium bg-darkbg border border-gray-700/80 text-gray-300 hover:border-cyan-400/60 hover:text-cyan-300 transition-all">
-                                    <i class="fa-solid fa-boxes-stacked text-blue-400 mr-1"></i> Stock & Catálogos
-                                </button>
-                                <button type="button" onclick="selectChip(this, 'Lectura OCR de Facturas de Proveedores')" class="interest-chip px-3 py-1.5 rounded-lg text-xs font-medium bg-darkbg border border-gray-700/80 text-gray-300 hover:border-cyan-400/60 hover:text-cyan-300 transition-all">
-                                    <i class="fa-solid fa-file-invoice-dollar text-indigo-400 mr-1"></i> Carga OCR Facturas
-                                </button>
-                                <button type="button" onclick="selectChip(this, 'Automatización a medida para mi negocio')" class="interest-chip px-3 py-1.5 rounded-lg text-xs font-medium bg-darkbg border border-gray-700/80 text-gray-300 hover:border-cyan-400/60 hover:text-cyan-300 transition-all">
-                                    <i class="fa-solid fa-gear text-purple-400 mr-1"></i> Flujo a Medida
-                                </button>
-                            </div>
-                        </div>
 
                         <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" class="space-y-4 sm:space-y-5 relative z-10">
                             <input type="hidden" name="access_key" value="4b9bc2f9-dd3b-4551-8824-b06f9cdb059b">
@@ -1552,22 +1526,6 @@
                 textarea.value = `Hola, me interesa implementar la automatización de: "${processName}". Quisiera conocer cómo podemos integrarlo en mi negocio.`;
                 contactSection.scrollIntoView({ behavior: 'smooth' });
                 textarea.focus();
-            }
-        }
-
-        // Selección interactiva de chips de interés
-        function selectChip(btn, processName) {
-            const chips = document.querySelectorAll('.interest-chip');
-            chips.forEach(c => {
-                c.classList.remove('border-cyan-400', 'bg-cyan-950/60', 'text-cyan-300', 'shadow-md', 'shadow-cyan-500/20');
-                c.classList.add('border-gray-700/80', 'bg-darkbg', 'text-gray-300');
-            });
-            btn.classList.remove('border-gray-700/80', 'bg-darkbg', 'text-gray-300');
-            btn.classList.add('border-cyan-400', 'bg-cyan-950/60', 'text-cyan-300', 'shadow-md', 'shadow-cyan-500/20');
-
-            const textarea = document.getElementById('message-field');
-            if (textarea) {
-                textarea.value = `Hola, me interesa principalmente automatizar: "${processName}". Desearía coordinar la sesión de diagnóstico para mi empresa.`;
             }
         }
 
